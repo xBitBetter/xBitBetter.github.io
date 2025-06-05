@@ -10,13 +10,21 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="Kevin London在其文章[《Code Review Best Practices》](https://www.kevinlondon.com/2015/05/05/code-review-best-practices)中分享了进行代码审查的最佳实践，这些实践适用于软件开发团队，旨在提高代码质量和团队协作。">
-<meta property="og:title" content="Code Review Best Practices 读书笔记">
-<meta property="og:description" content="Kevin London在其文章[《Code Review Best Practices》](https://www.kevinlondon.com/2015/05/05/code-review-best-practices)中分享了进行代码审查的最佳实践，这些实践适用于软件开发团队，旨在提高代码质量和团队协作。">
+<meta name="description" content="> PaperMe——您的专属打印纸设计专家
+
+![PaperMe](https://github.com/user-attachments/assets/6699e12c-3196-4288-b00e-e05510b33fb8)
+
+[PaperMe](https://paperme.toolooz.com/)是一款创新的在线工具，专为需要个性化纸张的用户打造。">
+<meta property="og:title" content="PaperMe打印纸设计专家">
+<meta property="og:description" content="> PaperMe——您的专属打印纸设计专家
+
+![PaperMe](https://github.com/user-attachments/assets/6699e12c-3196-4288-b00e-e05510b33fb8)
+
+[PaperMe](https://paperme.toolooz.com/)是一款创新的在线工具，专为需要个性化纸张的用户打造。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://xBitBetter.github.io/post/Code%20Review%20Best%20Practices%20-du-shu-bi-ji.html">
+<meta property="og:url" content="https://xBitBetter.github.io/post/PaperMe-da-yin-zhi-she-ji-zhuan-jia.html">
 <meta property="og:image" content="https://fav.farm/⛅">
-<title>Code Review Best Practices 读书笔记</title>
+<title>PaperMe打印纸设计专家</title>
 
 
 
@@ -49,7 +57,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">Code Review Best Practices 读书笔记</h1>
+<h1 class="postTitle">PaperMe打印纸设计专家</h1>
 <div class="title-right">
     <a href="https://xBitBetter.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -57,7 +65,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/xBitBetter/xBitBetter.github.io/issues/5" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/xBitBetter/xBitBetter.github.io/issues/3" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -73,24 +81,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>Kevin London在其文章<a href="https://www.kevinlondon.com/2015/05/05/code-review-best-practices" rel="nofollow">《Code Review Best Practices》</a>中分享了进行代码审查的最佳实践，这些实践适用于软件开发团队，旨在提高代码质量和团队协作。</p>
-<p>以下是文章中的主要观点：</p>
-<ul>
-<li>职责单一原则（Single Responsibility Principle）: 一个类或方法应该只负责一项功能。如果描述一个方法的功能需要使用“并且”，这可能意味着方法的职责范围过广，应该考虑分解。</li>
-<li>开放封闭原则（Open/Closed Principle）: 如果使用面向对象编程，确保对象易于扩展但不易修改。当需要增加新特性时，代码应该可以通过添加新代码来实现，而不是修改已有代码。</li>
-<li>代码重复（Code Duplication）: 采用“三次触碰”规则。如果代码被复制了一次，通常可以容忍，但如果再次复制，应该重构代码，将重复的逻辑抽象出来。</li>
-<li>眯眼测试（Squint Test）: 检查代码的布局和结构是否一致，是否存在可能指示代码结构问题的模式。</li>
-<li>留下更好的代码（Code Left in a Better State）: 当修改混乱的代码区域时，应该努力让代码比原来更好。</li>
-<li>潜在的bug: 检查是否有可能的off-by-one错误，循环是否能按照预期终止，以及是否会无限循环。</li>
-<li>错误处理: 错误是否被优雅地处理，必要时是否明确地处理，是否添加了自定义错误，这些错误是否有用。</li>
-<li>效率: 算法是否使用了高效的实现，例如，遍历字典的键列表来查找一个值是低效的。</li>
-<li>命名规范: 方法和变量的命名是否准确反映了其功能，避免使用模糊或不具描述性的名称。</li>
-<li>函数长度: 函数长度是否适中，避免过长的函数，以提高代码的可读性和维护性。</li>
-<li>代码审查前的自我检查: 在提交代码审查前，作者应该先自我检查，如检查是否有遗留的注释或TODO标记，变量命名是否合理，以及其他在上述列出的事项。</li>
-<li>人性化沟通: 代码审查不仅仅是技术评估，还涉及到人际交流。建议的方法包括提问、表扬、面对面讨论复杂点、解释建议的理由、聚焦于代码而非个人、区分建议的优先级等。</li>
-<li>保持开放心态: 在代码审查中保持开放和非防御性的态度，理解审查的目的在于改进代码质量，而不是个人批评。<br>
-通过遵循这些最佳实践，软件团队可以提升代码的质量、可维护性和团队协作效率。</li>
-</ul>
+<div class="markdown-body" id="postBody"><blockquote>
+<p>PaperMe——您的专属打印纸设计专家</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/6699e12c-3196-4288-b00e-e05510b33fb8"><img src="https://github.com/user-attachments/assets/6699e12c-3196-4288-b00e-e05510b33fb8" alt="PaperMe" style="max-width: 100%;"></a></p>
+<p><a href="https://paperme.toolooz.com/" rel="nofollow">PaperMe</a>是一款创新的在线工具，专为需要个性化纸张的用户打造。通过直观的控制面板，您可以自由调整页边距、行距、网格样式等参数，轻松创建独一无二的打印模板，满足学习、工作与创作的多场景需求。</p>
+<p>核心功能亮点：</p>
+<ol>
+<li>高度自定义：支持线条颜色、背景图案、分栏布局等细节设置，适配笔记、书法、手账等不同用途。</li>
+<li>一键导出：生成PDF后可直接打印，推荐使用彩墨与高品质纸张呈现最佳效果。</li>
+<li>环保设计：内置双面打印提醒，减少纸张消耗。</li>
+</ol>
+<p>无论是学生制作错题本、职场人士规划日程，还是艺术家绘制草图，PaperMe都能提供专业支持。其简洁界面与实用功能，让纸张设计变得高效有趣。</p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/71ec40539e70a9b9e1a8cd78ffbff0d6077c141744d92653bf47f8e3ce9e1921/68747470733a2f2f676f6f6875676f2e6769746875622e696f2f786269746265747465722e706e67"><img src="https://camo.githubusercontent.com/71ec40539e70a9b9e1a8cd78ffbff0d6077c141744d92653bf47f8e3ce9e1921/68747470733a2f2f676f6f6875676f2e6769746875622e696f2f786269746265747465722e706e67" alt="xBitBetter公众号" title="xBitBetter公众号" data-canonical-src="https://goohugo.github.io/xbitbetter.png" style="max-width: 100%;"></a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
 
