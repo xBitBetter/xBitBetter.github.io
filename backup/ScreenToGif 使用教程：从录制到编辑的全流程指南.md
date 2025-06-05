@@ -84,6 +84,6 @@ ScreenToGif 是一款免费开源的屏幕录制与 GIF 编辑工具，支持录
 • 编辑时频繁操作可能占用较高内存，建议定期保存项目文件。  
 
 
-![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png "xBitBetter公众号")
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
 
 
