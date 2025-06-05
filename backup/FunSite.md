@@ -1,6 +1,5 @@
 这里记录了一些有趣的网站链接
-
-#### 奇趣网站收藏家：  
+ 
 - [TinyPng](https://tinypng.com/) Smart AVIF, WebP, PNG and JPEG Compression for Faster Websites
 - [知性](https://knowsex.net/)  知性 KnowSex 是一个性教育网站
 - [全历史](https://www.allhistory.com/)以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识
