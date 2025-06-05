@@ -17,5 +17,3 @@
 免费体验：访问[tinypng.com](https://tinypng.com "tinypng.com")，拖拽图片即可立即优化！付费订阅（Web Pro/Ultra）还能解锁更多高级功能，如无限制格式转换。  
 
 ![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
-
-`<img src="https://goohugo.github.io/xbitbetter.png" style="display: block; margin: auto;">
