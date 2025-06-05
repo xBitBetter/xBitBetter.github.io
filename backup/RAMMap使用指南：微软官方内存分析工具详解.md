@@ -76,4 +76,4 @@ RAMMap 是微软 Sysinternals 工具套件中的一款专业内存分析工具�
 • 开发调试：分析应用程序的内存分配效率。  
 
 
-![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png "xBitBetter公众号")
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
