@@ -1,6 +1,6 @@
 > PaperMe——您的专属打印纸设计专家
 
-![PaperMe](https://github.com/user-attachments/assets/afc7d366-ee0b-40b6-b52a-84c8e2977dd2)
+![PaperMe](https://github.com/user-attachments/assets/6699e12c-3196-4288-b00e-e05510b33fb8)
 
 [PaperMe](https://paperme.toolooz.com/)是一款创新的在线工具，专为需要个性化纸张的用户打造。通过直观的控制面板，您可以自由调整页边距、行距、网格样式等参数，轻松创建独一无二的打印模板，满足学习、工作与创作的多场景需求。
 
