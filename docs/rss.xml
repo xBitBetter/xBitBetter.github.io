@@ -1,5 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>xBitBetter</title><link>https://xBitBetter.github.io</link><description>Done is better than perfect</description><copyright>xBitBetter</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://fav.farm/⛅</url><title>avatar</title><link>https://xBitBetter.github.io</link></image><lastBuildDate>Thu, 05 Jun 2025 01:24:15 +0000</lastBuildDate><managingEditor>xBitBetter</managingEditor><ttl>60</ttl><webMaster>xBitBetter</webMaster><item><title>ScreenToGif 使用教程：从录制到编辑的全流程指南</title><link>https://xBitBetter.github.io/post/ScreenToGif%20-shi-yong-jiao-cheng-%EF%BC%9A-cong-lu-zhi-dao-bian-ji-de-quan-liu-cheng-zhi-nan.html</link><description>ScreenToGif 使用教程：从录制到编辑的全流程指南  
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>xBitBetter</title><link>https://xBitBetter.github.io</link><description>Done is better than perfect</description><copyright>xBitBetter</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://fav.farm/⛅</url><title>avatar</title><link>https://xBitBetter.github.io</link></image><lastBuildDate>Thu, 05 Jun 2025 01:26:04 +0000</lastBuildDate><managingEditor>xBitBetter</managingEditor><ttl>60</ttl><webMaster>xBitBetter</webMaster><item><title>数据库更新表数据，从另一个表中取值</title><link>https://xBitBetter.github.io/post/shu-ju-ku-geng-xin-biao-shu-ju-%EF%BC%8C-cong-ling-yi-ge-biao-zhong-qu-zhi.html</link><description>## SQL SERVER
+```
+UPDATE  A set A.C=B.C 
+from  tableA  as A（别名）,tableB as  B （别名）
+where A.列= B.列
+```
+
+## MySQL
+```
+UPDATE tableA  as A
+inner join tableB as  B  
+on  A.列= B.列
+set  A.C=B.C 
+```
+当A表与B表某个字段值相等时，更新A表某列值等于B表某列值
+
+## DB2
+```
+UPDATE A_TEST as atest
+set atest.ORG_CODE=(select ctest.code from C_TEST ctest where atest.id = ctest.id)
+where atest.id in  (select ctest.id FROM TEST ctest);
+```
+
+![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png 'xBitBetter公众号')
+。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/shu-ju-ku-geng-xin-biao-shu-ju-%EF%BC%8C-cong-ling-yi-ge-biao-zhong-qu-zhi.html</guid><pubDate>Thu, 05 Jun 2025 01:25:31 +0000</pubDate></item><item><title>ScreenToGif 使用教程：从录制到编辑的全流程指南</title><link>https://xBitBetter.github.io/post/ScreenToGif%20-shi-yong-jiao-cheng-%EF%BC%9A-cong-lu-zhi-dao-bian-ji-de-quan-liu-cheng-zhi-nan.html</link><description>ScreenToGif 使用教程：从录制到编辑的全流程指南  
 
 ScreenToGif 是一款免费开源的屏幕录制与 GIF 编辑工具，支持录制屏幕、摄像头、画板内容，并可直接导出为 GIF、视频或项目文件。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/ScreenToGif%20-shi-yong-jiao-cheng-%EF%BC%9A-cong-lu-zhi-dao-bian-ji-de-quan-liu-cheng-zhi-nan.html</guid><pubDate>Thu, 05 Jun 2025 01:23:41 +0000</pubDate></item><item><title>《纳瓦尔宝典》读书笔记</title><link>https://xBitBetter.github.io/post/%E3%80%8A-na-wa-er-bao-dian-%E3%80%8B-du-shu-bi-ji.html</link><description># 纳瓦尔宝典
 
