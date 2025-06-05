@@ -20,4 +20,4 @@
 
 从更换iPhone屏幕到修复古董游戏机，iFixit用工具+知识+社群的三重力量，让「坏了就扔」成为过去式。加入这场维修革命，你拯救的不只是设备，更是未来！ ✊🔋
 
-![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png "xBitBetter公众号")
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")

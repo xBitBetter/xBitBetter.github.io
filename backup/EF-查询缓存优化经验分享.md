@@ -81,4 +81,4 @@ public static VpoEntities GetCurrentDemoContext()
 
 [原文地址](https://www.cnblogs.com/hepc/p/10253414.html)
 
-![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png "xBitBetter公众号")
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
