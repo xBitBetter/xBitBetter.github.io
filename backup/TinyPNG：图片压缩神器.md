@@ -18,4 +18,4 @@
 
 ![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
 
-`Gmeek-html<img src="https://goohugo.github.io/xbitbetter.png" style="display: block; margin: auto;">`
+`<img src="https://goohugo.github.io/xbitbetter.png" style="display: block; margin: auto;">
