@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>xBitBetter</title><link>https://xBitBetter.github.io</link><description>English, code, write, speech, read，这个时代复利最高的五件事。</description><copyright>xBitBetter</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://fav.farm/⛅</url><title>avatar</title><link>https://xBitBetter.github.io</link></image><lastBuildDate>Thu, 05 Jun 2025 06:26:28 +0000</lastBuildDate><managingEditor>xBitBetter</managingEditor><ttl>60</ttl><webMaster>xBitBetter</webMaster><item><title>TinyPNG：图片压缩神器</title><link>https://xBitBetter.github.io/post/TinyPNG%EF%BC%9A-tu-pian-ya-suo-shen-qi.html</link><description>![TinyPNG](https://github.com/user-attachments/assets/1a24bd18-8d19-47dc-92e7-7950bfd1ed6b)
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>xBitBetter</title><link>https://xBitBetter.github.io</link><description>English, code, write, speech, read，这个时代复利最高的五件事。</description><copyright>xBitBetter</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://fav.farm/⛅</url><title>avatar</title><link>https://xBitBetter.github.io</link></image><lastBuildDate>Thu, 05 Jun 2025 06:32:23 +0000</lastBuildDate><managingEditor>xBitBetter</managingEditor><ttl>60</ttl><webMaster>xBitBetter</webMaster><item><title>TinyPNG：图片压缩神器</title><link>https://xBitBetter.github.io/post/TinyPNG%EF%BC%9A-tu-pian-ya-suo-shen-qi.html</link><description>![TinyPNG](https://github.com/user-attachments/assets/1a24bd18-8d19-47dc-92e7-7950bfd1ed6b)
 
 在当今快节奏的数字世界中，网站加载速度直接影响用户体验和SEO排名。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/TinyPNG%EF%BC%9A-tu-pian-ya-suo-shen-qi.html</guid><pubDate>Thu, 05 Jun 2025 01:26:19 +0000</pubDate></item><item><title>数据库更新表数据，从另一个表中取值</title><link>https://xBitBetter.github.io/post/shu-ju-ku-geng-xin-biao-shu-ju-%EF%BC%8C-cong-ling-yi-ge-biao-zhong-qu-zhi.html</link><description>## SQL SERVER
 ```
@@ -126,15 +126,7 @@ scoop bucket add extras https://mirror.nju.edu.cn/git/scoop-extras.git
 
 ![PaperMe](https://github.com/user-attachments/assets/6699e12c-3196-4288-b00e-e05510b33fb8)
 
-[PaperMe](https://paperme.toolooz.com/)是一款创新的在线工具，专为需要个性化纸张的用户打造。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/PaperMe-da-yin-zhi-she-ji-zhuan-jia.html</guid><pubDate>Thu, 05 Jun 2025 01:15:52 +0000</pubDate></item><item><title>调用SerialPort类搞定包裹称重</title><link>https://xBitBetter.github.io/post/diao-yong-SerialPort-lei-gao-ding-bao-guo-cheng-zhong.html</link><description>当前，几乎所有的电商综合管理系统已将包裹称重环节纳入核心流程，尤其在食品电商领域，其系统内集成的包裹称重功能模块扮演着关键角色，有效防止因包裹重量信息误差而导致的发货差错，并能迅速识别异常包裹，有力地减少了包裹误发的现象。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/diao-yong-SerialPort-lei-gao-ding-bao-guo-cheng-zhong.html</guid><pubDate>Thu, 05 Jun 2025 01:05:55 +0000</pubDate></item><item><title>FunSite</title><link>https://xBitBetter.github.io/link.html</link><description>这里记录了一些有趣的网站链接
-
-#### 奇趣网站收藏家：  
-- [TinyPng](https://tinypng.com/) Smart AVIF, WebP, PNG and JPEG Compression for Faster Websites
-- [知性](https://knowsex.net/)  知性 KnowSex 是一个性教育网站
-- [全历史](https://www.allhistory.com/)以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识
-- [中国传统颜色](https://zhongguose.com/)  中国传统颜色
-- [免费修理手册](https://zh.ifixit.com/) ifixit 你的免费修理手册
-- [纸由我 PaperMe](https://paperme.toolooz.com/) 为您提供精美的自定义打印纸张，满足您的每一个创作需求。</description><guid isPermaLink="true">https://xBitBetter.github.io/link.html</guid><pubDate>Thu, 05 Jun 2025 06:25:54 +0000</pubDate></item><item><title>关于</title><link>https://xBitBetter.github.io/about.html</link><description>👋 Hi，我叫 xBitBetter🤣，是一名后端工程师 👨🏻‍💻（.NET ☕️）
+[PaperMe](https://paperme.toolooz.com/)是一款创新的在线工具，专为需要个性化纸张的用户打造。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/PaperMe-da-yin-zhi-she-ji-zhuan-jia.html</guid><pubDate>Thu, 05 Jun 2025 01:15:52 +0000</pubDate></item><item><title>调用SerialPort类搞定包裹称重</title><link>https://xBitBetter.github.io/post/diao-yong-SerialPort-lei-gao-ding-bao-guo-cheng-zhong.html</link><description>当前，几乎所有的电商综合管理系统已将包裹称重环节纳入核心流程，尤其在食品电商领域，其系统内集成的包裹称重功能模块扮演着关键角色，有效防止因包裹重量信息误差而导致的发货差错，并能迅速识别异常包裹，有力地减少了包裹误发的现象。</description><guid isPermaLink="true">https://xBitBetter.github.io/post/diao-yong-SerialPort-lei-gao-ding-bao-guo-cheng-zhong.html</guid><pubDate>Thu, 05 Jun 2025 01:05:55 +0000</pubDate></item><item><title>关于</title><link>https://xBitBetter.github.io/about.html</link><description>👋 Hi，我叫 xBitBetter🤣，是一名后端工程师 👨🏻‍💻（.NET ☕️）
 
 ❤️ 我喜欢：编程🐵、阅读📖、炉石传说🎮、美剧📺、追剧🎬
 
@@ -145,4 +137,12 @@ scoop bucket add extras https://mirror.nju.edu.cn/git/scoop-extras.git
 ![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png 'xBitBetter公众号')
 
 ⚡ 如果你有什么想和我交流的，欢迎关注xBitBetter公众号 💬
-。</description><guid isPermaLink="true">https://xBitBetter.github.io/about.html</guid><pubDate>Thu, 05 Jun 2025 03:07:50 +0000</pubDate></item></channel></rss>
+。</description><guid isPermaLink="true">https://xBitBetter.github.io/about.html</guid><pubDate>Thu, 05 Jun 2025 03:07:50 +0000</pubDate></item><item><title>FunSite</title><link>https://xBitBetter.github.io/link.html</link><description>这里记录了一些有趣的网站链接
+
+#### 奇趣网站收藏家：  
+- [TinyPng](https://tinypng.com/) Smart AVIF, WebP, PNG and JPEG Compression for Faster Websites
+- [知性](https://knowsex.net/)  知性 KnowSex 是一个性教育网站
+- [全历史](https://www.allhistory.com/)以AI知识图谱为核心引擎，通过高度时空化、关联化数据的方式构造及展现数字人文内容，尤其是历史知识
+- [中国传统颜色](https://zhongguose.com/)  中国传统颜色
+- [免费修理手册](https://zh.ifixit.com/) ifixit 你的免费修理手册
+- [纸由我 PaperMe](https://paperme.toolooz.com/) 为您提供精美的自定义打印纸张，满足您的每一个创作需求。</description><guid isPermaLink="true">https://xBitBetter.github.io/link.html</guid><pubDate>Thu, 05 Jun 2025 06:25:54 +0000</pubDate></item></channel></rss>
