@@ -14,8 +14,6 @@ ScreenToGif 是一款免费开源的屏幕录制与 GIF 编辑工具，支持录
 
 **2. 录制功能**  
 
-![Image](https://github.com/user-attachments/assets/630c41eb-48db-4041-8841-af3f63f468ab)
-
 **① 选择录制模式**  
 • 录像机：录制屏幕指定区域（默认模式）。  
 
@@ -40,7 +38,6 @@ ScreenToGif 是一款免费开源的屏幕录制与 GIF 编辑工具，支持录
 
 **3. 编辑功能**  
 
-![Image](https://github.com/user-attachments/assets/57bd90ab-57c1-4fe8-bf80-a2d73a95ac50)
 
 录制完成后自动跳转至编辑器界面，支持以下操作：  
 • 帧管理：删除、复制、调整顺序或插入新帧。  
@@ -57,8 +54,6 @@ ScreenToGif 是一款免费开源的屏幕录制与 GIF 编辑工具，支持录
 ---
 
 **4. 导出与保存**  
-
-![Image](https://github.com/user-attachments/assets/a512716e-cc40-49b6-8909-4858ba23e4cd)
 
 • 格式选择：GIF、MP4、APNG 或项目文件（.stg）。  
 
