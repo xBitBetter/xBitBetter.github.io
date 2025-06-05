@@ -1,4 +1,4 @@
-![TinyPNG](https://github.com/user-attachments/assets/b4b33644-9bb8-44ec-8b81-bbc0d6ae616d)
+![TinyPNG](https://github.com/user-attachments/assets/1a24bd18-8d19-47dc-92e7-7950bfd1ed6b)
 
 在当今快节奏的数字世界中，网站加载速度直接影响用户体验和SEO排名。TinyPNG作为一款强大的在线图片压缩工具，专为开发者、设计师和网站所有者打造，帮助您轻松优化AVIF、WebP、PNG和JPEG格式的图片，最高可减少80%的文件大小，而几乎不损失画质！  
 
