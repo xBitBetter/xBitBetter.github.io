@@ -101,5 +101,5 @@ scoop list  #列出已安装的软件
 scoop bucket list  #列出已订阅的仓库
 ```
 
-![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png "xBitBetter公众号")
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
 
