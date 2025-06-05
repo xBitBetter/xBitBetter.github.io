@@ -1,7 +1,5 @@
 Kevin London在其文章[《Code Review Best Practices》](https://www.kevinlondon.com/2015/05/05/code-review-best-practices)中分享了进行代码审查的最佳实践，这些实践适用于软件开发团队，旨在提高代码质量和团队协作。
 
-![Code Review Best Practices](https://github.com/user-attachments/assets/dd17b84f-3c3d-4e81-a1db-52ae70808048)
-
 以下是文章中的主要观点：
 - 职责单一原则（Single Responsibility Principle）: 一个类或方法应该只负责一项功能。如果描述一个方法的功能需要使用“并且”，这可能意味着方法的职责范围过广，应该考虑分解。
 - 开放封闭原则（Open/Closed Principle）: 如果使用面向对象编程，确保对象易于扩展但不易修改。当需要增加新特性时，代码应该可以通过添加新代码来实现，而不是修改已有代码。
@@ -18,4 +16,4 @@ Kevin London在其文章[《Code Review Best Practices》](https://www.kevinlond
 -  保持开放心态: 在代码审查中保持开放和非防御性的态度，理解审查的目的在于改进代码质量，而不是个人批评。
 通过遵循这些最佳实践，软件团队可以提升代码的质量、可维护性和团队协作效率。
 
-![xBitBetter公众号](https://dotneteye.github.io/xbitbetter.png "xBitBetter公众号")
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
