@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -145,7 +145,7 @@ public static VpoEntities GetCurrentDemoContext()
 </code></pre>
 <p><a href="https://www.cnblogs.com/hepc/p/10253414.html" rel="nofollow">原文地址</a></p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/71ec40539e70a9b9e1a8cd78ffbff0d6077c141744d92653bf47f8e3ce9e1921/68747470733a2f2f676f6f6875676f2e6769746875622e696f2f786269746265747465722e706e67"><img src="https://camo.githubusercontent.com/71ec40539e70a9b9e1a8cd78ffbff0d6077c141744d92653bf47f8e3ce9e1921/68747470733a2f2f676f6f6875676f2e6769746875622e696f2f786269746265747465722e706e67" alt="xBitBetter公众号" title="xBitBetter公众号" data-canonical-src="https://goohugo.github.io/xbitbetter.png" style="max-width: 100%;"></a></p></div>
-<div style="font-size:small;margin-top:8px;float:right;"></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
@@ -160,8 +160,8 @@ public static VpoEntities GetCurrentDemoContext()
 var now=new Date();
 document.getElementById("copyrightYear").innerHTML=now.getFullYear();
 
-if(""!=""){
-    var startSite=new Date("");
+if("02/16/2015"!=""){
+    var startSite=new Date("02/16/2015");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
@@ -197,7 +197,7 @@ function utterancesTheme(theme){
     iframe.contentWindow.postMessage(message,'https://utteranc.es');
 }
 if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
-console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+console.log("\n %c Gmeek main https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
 </script>
 
 <script>
@@ -209,6 +209,7 @@ document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
 function openComments(){
     cm=document.getElementById("comments");
     cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
     cmButton.innerHTML="loading";
     span=document.createElement("span");
     span.setAttribute("class","AnimatedEllipsis");
