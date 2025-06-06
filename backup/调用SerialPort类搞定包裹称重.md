@@ -84,5 +84,4 @@ private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs
 
 ![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
 
-<!-- ##{"timestamp":1490764800}## -->
-
+<!-- ##{"timestamp":1748391609}## -->
