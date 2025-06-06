@@ -105,4 +105,4 @@ scoop bucket list  #列出已订阅的仓库
 
 <!-- ##{"script":"<script src='https://xbitbetter.github.io/assets/GmeekTOC.js'></script>"}## -->
 
-<!-- ##{"timestamp":1748565309}## -->
+<!-- ##{"timestamp":1748565315}## -->
