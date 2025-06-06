@@ -104,3 +104,5 @@ scoop bucket list  #列出已订阅的仓库
 ![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
 
 <!-- ##{"script":"<script src='https://xbitbetter.github.io/assets/GmeekTOC.js'></script>"}## -->
+
+<!-- ##{"timestamp":1748565309}## -->
