@@ -29,3 +29,5 @@
 ## 👉 马上体验：[emojimix by Tikolu](https://tikolu.net/emojimix)
 
 开启你的表情融合实验，定义属于你的数字情绪宇宙吧！ 🌌✨
+
+![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
