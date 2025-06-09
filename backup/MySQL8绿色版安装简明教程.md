@@ -75,4 +75,3 @@ default-character-set=utf8mb4
 ![Image](https://github.com/user-attachments/assets/066ce6c3-43ac-4033-b6bd-f466314f8ed1)
     - 重新安装
 
-![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")

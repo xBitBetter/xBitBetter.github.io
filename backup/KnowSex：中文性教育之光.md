@@ -17,6 +17,4 @@
 加入KnowSex，拥抱健康未来​​。性教育不是羞耻，而是每个人成长的必修课。
 🔗 访问[KnowSex](https://knowsex.net/)，解锁知识，为自己与他人筑起安全的防线。💪
 
-![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
-
 <!-- ##{"timestamp":1748402409}## -->

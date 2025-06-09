@@ -12,6 +12,4 @@
 
 无论是学生制作错题本、职场人士规划日程，还是艺术家绘制草图，PaperMe都能提供专业支持。其简洁界面与实用功能，让纸张设计变得高效有趣。
 
-![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
-
 <!-- ##{"timestamp":1748306165}## -->
