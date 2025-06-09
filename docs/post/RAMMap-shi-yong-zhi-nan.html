@@ -79,30 +79,28 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p>RAMMap 使用指南：微软官方内存分析工具详解</p>
 <p>RAMMap 是微软 Sysinternals 工具套件中的一款专业内存分析工具，适用于 Windows 系统管理员和高级用户，用于深入诊断内存使用问题。以下是其核心功能和使用方法：</p>
-<hr>
 <h2><strong>1. 核心功能</strong></h2>
-<p>• 内存映射分析：显示物理内存和虚拟内存的详细分布，包括文件缓存、进程工作集、内核内存等。</p>
-<p>• 进程级内存监控：精确到每个进程的内存占用（私有内存、备用内存、修改内存等）。</p>
-<p>• 内存泄漏检测：通过「Leaked Memory」项识别异常内存占用（超过 500MB 需警惕）。</p>
-<p>• 缓存清理：支持手动释放备用内存（Standby List）以提升性能。</p>
-<hr>
+<p>• 内存映射分析：显示物理内存和虚拟内存的详细分布，包括文件缓存、进程工作集、内核内存等。<br>
+• 进程级内存监控：精确到每个进程的内存占用（私有内存、备用内存、修改内存等）。<br>
+• 内存泄漏检测：通过「Leaked Memory」项识别异常内存占用（超过 500MB 需警惕）。<br>
+• 缓存清理：支持手动释放备用内存（Standby List）以提升性能。</p>
 <h2><strong>2. 使用步骤</strong></h2>
 <p><strong>① 下载与运行</strong><br>
-• 从 <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/rammap" title="微软官方渠道" rel="nofollow">微软官方渠道</a> 下载绿色版（无需安装）。</p>
-<p>• 以 管理员权限 运行 <code class="notranslate">RAMMap.exe</code>。</p>
+• 从 <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/rammap" title="微软官方渠道" rel="nofollow">微软官方渠道</a> 下载绿色版（无需安装）。<br>
+• 以 管理员权限 运行 <code class="notranslate">RAMMap.exe</code>。</p>
 <p><strong>② 查看内存状态</strong><br>
-• 主界面视图：</p>
-<p>• 使用计数：总内存分配情况（活动/备用/修改内存）。</p>
-<p>• 进程：按内存占用排序的进程列表（如微信、浏览器等）。</p>
-<p>• 文件摘要：文件缓存占用分析。</p>
+• 主界面视图：<br>
+• 使用计数：总内存分配情况（活动/备用/修改内存）。<br>
+• 进程：按内存占用排序的进程列表（如微信、浏览器等）。<br>
+• 文件摘要：文件缓存占用分析。</p>
 <p>• 关键指标：</p>
-<p>• Modified Memory：待写入磁盘的内存（过高可能导致卡顿）。</p>
-<p>• Driver Locked：驱动程序占用的内存（异常值可能指向驱动问题）。</p>
+<p>• Modified Memory：待写入磁盘的内存（过高可能导致卡顿）。<br>
+• Driver Locked：驱动程序占用的内存（异常值可能指向驱动问题）。</p>
 <p><strong>③ 内存优化操作</strong><br>
-• 清理备用内存：</p>
-<p>• 点击菜单栏 Empty → Empty Standby List（可临时提升可用内存）。</p>
-<p>• 强制释放内存：</p>
-<p>• 右键占用异常的进程 → Empty Working Set（谨慎操作，可能影响程序稳定性）。</p>
+• 清理备用内存：<br>
+• 点击菜单栏 Empty → Empty Standby List（可临时提升可用内存）。</p>
+<p>• 强制释放内存：<br>
+• 右键占用异常的进程 → Empty Working Set（谨慎操作，可能影响程序稳定性）。</p>
 <p><strong>④ 高级诊断</strong><br>
 • 内存泄漏排查：</p>
 <ol>
@@ -111,17 +109,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 • 长期监控：</li>
 </ol>
 <p>• 定期生成报告（文件 → Save）对比内存变化趋势。</p>
-<hr>
 <h2><strong>3. 注意事项</strong></h2>
 <p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 稳定性风险：强制清理内存可能导致程序崩溃，建议先保存工作。<br>
 <g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 数据解读：不同 Windows 版本的内存管理机制可能影响指标含义。<br>
 <g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 兼容性：支持 Windows Vista 及以上系统，推荐从官方获取最新版。</p>
-<hr>
 <p><strong>4. 典型应用场景</strong><br>
-• 系统卡顿：检查 Standby Memory 是否过高，清理备用缓存。</p>
-<p>• 内存泄漏：定位 Process Private 异常增长的进程（如 VS Code 插件泄漏案例）。</p>
-<p>• 开发调试：分析应用程序的内存分配效率。</p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/71ec40539e70a9b9e1a8cd78ffbff0d6077c141744d92653bf47f8e3ce9e1921/68747470733a2f2f676f6f6875676f2e6769746875622e696f2f786269746265747465722e706e67"><img src="https://camo.githubusercontent.com/71ec40539e70a9b9e1a8cd78ffbff0d6077c141744d92653bf47f8e3ce9e1921/68747470733a2f2f676f6f6875676f2e6769746875622e696f2f786269746265747465722e706e67" alt="xBitBetter公众号" title="xBitBetter公众号" data-canonical-src="https://goohugo.github.io/xbitbetter.png" style="max-width: 100%;"></a></p>
+• 系统卡顿：检查 Standby Memory 是否过高，清理备用缓存。<br>
+• 内存泄漏：定位 Process Private 异常增长的进程（如 VS Code 插件泄漏案例）。<br>
+• 开发调试：分析应用程序的内存分配效率。</p>
 
 </div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
