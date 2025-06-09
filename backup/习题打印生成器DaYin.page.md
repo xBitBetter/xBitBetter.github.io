@@ -39,5 +39,3 @@
 
 **📥 如何使用？**  
 访问 [DaYin.page](https://dayin.page)，选择需要的模板，点击生成并打印，即可让孩子开始练习！  
-
-![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
