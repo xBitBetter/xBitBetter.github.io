@@ -16,6 +16,4 @@ Kevin London在其文章[《Code Review Best Practices》](https://www.kevinlond
 -  保持开放心态: 在代码审查中保持开放和非防御性的态度，理解审查的目的在于改进代码质量，而不是个人批评。
 通过遵循这些最佳实践，软件团队可以提升代码的质量、可维护性和团队协作效率。
 
-![xBitBetter公众号](https://goohugo.github.io/xbitbetter.png "xBitBetter公众号")
-
 <!-- ##{"timestamp":1748323389}## -->
