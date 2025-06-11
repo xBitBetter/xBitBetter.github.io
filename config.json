@@ -14,6 +14,6 @@
     "nightTheme":"dark_colorblind",
     "bottomText":"❤️ 转载文章请注明出处，谢谢！❤️",
     "primerCSS":"<link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />",
-    "allHead":"<script src='https://xBitBetter.github.io/assets/GmeekVercount.js'></script>",
+    "allHead":"<script src='https://xBitBetter.github.io/assets/GmeekVercount.js'></script> <meta name="google-site-verification" content="slAzYgLyoIUPPFns65CAQ38AyQNnhaPI-4AQslcuUOE" />",
     "GMEEK_VERSION":"last"
 }
