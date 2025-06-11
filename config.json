@@ -15,6 +15,5 @@
     "bottomText":"❤️ 转载文章请注明出处，谢谢！❤️",
     "primerCSS":"<link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />",
     "allHead":"<script src='https://xBitBetter.github.io/assets/GmeekVercount.js'></script>",
-    "script":"<script async src="https://www.googletagmanager.com/gtag/js?id=G-T44B73BF0Y"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-T44B73BF0Y');</script>",
     "GMEEK_VERSION":"last"
 }
