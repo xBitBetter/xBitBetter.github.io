@@ -232,3 +232,12 @@ a:focus-visible,.btn:focus-visible,button:focus-visible{
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;animation:none !important}
 }
+
+/* ===== a11y: 标签/日期 对比度修复 ===== */
+span[style*="#e4c034"]{ background-color:#946f00 !important; }
+span[style*="#e4c034"] a,
+span[style*="#e4c034"] object a{ color:#fff !important; }
+
+span[style*="#1f883d"]{ background-color:#15601f !important; color:#fff !important; }
+
+footer a, nav a, .pagination a{ padding:8px 6px; display:inline-block; min-height:24px; }
