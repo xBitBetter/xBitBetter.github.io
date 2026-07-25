@@ -4,6 +4,8 @@
 
 直到前两天被人安利了 [PriceRadar](https://priceradar.store/zh)，试了一下确实爽。
 
+<img src="https://ibitbetter.space/assets/images/Priceradar.store.webp" alt="PriceRadar - 全球 App Store 与 Google Play 软件订阅跨区比价工具" width="600" height="300"/>
+
 它干的事特简单粗暴——打开网页，连账号都不用登，直接搜软件名。不管是 ChatGPT、Claude 这种 AI 工具，还是平时用的乱七八糟的软件，PriceRadar 直接把这软件在全球上百个国家的 App Store 和 Google Play 价格全给你拉出来。最舒服的是不用自己算汇率，人家直接折成人民币从低到高排好了。土耳其便宜还是尼日利亚便宜，一眼看穿。
 
 听说最近还上了个降价提醒的功能，跟盯盘似的，设好了价格一跳水就通知你。
