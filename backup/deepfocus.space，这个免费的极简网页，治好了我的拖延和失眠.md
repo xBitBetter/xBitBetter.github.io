@@ -2,6 +2,8 @@
 
 然后隔壁工位的大哥给我丢了个链接。[deepfocus.space](https://deepfocus.space/zh/cave)。
 
+<img src="https://ibitbetter.space/assets/images/deepfocus.webp" alt="deepfocus.space，这个免费的极简网页，治好了我的拖延和失眠" width="600" height="300"/>
+
 我点开是中文版，默认进了一个叫"荒野别墅"的画面——山腰上木头玻璃房，窗外是树，远处是山。有风吹树叶的声音，一直循环。远处鸟叫，若有若无。
 
 我当时想的是，我看这玩意干嘛。但屏幕够大，我把它全屏挂副屏上了，顺手戳了下番茄钟，25 分钟。
