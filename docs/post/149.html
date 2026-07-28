@@ -131,10 +131,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <blockquote>
 <p><strong>从零到一的 Windows 轻量清理工具</strong><br>
 一次完整的桌面工具工程实践，及与 Mole (macOS) 的设计对话</p>
-<p><strong>iBitBetter</strong> · V1.0 · 2026.06.15<br>
-公众号 iBitBetter · 技术内容部</p>
 </blockquote>
-<hr>
 <h2>目录</h2>
 <ol>
 <li><a href="#01-%E9%A1%B9%E7%9B%AE%E8%B5%B7%E6%BA%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5">项目起源与设计理念</a></li>
@@ -146,7 +143,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li><a href="#07-%E5%9B%9E%E9%A1%BE%E4%B8%8E%E5%B1%95%E6%9C%9B">回顾与展望</a></li>
 <li><a href="#%E9%99%84%E5%BD%95%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84--%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5">附录：项目文件结构 &amp; 命令速查</a></li>
 </ol>
-<hr>
 <h2>01. 项目起源与设计理念</h2>
 <p>WinMole 诞生于一次跨平台的设计对话。macOS 上有 Mole——一款五合一原生清理工具，以「一次买断、无遥测、本机扫描」为核心理念。Windows 生态缺少这样一款<strong>轻量、克制、无侵入</strong>的系统工具。WinMole 的目标不是取代 CCleaner，而是提供一款开发者视角的日常维护伴侣。</p>
 <h3>为什么叫 WinMole</h3>
@@ -196,7 +192,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <blockquote>
 <p><strong>核心原则：独立 exe，不写注册表，不驻留后台，本机扫描不上传。</strong> 这是对 Mole 设计哲学的直接延续，也是 WinMole 与市面上大多数 Windows 清理工具的根本区别。</p>
 </blockquote>
-<hr>
 <h2>02. 技术架构</h2>
 <p>WinMole 采用<strong>引擎与界面分离</strong>的架构：一个核心引擎（<code class="notranslate">winmole_engine.py</code>）同时服务于命令行版（<code class="notranslate">winmole_simple.py</code>）和图形界面版（<code class="notranslate">winmole_gui.py</code>）。清理规则从 YAML 配置文件加载，支持用户自定义扩展。</p>
 <h3>模块总览</h3>
@@ -281,7 +276,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <blockquote>
 <p><strong>架构决策</strong>：引擎与界面分离带来了两个好处——第一，命令行和 GUI 共享同一套清理逻辑，不会出现行为不一致；第二，打包时可以独立编译 CLI 和 GUI 两个 exe，用户按需选择，不强制安装图形界面。</p>
 </blockquote>
-<hr>
 <h2>03. 功能演进：核心引擎</h2>
 <p>核心引擎的开发贯穿了整个项目周期。其中最复杂的两个子系统是<strong>回收站清理</strong>和<strong>应用卸载</strong>——两者都需要直接调用 Windows API，而非简单的文件系统操作。</p>
 <h3>回收站清理：绕过文件系统陷阱</h3>
@@ -310,7 +304,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ol>
 <h3>注册表清理</h3>
 <p><code class="notranslate">RegistryCleaner</code> 扫描四类问题：无效软件条目、启动项残留、文件关联孤项、最近文件历史。支持按类别选择和批量清理，每次操作前生成预览清单。</p>
-<hr>
 <h2>04. 功能演进：用户界面</h2>
 <p>WinMole 提供<strong>双模式界面</strong>：基于 Rich 的终端交互界面（CLI）和基于 Tkinter 的图形界面（GUI）。二者共享同一引擎，但面向不同的使用场景——CLI 适合快速操作和远程维护，GUI 适合新手和一次性批量任务。</p>
 <h3>GUI：五大标签页</h3>
@@ -362,7 +355,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <h3>CLI：从简单到丰富的演进</h3>
 <p>命令行版的迭代是整个项目中最活跃的部分。初版只有基础的清理和状态显示，后续根据 Mole 的界面设计逐个重写了三个核心模块：磁盘分析、系统监控、软件卸载。每一次重写都遵循同一个原则：<strong>交互密度要够、键盘操作要快、视觉效果要有区分度</strong>。</p>
-<hr>
 <h2>05. 功能演进：系统工具</h2>
 <p>CLI 的三个系统工具模块——磁盘分析、系统监控、软件卸载——都经历了从「能用」到「用起来爽」的完整重设计。每一次重写的参照物都是 Mole 的 macOS 界面，但目标不是照搬，而是理解其<strong>交互逻辑</strong>，再在 Windows 终端环境下重新实现。</p>
 <h3>磁盘分析器</h3>
@@ -438,7 +430,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <h3>乱码全 ASCII 化</h3>
 <p>Windows 终端的一个持续痛点：中文终端默认字体（Consolas / 新宋体）不支持 Unicode 方块字符 <code class="notranslate">█</code> <code class="notranslate">░</code> 和 Emoji <code class="notranslate">📁</code> <code class="notranslate">📄</code>。即使开了 <code class="notranslate">chcp 65001</code>，也只是解决了编码问题，字体缺字仍然显示方框或菱形乱码。最终方案：所有视觉元素（条形图、图标、省略号）全部使用纯 ASCII 可打印字符，<code class="notranslate">#</code> 填充 + <code class="notranslate">-</code> 空白 + <code class="notranslate">[D]</code> 目录 + <code class="notranslate">[F]</code> 文件，在任何 Windows 终端字体下都不会出现乱码。</p>
-<hr>
 <h2>06. 工程实践</h2>
 <p>从项目清理到一键打包，WinMole 的工程化过程涉及<strong>文件管理、路径兼容、PyInstaller 编译、双重构建</strong>等多个环节。每一步都有实际踩坑和对应的解决方案。</p>
 <h3>项目清理</h3>
@@ -501,7 +492,6 @@ CLI 构建成功：WinMole_CLI.exe (5MB + 28MB _internal)<br>
 GUI 构建成功：WinMole_GUI.exe (5MB + 28MB _internal)<br>
 发布包总大小 66MB，CLI exe 端到端验证通过，交互菜单正常运行</p>
 </blockquote>
-<hr>
 <h2>07. 回顾与展望</h2>
 <p>WinMole 是一次完整的**「从灵感 → 原型 → 迭代 → 打包交付」**的桌面工具工程实践。从看到 Mole 的那一刻到最终生成独立的 exe 发布包，总共经历了约 6 小时的密集开发和 20 余次功能迭代。</p>
 <h3>关键决策回顾</h3>
@@ -599,7 +589,6 @@ GUI 构建成功：WinMole_GUI.exe (5MB + 28MB _internal)<br>
 <blockquote>
 <p>WinMole 的核心价值不在于功能数量，而在于设计选择：独立 exe、不写注册表、不驻留后台、本机扫描不上传。这些约束来自对 Mole 设计哲学的深入理解，也来自对 Windows 工具市场现状的清醒判断。好的工具不需要「什么都能做」——它只需要把自己承诺的几件事做到极致。</p>
 </blockquote>
-<hr>
 <h2>附录：项目文件结构 &amp; 命令速查</h2>
 <h3>A. 文件结构</h3>
 <pre class="notranslate"><code class="notranslate">WinMole/
@@ -724,7 +713,7 @@ dist<span class="pl-cce">\W</span>inMole_v1.0<span class="pl-cce">\启</span>动
     </li>
     
     <li>
-      <a href="https://ibitbetter.space/post/166.html">Windows优化工具optimizerDuck</a>
+      <a href="https://ibitbetter.space/post/164.html">朋友总问我电脑能不能跑Qwen，CanIRun.ai 3秒给答案</a>
       <span class="related-date">2026-07-13</span>
     </li>
     
