@@ -10,7 +10,7 @@
 
 给各位挠头的家长支个招，遇到这种事别慌，试试一个叫 **KnowSex** 的宝藏网站。
 
-<img src="https://ibitbetter.space/assets/images/knowsex.webp" alt="撞见孩子偷看“小电影”差点社死？这个网站教你一秒化解尴尬" width="600" height="300"/>
+<img src="https://ibitbetter.space/assets/images/knowsex.webp" alt="撞见孩子偷看“小电影”差点社死？这个网站教你一秒化解尴尬" width="500" height="400"/>
 
 这不是那种随便搜出来的野鸡科普。人家是正儿八经按世界卫生组织（WHO）的《全面性教育》标准弄出来的，涵盖了从生理发育、心理健康到安全防范、性别平等的一揽子专业干货，还引进了不少国际权威机构的神仙翻译。
 
