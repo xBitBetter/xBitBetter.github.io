@@ -30,7 +30,28 @@ jobs:
           import os, re, subprocess, datetime
 
           SITE_URL = "https://ibitbetter.space"
-          OUTPUT = "static/sitemap.xml"  # 修改点1：输出到 docs 目录
+          # 输出路径需与 GitHub Pages 发布目录一致（你之前已验证 /sitemap.xml 可访问，保持 static/ 即可）
+          OUTPUT = "static/sitemap.xml"
+
+          # ---- 排除规则：薄内容 / 验证页 / 分页 / 标签，避免浪费抓取预算 ----
+          # 根目录需跳过的文件（首页已手动添加；隐私/条款/GSC 验证页不收录）
+          SKIP_ROOT_FILES = {
+              "index.html",
+              "privacy.html",
+              "terms.html",
+              "google475e77f4cf90814b.html",  # GSC 验证页：保留可访问，但排除出 sitemap
+          }
+          # 路径级正则排除（relpath 相对于 docs/，例如 "tags/fun-sites.html"）
+          EXCLUDE_RE = re.compile(r"""
+              ^baidu_verify.*\.html$   # ① 百度验证页（已失效→建议直接 git rm 删文件）
+              |^page\d+\.html$         # ② 分页 page2..pageN（薄内容）
+              |^tag\.html$             # ③ 标签汇总页
+              |^tags/                  # ④ 标签详情页
+              |^now\.html$             # ⑤ 归档 / now 页（薄内容）
+              |^404\.html$             # 错误页
+              |^search\.html$          # 搜索页
+              |sitemap                # sitemap 自身
+          """, re.VERBOSE)
 
           def get_lastmod(filepath):
               try:
@@ -60,7 +81,7 @@ jobs:
 
           urls = []
 
-          # 首页 (修改点2：检测 docs/index.html)
+          # 首页（手动添加）
           urls.append({
               "loc": SITE_URL + "/",
               "lastmod": get_lastmod("docs/index.html") if os.path.exists("docs/index.html") else "",
@@ -68,7 +89,7 @@ jobs:
               "priority": "1.0"
           })
 
-          # 扫描 docs 下的所有 HTML 文件 (修改点3：扫描目录改为 docs)
+          # 扫描 docs 下的所有 HTML 文件
           if os.path.exists("docs"):
               for root, dirs, files in os.walk("docs"):
                   # 跳过隐藏目录和 node_modules
@@ -76,20 +97,22 @@ jobs:
                   for fname in files:
                       if not fname.endswith(".html"):
                           continue
-                      
-                      # 去重：跳过根目录的 index.html，因为前面已经手动添加了首页
-                      if root == "docs" and (fname == "index.html" or fname == "privacy.html" or fname == "terms.html" or fname == "google475e77f4cf90814b.html"):
+
+                      # 根目录跳过列表（首页已手动加，隐私/条款/验证页不收录）
+                      if root == "docs" and fname in SKIP_ROOT_FILES:
                           continue
-                          
+
                       fpath = os.path.join(root, fname)
-                      
-                      # 修改点4：获取相对于 docs 的路径，确保 URL 中不带 /docs/
+
+                      # 计算相对于 docs 的路径（URL 中不带 /docs/）
                       relpath = os.path.relpath(fpath, "docs").replace("\\", "/")
-                      
-                      # 跳过 sitemap 自己
+
+                      # 应用排除规则
+                      if EXCLUDE_RE.search(relpath):
+                          continue
                       if "sitemap" in fname.lower():
                           continue
-                          
+
                       url_path = "/" + relpath
                       full_url = SITE_URL + url_path
                       lastmod = get_lastmod(fpath)
@@ -121,6 +144,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/sitemap.xml # 修改点5：提交指定为 docs 目录下的文件
+          git add static/sitemap.xml
           git diff --cached --quiet || git commit -m "🎉chore: auto-generate sitemap.xml [skip ci]"
           git push
