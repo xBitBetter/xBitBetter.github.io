@@ -2,7 +2,7 @@
 
 去搜个“在线Word查看器”吧，出来的网站要么逼你注册扫码，要么就是让你把文件上传。说真的，谁敢把公司的机密数据、或者客户的隐私资料，随便往不知名的野鸡网站上传啊？万一泄露了算谁的？
 
-今天必须得给各位打工人安利一个“救命神器”——免费在线Office文档查看器（Open Word, Excel & PPT Online）。
+今天必须得给各位打工人安利一个“救命神器”——[免费在线Office文档查看器](https://officeviewer.org/)（Open Word, Excel & PPT Online）。
 
 <img src="https://ibitbetter.space/assets/images/officeviewer.webp" alt="不敢往网上乱传合同？没装Office？这个免费在线Office文档查看器绝了" width="600" height="400" />
 
