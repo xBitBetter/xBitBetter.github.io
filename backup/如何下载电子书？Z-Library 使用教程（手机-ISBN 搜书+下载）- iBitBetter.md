@@ -146,7 +146,3 @@ Calibre 是非常好用的电子书管理软件，常用于：
 - 📂 电子书库管理
 - 🔄 电子书格式转换（如 EPUB ↔ PDF ↔ MOBI）
 - 📱 推送到阅读设备
-
-
-如果无法正常跳转，请微信搜一搜 ibitbetter 关注后，私信即可。
-<img src="https://ibitbetter.space/assets/ibitbetter.png" alt="微信搜一搜 关注ibitbetter  " width="550" height="150" />
