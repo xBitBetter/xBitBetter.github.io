@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://ibitbetter.space/assets/primer.min.css' rel='stylesheet'/>
+    <link rel='preconnect' href='https://cdnjs.cloudflare.com' crossorigin><link rel='preconnect' href='https://www.googletagmanager.com'><link rel='preconnect' href='https://utteranc.es'><link href='https://ibitbetter.space/assets/custom.css' rel='stylesheet'/><!-- Google tag (gtag.js) --><script async src='https://www.googletagmanager.com/gtag/js?id=G-5QE3S0EJHW'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5QE3S0EJHW');</script><script defer src='https://ibitbetter.space/assets/GmeekVercount.js'></script><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="奇趣网站评测 · 效率工具推荐 · 技术教程 | iBitBetter"><meta name="twitter:description" content="发现最实用的 Windows 效率工具、技术教程与互联网趣站。从软件推荐到电子书资源，帮你每天节省 2 小时。"><meta name="twitter:image" content="https://ibitbetter.space/assets/ibitbetter.webp"><meta name='keywords' content='效率工具,Windows软件,电子书,技术博客,软件推荐,奇趣网站'><script>document.addEventListener('DOMContentLoaded',function(){var f=document.getElementById('footer');if(f){var d=document.createElement('div');d.style.cssText='margin-top:8px;font-size:small;text-align:center;';d.innerHTML='<a href="mailto:xbitbetter@gmail.com">Email</a> · <a href="https://ibitbetter.space/privacy.html">隐私政策</a> · <a href="https://ibitbetter.space/terms.html">服务条款</a>';f.appendChild(d);}});</script>
+    <link rel="icon" href="https://ibitbetter.space/assets/ibitbetter.webp"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "iBitBetter",
+      "url": "https://ibitbetter.space",
+      "description": "奇趣网站评测 · 效率工具推荐 · 技术教程",
+      "logo": "https://ibitbetter.space/assets/ibitbetter.webp"
+    }
+    </script>
+    
+    
+<meta name="description" content="家庭日用品追踪小程序 · 开发过程技术文档 项目代号：耗品记（household-consumable-tracker） 文档版本：v1.0 ｜ 整理日期：2026-08-07 适用读者：开发者、维护">
+<meta property="og:title" content="家庭日用品追踪小程序 · 开发过程技术文档">
+<meta property="og:description" content="家庭日用品追踪小程序 · 开发过程技术文档 项目代号：耗品记（household-consumable-tracker） 文档版本：v1.0 ｜ 整理日期：2026-08-07 适用读者：开发者、维护">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ibitbetter.space/post/183.html">
+<meta property="og:image" content="https://ibitbetter.space/og-image.jpg">
+<title>家庭日用品追踪小程序 · 开发过程技术文档</title>
+<link rel="canonical" href="https://ibitbetter.space/post/183.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "\u5bb6\u5ead\u65e5\u7528\u54c1\u8ffd\u8e2a\u5c0f\u7a0b\u5e8f \u00b7 \u5f00\u53d1\u8fc7\u7a0b\u6280\u672f\u6587\u6863",
+  "datePublished": "2026-08-07",
+  "dateModified": "2026-08-07",
+  "author": {
+    "@id": "https://ibitbetter.space/about.html#author",
+    "@type": "Person",
+    "name": "iBitBetter",
+    "url": "https://ibitbetter.space/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "iBitBetter",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ibitbetter.space/assets/ibitbetter.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ibitbetter.space/post/183.html"
+  },
+  "image": "https://ibitbetter.space/og-image.jpg",
+  "url": "https://ibitbetter.space/post/183.html"
+}
+</script>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.related-posts{margin-top:40px;padding:20px;background:var(--color-canvas-subtle,#f6f8fa);border-radius:8px;border:1px solid var(--color-border-default);}
+.related-title{font-size:20px;margin:0 0 12px;font-weight:bold;}
+.related-list{list-style:none;padding:0;margin:0;}
+.related-list li{margin:8px 0;line-height:1.6;}
+.related-list a{color:var(--color-accent-fg,#0969da);text-decoration:none;}
+.related-list a:hover{text-decoration:underline;}
+.related-date{display:inline-block;margin-left:8px;font-size:12px;color:var(--color-fg-muted,#656d76);}
+  
+.postTitle{margin: auto 0;font-size:30px;font-weight:bold;line-height:1.35;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:22px;line-height:1.4;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">家庭日用品追踪小程序 · 开发过程技术文档</h1>
+<div class="title-right">
+    <a href="https://ibitbetter.space" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>家庭日用品追踪小程序 · 开发过程技术文档</h1>
+<blockquote>
+<p>项目代号：耗品记（household-consumable-tracker）<br>
+文档版本：v1.0 ｜ 整理日期：2026-08-07<br>
+适用读者：开发者、维护者、产品评审</p>
+</blockquote>
+<hr>
+<h2>1. 文档说明</h2>
+<p>本技术文档用于完整记录「家庭日用品追踪小程序」从立项到当前版本（完全纯本地）的<strong>架构设计、功能实现与关键开发决策</strong>，重点沉淀开发过程中踩过的坑、做过的架构取舍，便于后续维护与知识传递。</p>
+<p>本文内容基于源码（7 个页面 + 3 个工具模块 + 全局配置）与开发过程记录整理，关键结论均可在 <code class="notranslate">overview.md</code> 与 <code class="notranslate">.workbuddy/memory/</code> 中找到对应时间线。</p>
+<h3>文档结构</h3>
+<ol>
+<li>项目背景与目标</li>
+<li>产品功能概览</li>
+<li>技术架构</li>
+<li>核心模块设计与实现</li>
+<li>开发历程与关键技术决策（按时间线）</li>
+<li>当前架构状态与权衡</li>
+<li>踩坑与经验总结</li>
+<li>后续优化建议</li>
+<li>附录：文件清单与验证命令</li>
+</ol>
+<hr>
+<h2>2. 项目背景与目标</h2>
+<h3>2.1 痛点</h3>
+<p>家庭日用品（纸巾、洗洁精、牙膏、调料等）属于「低单价、高频消耗、易忘记补货」的品类。用户通常在「用完了才发现没买」时才补，缺乏：</p>
+<ul>
+<li>库存余量感知（还剩多少、还能用几天）</li>
+<li>到期预警（食品/洗护品临期浪费）</li>
+<li>消费复盘（某类物品月均花多少钱、用得多快）</li>
+</ul>
+<h3>2.2 目标</h3>
+<p>做一个<strong>轻量、零门槛、纯本地</strong>的家庭耗品记账与管理工具：</p>
+<ul>
+<li>录入物品 → 日常记录使用 → 自动算剩余量与可使用时长</li>
+<li>每周盘点校准实际剩余，提升预测准确度</li>
+<li>临期/低库存主动提醒，生成采购清单可一键分享</li>
+<li>消耗分析，看清钱花在哪、用得有多快</li>
+</ul>
+<h3>2.3 产品定位决策</h3>
+<ul>
+<li><strong>纯本地、无账号、无云端同步</strong>：首版即确定，降低复杂度与合规成本，数据完全留在用户手机。</li>
+<li><strong>UI 风格 = 微信原生卡片分区风</strong>（2026-07-23 拍板）：白底分区卡 + 顶部概览 + 微信绿识别度，信息最全、认知成本最低。</li>
+<li>主色微信绿 <code class="notranslate">#07C160<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #07C160; height: 8px; width: 8px;"></span></code>，警告品牌红 <code class="notranslate">#FA5151<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #FA5151; height: 8px; width: 8px;"></span></code>，分类语义色映射微信原生 tag 配色。</li>
+</ul>
+<hr>
+<h2>3. 产品功能概览</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>页面（tab）</th>
+<th>文件</th>
+<th>核心功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>物品（首页）</td>
+<td><code class="notranslate">pages/index</code></td>
+<td>物品列表（分类筛选/搜索/排序/卡片/紧凑双视图）、顶部数据概览、快速记录使用、即将过期专区、提醒横幅</td>
+</tr>
+<tr>
+<td>添加</td>
+<td><code class="notranslate">pages/add</code></td>
+<td>新增/编辑物品（消耗品/耐用品两类、常见日用品预设库、分类色）</td>
+</tr>
+<tr>
+<td>详情</td>
+<td><code class="notranslate">pages/detail</code></td>
+<td>物品完整信息、使用记录时间线、补货记录、补货/使用/编辑/删除、分享卡片（Canvas 长图）</td>
+</tr>
+<tr>
+<td>分析</td>
+<td><code class="notranslate">pages/analysis</code></td>
+<td>在用物品实时分析 + 历史消耗统计（支出排行条形图按分类着色）</td>
+</tr>
+<tr>
+<td>提醒</td>
+<td><code class="notranslate">pages/reminder</code></td>
+<td>库存预警 + 过期提醒列表、提醒开关/时间/星期设置、补货阈值/提前天数/过期提醒天数滑块、采购清单长图分享</td>
+</tr>
+<tr>
+<td>盘点</td>
+<td><code class="notranslate">pages/checkin</code></td>
+<td>每周盘点：逐项填剩余量、实时算期间消耗、差异提示、覆盖式保存</td>
+</tr>
+<tr>
+<td>我的</td>
+<td><code class="notranslate">pages/mine</code></td>
+<td>数据清空、隐私政策入口、关于</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>数据层（<code class="notranslate">utils/storage.js</code>）、工具层（<code class="notranslate">utils/util.js</code> / <code class="notranslate">utils/card.js</code>）被所有页面复用，是项目的「单一数据源」。</p>
+</blockquote>
+<hr>
+<h2>4. 技术架构</h2>
+<h3>4.1 整体架构（纯本地）</h3>
+<pre class="notranslate"><code class="notranslate">┌─────────────────────────────────────────────┐
+│              微信小程序前端（7 个页面）          │
+│   index / add / detail / analysis / reminder   │
+│        / checkin / mine                        │
+└───────────────┬───────────────────────────────┘
+                │  require('../../utils/storage.js')
+┌───────────────┴───────────────────────────────┐
+│  数据层  utils/storage.js（纯本地存储）          │
+│  工具层  utils/util.js（日期/数值/ID/颜色）       │
+│         utils/card.js（Canvas 卡片绘制）         │
+└───────────────┬───────────────────────────────┘
+                │  wx.setStorageSync / getStorageSync
+┌───────────────┴───────────────────────────────┐
+│   本地 Storage（用户手机，无任何云端依赖）         │
+│   hct_items / hct_history / hct_settings /      │
+│   hct_checkins                                  │
+└───────────────────────────────────────────────┘
+</code></pre>
+<p><strong>关键事实（2026-08-03 起）</strong>：项目<strong>无任何云端依赖</strong>——没有云函数、没有云数据库、没有微信订阅消息、没有账号系统。所有逻辑在客户端完成。</p>
+<h3>4.2 目录结构</h3>
+<pre class="notranslate"><code class="notranslate">household-consumable-tracker/
+├── app.js / app.json / app.wxss      # 全局逻辑、配置、样式令牌
+├── project.config.json               # 已移除 cloudfunctionRoot
+├── pages/                            # 7 个页面，每页 .js/.json/.wxml/.wxss
+├── utils/
+│   ├── storage.js                    # 数据存储层（单一数据源）
+│   ├── util.js                       # 通用工具
+│   └── card.js                       # Canvas 卡片绘制
+├── tab-icons/                        # 4 个 tab 的选中/未选中图标
+└── overview.md                       # 修复与变更总览
+</code></pre>
+<h3>4.3 数据模型（storage 层）</h3>
+<p>存储键（见 <code class="notranslate">storage.js</code> 顶部常量）：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Key</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">hct_items</code></td>
+<td>在用物品数组（含使用/补货记录、实时分析）</td>
+</tr>
+<tr>
+<td><code class="notranslate">hct_history</code></td>
+<td>已消耗完的物品（保留用于分析）</td>
+</tr>
+<tr>
+<td><code class="notranslate">hct_settings</code></td>
+<td>提醒/阈值/过期天数等配置</td>
+</tr>
+<tr>
+<td><code class="notranslate">hct_checkins</code></td>
+<td>每周盘点记录（剩余量快照 + 期间消耗）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>Item 结构</strong>（核心字段）：</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-s1">id</span><span class="pl-kos">,</span> <span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">category</span><span class="pl-kos">,</span> <span class="pl-s1">unit</span><span class="pl-kos">,</span>
+  <span class="pl-s1">itemType</span>: <span class="pl-s">'consumable'</span> <span class="pl-c1">|</span> <span class="pl-s">'durable'</span><span class="pl-kos">,</span>     <span class="pl-c">// 消耗品 / 耐用品</span>
+  <span class="pl-s1">totalQuantity</span><span class="pl-kos">,</span> <span class="pl-s1">remainingQuantity</span><span class="pl-kos">,</span> <span class="pl-s1">price</span><span class="pl-kos">,</span>
+  <span class="pl-s1">purchaseDate</span><span class="pl-kos">,</span> <span class="pl-s1">expireDate</span><span class="pl-kos">,</span>
+  <span class="pl-s1">status</span>: <span class="pl-s">'active'</span> <span class="pl-c1">|</span> <span class="pl-s">'consumed'</span><span class="pl-kos">,</span>
+  <span class="pl-s1">usageRecords</span>: <span class="pl-kos">[</span><span class="pl-kos">{</span> time<span class="pl-kos">,</span> quantity<span class="pl-kos">,</span> note <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-s1">restockRecords</span>: <span class="pl-kos">[</span><span class="pl-kos">{</span> date<span class="pl-kos">,</span> quantity<span class="pl-kos">,</span> price <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-s1">consumedTime</span><span class="pl-kos">,</span> <span class="pl-s1">analysis</span>
+<span class="pl-kos">}</span></pre></div>
+<p><strong>Settings（DEFAULT_SETTINGS）</strong>：<code class="notranslate">lowStockThreshold</code>(0.2)、<code class="notranslate">repurchaseDays</code>(7)、<code class="notranslate">expireLeadDays</code>(14)、<code class="notranslate">notifyEnabled</code>、<code class="notranslate">notifyFreq</code>(固定 weekly)、<code class="notranslate">notifyTime</code>('20:00')、<code class="notranslate">notifyWeekday</code>(0=周日)、<code class="notranslate">lastBannerDismissDate</code>、<code class="notranslate">lastLocalAlertDate</code>。</p>
+<p><strong>设计要点</strong>：所有写入都经过 <code class="notranslate">round()</code> 数值兜底，避免 <code class="notranslate">NaN</code> 写入 storage；页面读取 item 时 <code class="notranslate">JSON.parse(JSON.stringify(raw))</code> 深拷贝，防止污染 storage 原始引用。</p>
+<h3>4.4 页面与路由</h3>
+<ul>
+<li>tabBar 4 项：物品 / 分析 / 提醒 / 我的（<code class="notranslate">app.json</code>）。</li>
+<li>添加、详情、盘点为非 tab 页，通过 <code class="notranslate">wx.navigateTo</code> 进出。</li>
+<li>全局开启 <code class="notranslate">__usePrivacyCheck__: true</code>，隐私授权由微信系统弹窗处理（详见第 5 节与第 7 节踩坑）。</li>
+</ul>
+<h3>4.5 工具层</h3>
+<ul>
+<li><code class="notranslate">util.js</code>：<code class="notranslate">genId</code>（时间+自增+随机，本地唯一键）、<code class="notranslate">formatDate</code>、<code class="notranslate">formatRelative</code>、<code class="notranslate">daysBetween</code>、<code class="notranslate">daysUntil</code>、<code class="notranslate">round</code>（NaN 兜底）、<code class="notranslate">hexToRgba</code>（兼容老基础库，替代 8 位 hex）。</li>
+<li><code class="notranslate">card.js</code>：<code class="notranslate">drawPurchaseListCard</code>（采购清单长图）、<code class="notranslate">captureCard</code>（取 canvas node → 缩放 → 绘制 → 导出 tempFilePath）、<code class="notranslate">roundRect</code>（canvas 无内置 roundRect 的兼容写法）。</li>
+</ul>
+<hr>
+<h2>5. 核心模块设计与实现</h2>
+<h3>5.1 物品生命周期管理</h3>
+<ul>
+<li><strong>新增</strong> <code class="notranslate">addItem</code>：构造 item、初始 <code class="notranslate">analyze()</code>、unshift 进 <code class="notranslate">hct_items</code>。</li>
+<li><strong>记录使用</strong> <code class="notranslate">addUsage</code>：减少 <code class="notranslate">remainingQuantity</code>、追加 usageRecord、实时重算 analysis；剩余 ≤ 0 时标记 <code class="notranslate">consumed</code>、从在用移入历史。</li>
+<li><strong>补货</strong> <code class="notranslate">restockItem</code> / <code class="notranslate">restockConsumedItem</code>：叠加数量、累加价格（首单+全部补货的总成本）、追加 restockRecord；已消耗完的物品从历史恢复为在用。</li>
+<li><strong>编辑</strong> <code class="notranslate">updateItem</code>：安全更新可编辑字段，不破坏已有记录；数量字段映射为「当前剩余量」，若超过总量则把总量拉齐。</li>
+</ul>
+<h3>5.2 消耗分析算法（耐用品 vs 消耗品）</h3>
+<p><code class="notranslate">analyze()</code> 是核心，对两类物品采用不同口径（见 <code class="notranslate">storage.js</code>）：</p>
+<ul>
+<li><strong>消耗品</strong>：以「已消耗量」为基准算日均用量、已消耗成本、日均成本。</li>
+<li><strong>耐用品</strong>：不计「使用」为消耗，算「持有成本/天」= 总价 ÷ 持有天数，剩余量只记录不触发归档。</li>
+<li>成本计算修正：总成本 = <code class="notranslate">item.price</code>（已在补货时累加了所有补货价），避免了 free 首单补货时被算成 2 倍的 bug。</li>
+</ul>
+<h3>5.3 补货预测（三级回退）</h3>
+<p><code class="notranslate">predictPurchase()</code> 按数据质量依次回退，保证尽量有值：</p>
+<ol>
+<li><strong>盘点快照</strong>（最准）：用最近两次盘点的间隔与消耗量算日均。</li>
+<li><strong>使用记录</strong>：回退到「使用总量 ÷ 购买至今时长」（避免短间隔放大）。</li>
+<li><strong>历史同名均值</strong>：同名下已消耗物品的 <code class="notranslate">dailyUsage</code> 均值。<br>
+最终输出 <code class="notranslate">daysLeft</code> 与 <code class="notranslate">needBuy</code>（剩余 ≤ <code class="notranslate">repurchaseDays</code> 触发）。</li>
+</ol>
+<h3>5.4 每周盘点系统</h3>
+<ul>
+<li><code class="notranslate">saveInventory(date, entries, note)</code>：记录每个物品当前剩余量，计算「期间消耗 = 上次剩余 − 本次剩余」，写入 usageRecords（note 标记「盘点 日期」）。</li>
+<li><strong>覆盖式保存</strong>有回滚逻辑：覆盖旧盘点时先把剩余量恢复到盘点前、移除当时写入的消耗记录，再从历史拉回曾被误归档的物品，避免重复扣减。</li>
+<li>盘点只针对消耗品（<code class="notranslate">itemType !== 'durable'</code>）；耐用品为持有资产无需盘点剩余量。</li>
+</ul>
+<h3>5.5 提醒系统（纯本地，不依赖微信）</h3>
+<p>三种表现（均只在打开小程序时可见）：</p>
+<ol>
+<li><strong>首页横幅</strong> <code class="notranslate">shouldShowBanner</code>：盘点日过点 或 存在紧急待办（优先级 1）时显示；<code class="notranslate">lastBannerDismissDate</code> 当天不再弹。</li>
+<li><strong>提醒 tab 本地弹窗</strong>：打开提醒 tab 且 <code class="notranslate">shouldNotifyToday()</code> 为真时 <code class="notranslate">wx.showModal</code>「有 N 件物品即将用完」，<code class="notranslate">lastLocalAlertDate</code> 每天最多一次。</li>
+<li><strong>提醒 tab 列表</strong>：库存预警（low_stock）+ 过期提醒（expire），按优先级排序。</li>
+</ol>
+<p>触发判定 <code class="notranslate">shouldNotifyToday()</code>：仅当 <code class="notranslate">notifyEnabled</code> 且当天为 <code class="notranslate">notifyWeekday</code> 且已过 <code class="notranslate">notifyTime</code> 才为真。<strong>过期提醒</strong>由 <code class="notranslate">getExpiringItems(leadDays)</code> 实现，按剩余天数升序，文案三态（剩X天/今天到期/已过期X天）。</p>
+<h3>5.6 分享卡片（Canvas）</h3>
+<ul>
+<li>详情页「分享卡片」用 Canvas 2D 画一张 750×1140 资产卡（分类色带 + emoji + 四项核心指标），经 <code class="notranslate">wx.showShareImageMenu</code> 转发；底部统一走无码品牌文案（已去除云函数取小程序码的依赖）。</li>
+<li>提醒页「采购清单」用 <code class="notranslate">card.drawPurchaseListCard</code> 生成一张长图，含所有低库存物品与建议采购量，转发给微信好友/文件传输助手。</li>
+<li>兼容处理：长图 <code class="notranslate">dpr</code> 手动调小（≤2）避免高清屏 canvas backing store 超限；<code class="notranslate">wx.showShareImageMenu</code> 不存在时降级提示更新微信。</li>
+</ul>
+<hr>
+<h2>6. 开发历程与关键技术决策（时间线）</h2>
+<blockquote>
+<p>以下每个决策点都对应 <code class="notranslate">overview.md</code> 的具体修复记录，本文做归纳与归因。</p>
+</blockquote>
+<h3>6.1 初版与上线（2026-07-22 ~ 07-23）</h3>
+<ul>
+<li>完成 7 页 + 纯本地数据层初版，确定微信原生卡片分区风 UI。</li>
+<li>07-23 通过 MP 后台审核<strong>正式上线</strong>（AppID：<code class="notranslate">wx6c16bedae8307769</code>，真实非测试），服务类目「生活服务/工具」，隐私保护指引已发布。</li>
+</ul>
+<h3>6.2 隐私授权方案踩坑与回退（07-29）</h3>
+<ul>
+<li><strong>第一次尝试</strong>：自建 <code class="notranslate">components/privacy-popup/</code> 逐页组件，在 <code class="notranslate">__usePrivacyCheck__: true</code> 下弹窗。</li>
+<li><strong>问题</strong>：自研组件的「同意」<code class="notranslate">resolve</code> 无法真正把授权落库（<code class="notranslate">getPrivacySetting().needAuthorization</code> 仍为 true），导致每个 tab 进入都重弹，用户实测「除一个 tab 外其他三个仍在弹」。</li>
+<li><strong>决策（二次修正）</strong>：<strong>删除整个自研组件</strong>，改由微信系统在首次启动自动弹一次并正确记录授权，全局生效。</li>
+<li><strong>经验</strong>：不要和微信原生隐私机制「抢授权」，系统弹窗才是权威路径。</li>
+</ul>
+<h3>6.3 过期提醒改为应用内（07-29）</h3>
+<ul>
+<li>MP 后台模板「物品过期提醒」失效，微信订阅推送中移除过期推送，改为纯前端应用内提醒（<code class="notranslate">getExpiringItems</code> + 提醒页滑块 1–30 天）。</li>
+</ul>
+<h3>6.4 微信订阅消息推送的尝试与最终移除（重点）</h3>
+<ul>
+<li><strong>早期实现</strong>：接入云开发 + 云函数 <code class="notranslate">sendSubMsg</code>，通过 <code class="notranslate">App.onShow</code> 在打开小程序时调用 <code class="notranslate">wx.cloud.callFunction</code> 下发订阅消息（盘点提醒模板 77050、补货/消耗提醒）。</li>
+<li><strong>实测问题</strong>：用户设置周日 20:00 推送，却要「打开小程序切到提醒 tab 再退出」才收到。根因——<code class="notranslate">App.onShow</code> 只在小程序被打开/回到前台时触发；微信「一次性订阅」授权 7 天有效、发一次即作废，<strong>无法在 App 关闭时由服务端定时下发</strong>，天然做不到「到点自动推送」。</li>
+<li><strong>决策（2026-08-03）</strong>：既然做不到准时提醒，该功能价值有限却带来云函数、授权弹窗、MP 模板配置等大量复杂度，<strong>全部移除微信推送，彻底转为纯本地小程序内提醒</strong>。</li>
+<li><strong>清理范围</strong>：删除 <code class="notranslate">utils/cloud.js</code>、<code class="notranslate">utils/notify.js</code>、<code class="notranslate">cloudfunctions/sendSubMsg/</code>；清理 app.js / index.js / checkin.js / detail.js / reminder.js 中所有推送与授权引用；<code class="notranslate">storage.js</code> 删除 8 个订阅相关字段与 4 个函数；<code class="notranslate">project.config.json</code> 删除 <code class="notranslate">cloudfunctionRoot</code>。</li>
+<li><strong>验证</strong>：全项目 grep 推送相关标识符零残留；全部 JS <code class="notranslate">node --check</code> 通过；<code class="notranslate">cloudfunctions/</code> 目录清空。</li>
+</ul>
+<h3>6.5 代码审查与 Bug 修复（2026-08-01）</h3>
+<p>对全量代码静态审查（node --check 全通过，无语法错），定位并修复 <strong>10 个问题（2 P1 + 6 P2 + 2 P3）</strong>：</p>
+<p><strong>P1 功能性 Bug</strong></p>
+<ol>
+<li>分析页「支出排行」条形图颜色全灰：<code class="notranslate">computeSummary</code> 的聚合缺 <code class="notranslate">category</code> 字段，导致 <code class="notranslate">catColor</code> 取 undefined 回落灰色。修复后条形图按物品实际分类着色。</li>
+<li>提醒页抢跑 <code class="notranslate">markNotifiedToday</code> 挡掉微信推送：<code class="notranslate">reminder.js</code> onShow 在 <code class="notranslate">shouldNotifyToday()</code> 为真时立即 <code class="notranslate">markNotifiedToday()</code>，与 app.js 微信推送共用 <code class="notranslate">lastNotifyDate</code>，导致用户先切提醒 tab 后 app.js 跳过推送。引入独立 <code class="notranslate">lastLocalAlertDate</code> 去重键解决。</li>
+</ol>
+<p><strong>P2 代码质量/死代码/兼容</strong><br>
+3. 删除 <code class="notranslate">cloud.js</code> 的 <code class="notranslate">getMiniCode</code> 死代码 + <code class="notranslate">cloudfunctions/getQRCode/</code> 目录。<br>
+4. 删除 <code class="notranslate">storage.js</code> 未调用的 <code class="notranslate">getAnalysisSummary</code>/<code class="notranslate">saveCheckin</code>/<code class="notranslate">getCheckinStats</code> 兼容旧接口。<br>
+5. <code class="notranslate">checkin.wxml</code> 的 <code class="notranslate">show-scrollbar="false"</code>（字符串）改 <code class="notranslate">{{false}}</code>（布尔）。<br>
+6. <code class="notranslate">detail.wxml</code> 的 8 位 hex(<code class="notranslate">#RRGGBBAA</code>) 改 <code class="notranslate">hexToRgba()</code> 兼容老基础库。<br>
+7. <code class="notranslate">mine.wxml</code> 删除冗余「用户协议」入口。</p>
+<p><strong>P3 优化</strong><br>
+8. <code class="notranslate">util.round()</code> 加 NaN/null 兜底（返回 0）。<br>
+9. <code class="notranslate">checkin.js</code> 历史盘点 stats 不再按当前 itemType 快照过滤，避免物品改类型后历史条目丢失。</p>
+<h3>6.6 运行期日志报错修复</h3>
+<ul>
+<li>移除云函数后，开发者工具仍读已删的 <code class="notranslate">sendSubMsg/index.js</code>，产生 ENOENT 报错——需关闭并重开项目清除云函数注册缓存。</li>
+<li><code class="notranslate">detail.json</code> 含非法的 <code class="notranslate">enableShareAppMessage</code>/<code class="notranslate">enableShareTimeline</code> key（uni-app 写法误用于原生小程序）。分享实际由 JS 的 <code class="notranslate">onShareAppMessage</code>/<code class="notranslate">onShareTimeline</code> 处理函数承担，直接删除这两个 json key 即恢复干净。</li>
+</ul>
+<hr>
+<h2>7. 当前架构状态与权衡</h2>
+<h3>7.1 架构状态（2026-08-03 起）</h3>
+<p>小程序 = <strong>完全纯本地、无任何云端依赖</strong>：</p>
+<ul>
+<li>业务数据纯 <code class="notranslate">wx.setStorageSync</code>，无账号 / 无家庭 / 无云同步 / 无云函数。</li>
+<li>提醒完全依赖小程序内 UI（首页 banner + 提醒 tab 弹窗/列表），无微信服务通知。</li>
+<li>隐私仍由微信系统弹窗处理（<code class="notranslate">__usePrivacyCheck__: true</code>）。</li>
+<li><code class="notranslate">utils/</code> 仅剩 <code class="notranslate">storage.js</code> / <code class="notranslate">util.js</code> / <code class="notranslate">card.js</code>。</li>
+</ul>
+<h3>7.2 已失去的能力（权衡）</h3>
+<ul>
+<li><strong>App 关闭时收到通知</strong>：移除微信推送后，提醒仅在打开小程序时可见。这是为「准时性不可达 + 复杂度过高」做的主动取舍。</li>
+<li>若日后需恢复定时推送，需接入云函数定时触发器（cron）+ 处理一次性订阅授权窗口，复杂度高。</li>
+</ul>
+<h3>7.3 仍保留的能力</h3>
+<ul>
+<li>完整的本地库存管理、消耗分析、补货预测、每周盘点。</li>
+<li>应用内到期/低库存提醒 + 采购清单一键分享。</li>
+<li>数据完全私有、离线可用、零后端运维成本。</li>
+</ul>
+<hr>
+<h2>8. 踩坑与经验总结</h2>
+<ol>
+<li><strong>微信隐私授权</strong>：不要自研组件去「抢」系统授权弹窗，在 <code class="notranslate">__usePrivacyCheck__: true</code> 下，系统弹窗才是权威路径，逐页组件会导致每 tab 重弹且授权不落库。</li>
+<li><strong>微信订阅消息限制</strong>：<code class="notranslate">App.onShow</code> 是唯一客户端触发点，一次性订阅授权 7 天/一次，<strong>无法在 App 关闭时定时下发</strong>。需要真·到点推送必须上云函数定时触发器。</li>
+<li><strong>Canvas 兼容性</strong>：老基础库不支持 8 位 hex 与内置 <code class="notranslate">roundRect</code>，统一用 <code class="notranslate">hexToRgba()</code> + 自写 <code class="notranslate">roundRect()</code>；长图 <code class="notranslate">dpr</code> 手动封顶避免 canvas 尺寸超限。</li>
+<li><strong>数据模型</strong>：页面读取 item 要深拷贝，防止污染 storage 原始对象；旧数据可能缺 <code class="notranslate">analysis</code>，读取时主动 <code class="notranslate">analyze()</code> 兜底。</li>
+<li><strong>数值安全</strong>：所有出入 storage 的数值经 <code class="notranslate">round()</code> 兜底 NaN，避免脏数据污染统计。</li>
+<li><strong>静态审查价值</strong>：<code class="notranslate">node --check</code> + Grep 残留引用 是低成本高收益的「伪编译」手段，能在无真机环境下拦住大部分引用类回归。</li>
+<li><strong>过渡态清理</strong>：移除大功能（如微信推送）时，要连字段、函数、云函数、配置、孤立样式一起清，并用 grep 验证零残留，否则会留下隐蔽的运行时报错与体积浪费。</li>
+</ol>
+<hr>
+<h2>9. 后续优化建议</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>方向</th>
+<th>建议</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据导出/备份</td>
+<td>增加「导出 JSON / 导入」功能，弥补纯本地无云同步的易丢风险</td>
+<td>用户换机/清缓存即丢失</td>
+</tr>
+<tr>
+<td>定时提醒</td>
+<td>若确需「到点推送」，评估云函数定时触发器 + 订阅授权引导流程</td>
+<td>复杂度高，需重新引入云端</td>
+</tr>
+<tr>
+<td>多家庭/共享</td>
+<td>当前无账号体系，天然单机；共享需引入云同步 + 家庭关系</td>
+<td>见 MEMORY 历史方案，从未实现</td>
+</tr>
+<tr>
+<td>可视化升级</td>
+<td>分析页环形图（WXML 不支持内联 SVG，可改用 Canvas）</td>
+<td>当前用进度条零兼容风险</td>
+</tr>
+<tr>
+<td>埋点分析</td>
+<td>纯本地无后端，留存/崩溃需去 MP「数据分析-访问分析」看平台自带数据</td>
+<td>无需自建</td>
+</tr>
+<tr>
+<td>组件库</td>
+<td>如需 100% 微信原生组件观感，可单独引入 weui-miniprogram</td>
+<td>当前未引入以降低构建风险</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>附录 A：关键文件清单</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>文件</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">app.js</code></td>
+<td>全局初始化（storage.init），无推送逻辑</td>
+</tr>
+<tr>
+<td><code class="notranslate">app.json</code></td>
+<td>页面/tabBar/隐私开关配置</td>
+</tr>
+<tr>
+<td><code class="notranslate">app.wxss</code></td>
+<td>微信原生卡片分区风样式令牌</td>
+</tr>
+<tr>
+<td><code class="notranslate">utils/storage.js</code></td>
+<td>数据存储层（单一数据源，含分析/预测/盘点/提醒）</td>
+</tr>
+<tr>
+<td><code class="notranslate">utils/util.js</code></td>
+<td>日期/数值/ID/颜色工具</td>
+</tr>
+<tr>
+<td><code class="notranslate">utils/card.js</code></td>
+<td>Canvas 卡片绘制（采购清单/资产卡）</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/index/index.js</code></td>
+<td>首页：列表/筛选/搜索/排序/横幅/过期专区</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/analysis/analysis.js</code></td>
+<td>消耗分析（条形图按分类着色）</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/reminder/reminder.js</code></td>
+<td>提醒中心（列表/设置/本地弹窗/分享长图）</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/checkin/checkin.js</code></td>
+<td>每周盘点（剩余量/差异/覆盖保存）</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/detail/detail.js</code></td>
+<td>详情（使用/补货/编辑/删除/分享卡片）</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/add/add.js</code></td>
+<td>新增/编辑（预设库/分类色）</td>
+</tr>
+<tr>
+<td><code class="notranslate">pages/mine/mine.js</code></td>
+<td>我的（数据清空/隐私）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>注：移除云函数后若开发者工具仍报 <code class="notranslate">sendSubMsg/index.js</code> ENOENT，需<strong>关闭并重开项目</strong>清除云函数注册缓存。</p>
+</blockquote></div>
+
+
+<section class="related-posts">
+  <h2 class="related-title">相关推荐</h2>
+  <ul class="related-list">
+    
+    <li>
+      <a href="https://ibitbetter.space/post/173.html">C盘红了先别慌，这个开源工具把你不敢删的垃圾全标出来了</a>
+      <span class="related-date">2026-07-19</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/171.html">为什么使用存储过程非常慢,但是执行SQL很快？</a>
+      <span class="related-date">2026-07-17</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/169.html">别人电脑上没有 Office？把网页甩过去就行</a>
+      <span class="related-date">2026-07-16</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/164.html">朋友总问我电脑能不能跑Qwen，CanIRun.ai 3秒给答案</a>
+      <span class="related-date">2026-07-13</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/165.html">耗品记：当一个合格的家庭用品管理员</a>
+      <span class="related-date">2026-07-13</span>
+    </li>
+    
+  </ul>
+</section>
+
+
+<div style="font-size:small;margin-top:8px;float:right;"> 微信搜一搜 © iBitBetter</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://ibitbetter.space">奇趣网站评测 · 效率工具推荐 · 技术教程 | iBitBetter</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/11/2025"!=""){
+    var startSite=new Date("11/11/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","iBitBetter/iBitBetter.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script>window.addEventListener('DOMContentLoaded',function(){var i=document.querySelector('#postBody img');if(i)i.removeAttribute('loading');});</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('a[onclick*="modeSwitch"]').forEach(function(a){var b=document.createElement('button');b.className=a.className;b.setAttribute('onclick',a.getAttribute('onclick'));b.setAttribute('type','button');b.setAttribute('aria-label','切换主题');b.innerHTML=a.innerHTML;a.parentNode.replaceChild(b,a);});});</script>
+
+</html>
