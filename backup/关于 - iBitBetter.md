@@ -7,6 +7,5 @@ iBitBetter — 分享效率工具、软件推荐和互联网趣站的技术博�
 - 👀 [iBitBetter website](https://ibitbetter.space/) 
 - 🔎 如何联系iBitBetter: [gmail](mailto:xBitbetter@gmail.com)   [即刻](https://web.okjike.com/u/0BCC9202-030F-4EDA-86F7-F6F1BCB815DE)
 
-<img src="https://ibitbetter.space/assets/ibitbetter.png" alt="zlibrary" width="400" height="120">
 
 `Gmeek-html<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=600 height=100 src="//music.163.com/outchain/player?type=0&id=14065145156&auto=0&height=100"></iframe>`
