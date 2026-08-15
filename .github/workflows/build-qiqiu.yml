@@ -19,7 +19,7 @@ on:
 #       因此 Issue 编号判定放在下方的 guard 步骤里。
 env:
   ISSUE_NUMBER: "185"                    # ← 改成你的「奇趣网站收藏家」Issue 编号
-  OUTPUT_PATH: "curious-websites.html" # ← 生成的页面文件名（与站点同域，访问 /curious-websites.html）
+  OUTPUT_PATH: "docs/curious-websites.html" # ← 生成的页面文件名（与站点同域，访问 /curious-websites.html）
   PAGE_TITLE: "奇趣网站收藏家"           # ← 页面大标题
   SITE_TITLE: "iBitBetter"             # ← 副标题里显示的小站名
   SITE_URL: "https://ibitbetter.space" # ← 站点地址（用于导航/规范链接/canonical）
