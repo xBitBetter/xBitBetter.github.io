@@ -16,7 +16,7 @@ on:
 
 # 只处理「收藏家 Issue」；其它 issue 的评论/编辑直接跳过，避免无效运行。
 env:
-  ISSUE_NUMBER: "1"                    # ← 改成你的「奇趣网站收藏家」Issue 编号
+  ISSUE_NUMBER: "185"                    # ← 改成你的「奇趣网站收藏家」Issue 编号
   OUTPUT_PATH: "curious-websites.html" # ← 生成的页面文件名（与站点同域，访问 /curious-websites.html）
   PAGE_TITLE: "奇趣网站收藏家"           # ← 页面大标题
   SITE_TITLE: "iBitBetter"             # ← 副标题里显示的小站名
