@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>奇趣网站收藏家 | iBitBetter</title>
+<meta name="description" content="奇趣网站收藏家 —— iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
+<meta property="og:title" content="奇趣网站收藏家 | iBitBetter" />
+<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://ibitbetter.space/docs/curious-websites.html" />
+<script>
+  let theme = localStorage.getItem("meek_theme") || "light";
+  document.documentElement.setAttribute("data-color-mode", theme);
+</script>
+<style>
+  :root {
+    --bg: #FBF6EE;
+    --surface: #FFFFFF;
+    --text: #2E2A24;
+    --muted: #8A7F70;
+    --accent: #E2613B;
+    --accent-soft: #FBEDE6;
+    --accent2: #C98A3B;
+    --line: #EFE6D8;
+    --radius: 14px;
+    --shadow: 0 1px 3px rgba(46,42,36,.06), 0 8px 24px rgba(46,42,36,.05);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+  }
+  [data-color-mode="dark"] {
+    --bg: #1E1A16;
+    --surface: #26211B;
+    --text: #F3E9DD;
+    --muted: #B6A892;
+    --accent: #F0916A;
+    --accent-soft: #3A2C22;
+    --accent2: #E0A85C;
+    --line: #3A322A;
+    --shadow: 0 6px 20px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font); line-height: 1.65; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* —— 顶部导航（与站点一致） —— */
+  .site-header {
+    display: flex; align-items: center; gap: 12px;
+    max-width: 980px; margin: 0 auto; padding: 22px 20px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .avatar {
+    width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
+    transition: transform .6s; flex: none;
+  }
+  .site-header .avatar:hover { transform: rotate(360deg); }
+  .site-header .brand {
+    font-family: Monaco, "PingFang SC", monospace; font-size: 28px; font-weight: 700;
+    color: var(--text); letter-spacing: -.02em;
+  }
+  .site-header .nav { margin-left: auto; display: flex; gap: 8px; }
+  .site-header .nav a {
+    color: var(--muted); padding: 8px 12px; border-radius: 999px; font-size: .9rem;
+    border: 1px solid transparent;
+  }
+  .site-header .nav a:hover { color: var(--text); background: var(--accent-soft); text-decoration: none; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 64px; }
+  header.page-head h1 {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin: 0 0 6px; letter-spacing: -.02em;
+  }
+  header.page-head .sub { color: var(--muted); margin: 0; font-size: .98rem; }
+  header.page-head .intro {
+    color: var(--text); opacity: .85; margin: 14px 0 0; font-size: .95rem;
+    background: var(--accent-soft); border-left: 3px solid var(--accent);
+    padding: 12px 16px; border-radius: 10px;
+  }
+  .toolbar { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 18px 0 10px; }
+  .search {
+    width: 100%; padding: 12px 16px; font-size: 1rem; color: var(--text);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    outline: none; transition: border-color .15s, box-shadow .15s; font-family: var(--font);
+  }
+  .search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip {
+    border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+    padding: 6px 14px; border-radius: 999px; font-size: .85rem; cursor: pointer;
+    transition: all .15s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--accent); }
+  .chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .grid {
+    display: grid; gap: 16px; margin-top: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px; box-shadow: var(--shadow); transition: transform .15s, border-color .15s;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card-title { font-weight: 600; font-size: 1.05rem; color: var(--accent); word-break: break-word; }
+  .card-desc { margin: 0; color: var(--muted); font-size: .9rem; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+  .tag { font-size: .75rem; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 6px; }
+  .cat { font-size: .72rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 1px 8px; border-radius: 6px; }
+  .empty { text-align: center; color: var(--muted); padding: 60px 0; display: none; }
+  footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
+  .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
+  @media (max-width: 600px) {
+    .site-header .brand { font-size: 22px; }
+    .site-header { padding: 16px 14px 10px; }
+    .wrap { padding: 20px 14px 48px; }
+    .site-header .nav a { padding: 6px 9px; font-size: .82rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="site-header">
+    <img src="https://ibitbetter.space/assets/ibitbetter.webp" class="avatar" alt="iBitBetter" />
+    <span class="brand">iBitBetter</span>
+    <nav class="nav">
+      <a href="https://ibitbetter.space">首页</a>
+      <a href="https://ibitbetter.space/tag.html">标签</a>
+      <a href="https://ibitbetter.space/about.html">关于</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <header class="page-head">
+      <h1>奇趣网站收藏家</h1>
+      <p class="sub">iBitBetter · 由 GitHub Issue 评论自动整理</p>
+      <p class="intro">在这里统一收录我私藏的奇趣网站与效率工具。想添加新资源？在站点仓库的收藏家 Issue 下评论一条 <code>- [名称](链接) 一句话描述 | #标签</code> 即可，页面会自动更新。</p>
+    </header>
+    <div class="toolbar">
+      <input id="search" class="search" type="search" placeholder="搜索网站、描述或标签…" autocomplete="off" />
+      <div class="chips" id="chips"><button class="chip active" type="button" data-tag="">全部</button><button class="chip" type="button" data-tag="白噪音">#白噪音</button><button class="chip" type="button" data-tag="办公">#办公</button><button class="chip" type="button" data-tag="背单词">#背单词</button><button class="chip" type="button" data-tag="本地">#本地</button><button class="chip" type="button" data-tag="比价">#比价</button><button class="chip" type="button" data-tag="表情">#表情</button><button class="chip" type="button" data-tag="菜谱">#菜谱</button><button class="chip" type="button" data-tag="测评">#测评</button><button class="chip" type="button" data-tag="查询">#查询</button><button class="chip" type="button" data-tag="传统">#传统</button><button class="chip" type="button" data-tag="电台">#电台</button><button class="chip" type="button" data-tag="番茄钟">#番茄钟</button><button class="chip" type="button" data-tag="放松">#放松</button><button class="chip" type="button" data-tag="工具">#工具</button><button class="chip" type="button" data-tag="工具箱">#工具箱</button><button class="chip" type="button" data-tag="购物">#购物</button><button class="chip" type="button" data-tag="古籍">#古籍</button><button class="chip" type="button" data-tag="汉字">#汉字</button><button class="chip" type="button" data-tag="航拍">#航拍</button><button class="chip" type="button" data-tag="核查">#核查</button><button class="chip" type="button" data-tag="怀旧">#怀旧</button><button class="chip" type="button" data-tag="检索">#检索</button><button class="chip" type="button" data-tag="健康">#健康</button><button class="chip" type="button" data-tag="教育">#教育</button><button class="chip" type="button" data-tag="解压">#解压</button><button class="chip" type="button" data-tag="开发">#开发</button><button class="chip" type="button" data-tag="科普">#科普</button><button class="chip" type="button" data-tag="历史">#历史</button><button class="chip" type="button" data-tag="灵感">#灵感</button><button class="chip" type="button" data-tag="摸鱼">#摸鱼</button><button class="chip" type="button" data-tag="拼图">#拼图</button><button class="chip" type="button" data-tag="趣味">#趣味</button><button class="chip" type="button" data-tag="设计">#设计</button><button class="chip" type="button" data-tag="摄影">#摄影</button><button class="chip" type="button" data-tag="生活">#生活</button><button class="chip" type="button" data-tag="省钱">#省钱</button><button class="chip" type="button" data-tag="搜索">#搜索</button><button class="chip" type="button" data-tag="素材">#素材</button><button class="chip" type="button" data-tag="天气">#天气</button><button class="chip" type="button" data-tag="图片">#图片</button><button class="chip" type="button" data-tag="文档">#文档</button><button class="chip" type="button" data-tag="效率">#效率</button><button class="chip" type="button" data-tag="心理">#心理</button><button class="chip" type="button" data-tag="新闻">#新闻</button><button class="chip" type="button" data-tag="信息">#信息</button><button class="chip" type="button" data-tag="学习">#学习</button><button class="chip" type="button" data-tag="艺术">#艺术</button><button class="chip" type="button" data-tag="音乐">#音乐</button><button class="chip" type="button" data-tag="硬件">#硬件</button><button class="chip" type="button" data-tag="游戏">#游戏</button><button class="chip" type="button" data-tag="专注">#专注</button><button class="chip" type="button" data-tag="ai">#AI</button><button class="chip" type="button" data-tag="io">#io</button></div>
+    </div>
+    <p class="count">共 27 个资源</p>
+    <main class="grid" id="grid">
+      <article class="card" data-title="好拼" data-desc="免费在线拼图工具，九宫格/长图拼接、纯本地处理无水印" data-tags="拼图 图片 效率">
+        <a class="card-title" href="https://img.ops-coffee.com/" target="_blank" rel="noopener noreferrer">好拼</a>
+        <p class="card-desc">免费在线拼图工具，九宫格/长图拼接、纯本地处理无水印</p>
+        <div class="card-meta"><span class="cat">拼图</span><span class="tag">#拼图</span><span class="tag">#图片</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="在线 office 文档查看器" data-desc="基于 webassembly 纯本地运行，秒开大文档、支持压缩包预览与文本比对" data-tags="办公 文档 效率">
+        <a class="card-title" href="https://officeviewer.org/" target="_blank" rel="noopener noreferrer">在线 Office 文档查看器</a>
+        <p class="card-desc">基于 WebAssembly 纯本地运行，秒开大文档、支持压缩包预览与文本比对</p>
+        <div class="card-meta"><span class="cat">办公</span><span class="tag">#办公</span><span class="tag">#文档</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="飞搜侠" data-desc="专治飞书原生搜索难用，一秒精准找回内部文档、跨网挖公开知识库" data-tags="搜索 效率 文档">
+        <a class="card-title" href="https://feisoo.com/" target="_blank" rel="noopener noreferrer">飞搜侠</a>
+        <p class="card-desc">专治飞书原生搜索难用，一秒精准找回内部文档、跨网挖公开知识库</p>
+        <div class="card-meta"><span class="cat">办公</span><span class="tag">#搜索</span><span class="tag">#效率</span><span class="tag">#文档</span></div>
+      </article>
+      <article class="card" data-title="药物说明书大全" data-desc="干净无广查原版电子说明书，居家应急必备" data-tags="健康 查询 生活">
+        <a class="card-title" href="https://drug.ptger.cn/" target="_blank" rel="noopener noreferrer">药物说明书大全</a>
+        <p class="card-desc">干净无广查原版电子说明书，居家应急必备</p>
+        <div class="card-meta"><span class="cat">生活</span><span class="tag">#健康</span><span class="tag">#查询</span><span class="tag">#生活</span></div>
+      </article>
+      <article class="card" data-title="howtocook 程序员做饭指南" data-desc="把做饭写成了代码，菜谱清晰可复现" data-tags="菜谱 生活 趣味">
+        <a class="card-title" href="https://howtocook.cn/" target="_blank" rel="noopener noreferrer">HowToCook 程序员做饭指南</a>
+        <p class="card-desc">把做饭写成了代码，菜谱清晰可复现</p>
+        <div class="card-meta"><span class="cat">生活</span><span class="tag">#菜谱</span><span class="tag">#生活</span><span class="tag">#趣味</span></div>
+      </article>
+      <article class="card" data-title="花快图" data-desc="上传图片一键生成无缝四方连续花纹，含实物样机预览" data-tags="设计 图片 素材">
+        <a class="card-title" href="https://hua.kuaitu.cc/" target="_blank" rel="noopener noreferrer">花快图</a>
+        <p class="card-desc">上传图片一键生成无缝四方连续花纹，含实物样机预览</p>
+        <div class="card-meta"><span class="cat">设计</span><span class="tag">#设计</span><span class="tag">#图片</span><span class="tag">#素材</span></div>
+      </article>
+      <article class="card" data-title="有据" data-desc="死磕中文互联网 ai 造假与拼凑新闻，附溯源证据链与查证工具箱" data-tags="新闻 核查 信息">
+        <a class="card-title" href="https://chinafactcheck.com/" target="_blank" rel="noopener noreferrer">有据</a>
+        <p class="card-desc">死磕中文互联网 AI 造假与拼凑新闻，附溯源证据链与查证工具箱</p>
+        <div class="card-meta"><span class="cat">信息</span><span class="tag">#新闻</span><span class="tag">#核查</span><span class="tag">#信息</span></div>
+      </article>
+      <article class="card" data-title="historical temperature" data-desc="输入城市与日期查看 1940 年至今气温变化，旅游备衣参考" data-tags="趣味 历史 天气">
+        <a class="card-title" href="https://historicaltemperature.org/" target="_blank" rel="noopener noreferrer">Historical Temperature</a>
+        <p class="card-desc">输入城市与日期查看 1940 年至今气温变化，旅游备衣参考</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#趣味</span><span class="tag">#历史</span><span class="tag">#天气</span></div>
+      </article>
+      <article class="card" data-title="一念天堂一念地狱" data-desc="一键切换「戒」与「纵」两大阵营，观点反差直击人心" data-tags="趣味 解压 心理">
+        <a class="card-title" href="https://pixcat.cn/" target="_blank" rel="noopener noreferrer">一念天堂一念地狱</a>
+        <p class="card-desc">一键切换「戒」与「纵」两大阵营，观点反差直击人心</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#趣味</span><span class="tag">#解压</span><span class="tag">#心理</span></div>
+      </article>
+      <article class="card" data-title="cameron's world" data-desc="打捞 90 年代个人主页遗迹拼成的旧互联网情书" data-tags="怀旧 艺术 趣味">
+        <a class="card-title" href="https://www.cameronsworld.net/" target="_blank" rel="noopener noreferrer">Cameron's World</a>
+        <p class="card-desc">打捞 90 年代个人主页遗迹拼成的旧互联网情书</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#怀旧</span><span class="tag">#艺术</span><span class="tag">#趣味</span></div>
+      </article>
+      <article class="card" data-title="乡土游戏馆" data-desc="用真实泥土石头复刻 8 款传统地面游戏，双人/人机对战" data-tags="游戏 传统 趣味">
+        <a class="card-title" href="https://youxi.pomodiary.com/" target="_blank" rel="noopener noreferrer">乡土游戏馆</a>
+        <p class="card-desc">用真实泥土石头复刻 8 款传统地面游戏，双人/人机对战</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#游戏</span><span class="tag">#传统</span><span class="tag">#趣味</span></div>
+      </article>
+      <article class="card" data-title="砸键盘" data-desc="工作卡壳焦虑到想砸键盘？这个网站让你砸个够还不用收拾" data-tags="解压 趣味 摸鱼">
+        <a class="card-title" href="https://smashthewalls.com/" target="_blank" rel="noopener noreferrer">砸键盘</a>
+        <p class="card-desc">工作卡壳焦虑到想砸键盘？这个网站让你砸个够还不用收拾</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#解压</span><span class="tag">#趣味</span><span class="tag">#摸鱼</span></div>
+      </article>
+      <article class="card" data-title="数独" data-desc="躺床上烙饼睡不着？填两把数独比数羊管用" data-tags="游戏 解压 专注">
+        <a class="card-title" href="https://cn.puzzle-sudoku.com/" target="_blank" rel="noopener noreferrer">数独</a>
+        <p class="card-desc">躺床上烙饼睡不着？填两把数独比数羊管用</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#游戏</span><span class="tag">#解压</span><span class="tag">#专注</span></div>
+      </article>
+      <article class="card" data-title="dogod.io" data-desc="球球大作战平替，魔性网页 io 游戏" data-tags="游戏 io 趣味">
+        <a class="card-title" href="https://dogod.io/" target="_blank" rel="noopener noreferrer">Dogod.io</a>
+        <p class="card-desc">球球大作战平替，魔性网页 io 游戏</p>
+        <div class="card-meta"><span class="cat">趣味</span><span class="tag">#游戏</span><span class="tag">#io</span><span class="tag">#趣味</span></div>
+      </article>
+      <article class="card" data-title="汉字源 hanziyuan" data-desc="收录 9.6 万古汉字字形，看甲骨文/金文/小篆 2500 年演变" data-tags="汉字 学习 古籍">
+        <a class="card-title" href="https://hanziyuan.net/" target="_blank" rel="noopener noreferrer">汉字源 Hanziyuan</a>
+        <p class="card-desc">收录 9.6 万古汉字字形，看甲骨文/金文/小篆 2500 年演变</p>
+        <div class="card-meta"><span class="cat">学习</span><span class="tag">#汉字</span><span class="tag">#学习</span><span class="tag">#古籍</span></div>
+      </article>
+      <article class="card" data-title="中国哲学书电子化计划" data-desc="收录三万部五十亿字古籍，全文检索与影印逐句核对" data-tags="古籍 学习 检索">
+        <a class="card-title" href="https://ctext.org/zhs" target="_blank" rel="noopener noreferrer">中国哲学书电子化计划</a>
+        <p class="card-desc">收录三万部五十亿字古籍，全文检索与影印逐句核对</p>
+        <div class="card-meta"><span class="cat">学习</span><span class="tag">#古籍</span><span class="tag">#学习</span><span class="tag">#检索</span></div>
+      </article>
+      <article class="card" data-title="knowsex" data-desc="给孩子做性教育不尴尬的宝藏网站，科学易懂" data-tags="教育 健康 科普">
+        <a class="card-title" href="https://knowsex.net/" target="_blank" rel="noopener noreferrer">KnowSex</a>
+        <p class="card-desc">给孩子做性教育不尴尬的宝藏网站，科学易懂</p>
+        <div class="card-meta"><span class="cat">学习</span><span class="tag">#教育</span><span class="tag">#健康</span><span class="tag">#科普</span></div>
+      </article>
+      <article class="card" data-title="黄油单词" data-desc="不用下载 app 也能高效背单词的纯网页背词站" data-tags="学习 背单词 效率">
+        <a class="card-title" href="https://waiyuka.cc/zh-CN" target="_blank" rel="noopener noreferrer">黄油单词</a>
+        <p class="card-desc">不用下载 App 也能高效背单词的纯网页背词站</p>
+        <div class="card-meta"><span class="cat">学习</span><span class="tag">#学习</span><span class="tag">#背单词</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="天空之城 skypixel" data-desc="大疆全球航拍作品集，高清图与短视频灵感库" data-tags="摄影 航拍 灵感">
+        <a class="card-title" href="https://www.skypixel.com/" target="_blank" rel="noopener noreferrer">天空之城 Skypixel</a>
+        <p class="card-desc">大疆全球航拍作品集，高清图与短视频灵感库</p>
+        <div class="card-meta"><span class="cat">灵感</span><span class="tag">#摄影</span><span class="tag">#航拍</span><span class="tag">#灵感</span></div>
+      </article>
+      <article class="card" data-title="searchemoji" data-desc="开源免费表情搜索引擎，中文直搜近两千 emoji 一键复制" data-tags="表情 工具 效率">
+        <a class="card-title" href="https://searchemoji.app/zh-hans" target="_blank" rel="noopener noreferrer">SearchEmoji</a>
+        <p class="card-desc">开源免费表情搜索引擎，中文直搜近两千 Emoji 一键复制</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#表情</span><span class="tag">#工具</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="canirun.ai" data-desc="3 秒测电脑能否跑本地大模型 qwen/llama，给显存与量化建议" data-tags="ai 硬件 测评">
+        <a class="card-title" href="https://canirun.ai/" target="_blank" rel="noopener noreferrer">CanIRun.ai</a>
+        <p class="card-desc">3 秒测电脑能否跑本地大模型 Qwen/Llama，给显存与量化建议</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#AI</span><span class="tag">#硬件</span><span class="tag">#测评</span></div>
+      </article>
+      <article class="card" data-title="bird song" data-desc="在办公室听鸟叫的白噪音，比白噪音 app 更自然" data-tags="白噪音 放松 专注">
+        <a class="card-title" href="https://bird-song.org/" target="_blank" rel="noopener noreferrer">Bird Song</a>
+        <p class="card-desc">在办公室听鸟叫的白噪音，比白噪音 App 更自然</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#白噪音</span><span class="tag">#放松</span><span class="tag">#专注</span></div>
+      </article>
+      <article class="card" data-title="radio garden" data-desc="旋转地球即可收听全球各地实时网页电台" data-tags="电台 音乐 放松">
+        <a class="card-title" href="https://radio.garden/" target="_blank" rel="noopener noreferrer">Radio Garden</a>
+        <p class="card-desc">旋转地球即可收听全球各地实时网页电台</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#电台</span><span class="tag">#音乐</span><span class="tag">#放松</span></div>
+      </article>
+      <article class="card" data-title="deepfocus" data-desc="免费极简网页番茄钟，治拖延与失眠" data-tags="专注 番茄钟 效率">
+        <a class="card-title" href="https://deepfocus.space/" target="_blank" rel="noopener noreferrer">DeepFocus</a>
+        <p class="card-desc">免费极简网页番茄钟，治拖延与失眠</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#专注</span><span class="tag">#番茄钟</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="worktool" data-desc="格式化 json、解 base64、拯救 pdf，一个网页全包还不碰你数据" data-tags="工具箱 开发 效率">
+        <a class="card-title" href="https://www.worktool.app/zh" target="_blank" rel="noopener noreferrer">WorkTool</a>
+        <p class="card-desc">格式化 JSON、解 Base64、拯救 PDF，一个网页全包还不碰你数据</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#工具箱</span><span class="tag">#开发</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="工坊 gongfang" data-desc="免下载、纯本地的宝藏工具箱集合" data-tags="工具箱 本地 效率">
+        <a class="card-title" href="https://gongfang.app/" target="_blank" rel="noopener noreferrer">工坊 GongFang</a>
+        <p class="card-desc">免下载、纯本地的宝藏工具箱集合</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#工具箱</span><span class="tag">#本地</span><span class="tag">#效率</span></div>
+      </article>
+      <article class="card" data-title="priceradar" data-desc="全球 app store 与 google play 订阅跨区比价，省钱利器" data-tags="比价 省钱 购物">
+        <a class="card-title" href="https://priceradar.store/zh" target="_blank" rel="noopener noreferrer">PriceRadar</a>
+        <p class="card-desc">全球 App Store 与 Google Play 订阅跨区比价，省钱利器</p>
+        <div class="card-meta"><span class="cat">效率</span><span class="tag">#比价</span><span class="tag">#省钱</span><span class="tag">#购物</span></div>
+      </article>
+    </main>
+    <p class="empty" id="empty">没有匹配的资源 🤔</p>
+    <footer class="site-footer">
+      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-15T13:48:40.695Z
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var grid = document.getElementById("grid");
+      var empty = document.getElementById("empty");
+      var search = document.getElementById("search");
+      var chips = document.getElementById("chips");
+      var activeTag = "";
+      var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
+
+      function apply() {
+        var q = (search.value || "").trim().toLowerCase();
+        var shown = 0;
+        cards.forEach(function (c) {
+          var tag = c.getAttribute("data-tags") || "";
+          var title = c.getAttribute("data-title") || "";
+          var desc = c.getAttribute("data-desc") || "";
+          var okTag = !activeTag || (" " + tag + " ").indexOf(" " + activeTag + " ") > -1;
+          var okText = !q || title.indexOf(q) > -1 || desc.indexOf(q) > -1 || tag.indexOf(q) > -1;
+          var ok = okTag && okText;
+          c.style.display = ok ? "" : "none";
+          if (ok) shown++;
+        });
+        empty.style.display = shown === 0 ? "block" : "none";
+      }
+
+      search.addEventListener("input", apply);
+      if (chips) {
+        chips.addEventListener("click", function (e) {
+          var btn = e.target.closest(".chip");
+          if (!btn) return;
+          activeTag = btn.getAttribute("data-tag") || "";
+          chips.querySelectorAll(".chip").forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          apply();
+        });
+      }
+      apply();
+    })();
+  </script>
+</body>
+</html>
