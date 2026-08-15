@@ -348,11 +348,26 @@ ${canonicalTag}
   .empty { text-align: center; color: var(--muted); padding: 60px 0; display: none; }
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
-  @media (max-width: 600px) {
+  /* 移动端：标签条改为单行横向滚动，避免折行撑满整屏把卡片挤掉 */
+  @media (max-width: 640px) {
+    .site-header { padding: 16px 14px 10px; flex-wrap: wrap; }
     .site-header .brand { font-size: 22px; }
-    .site-header { padding: 16px 14px 10px; }
-    .wrap { padding: 20px 14px 48px; }
     .site-header .nav a { padding: 6px 9px; font-size: .82rem; }
+    .wrap { padding: 20px 14px 48px; }
+    .toolbar { padding: 12px 0 8px; }
+    .chips {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-top: 10px;
+      padding-bottom: 4px;
+    }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { flex: 0 0 auto; white-space: nowrap; }
+    .grid { grid-template-columns: 1fr; }
+    .card { padding: 16px; }
+    .card-title { font-size: 1.12rem; }
   }
 </style>
 </head>
