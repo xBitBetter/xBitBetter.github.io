@@ -29,7 +29,7 @@ env:
   SITE_URL: 'https://ibitbetter.space'
   OWNER: 'iBitBetter'
 
-Permissions:å
+permissions:
   contents: write
   issues: read
 
