@@ -238,9 +238,9 @@ function buildHtml(cfg, items, generatedAt) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>${safeTitle} | ${safeSite}</title>
-<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
+<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏" />
 <meta property="og:title" content="${safeTitle} | ${safeSite}" />
-<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
+<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 ${canonicalTag}
@@ -384,8 +384,8 @@ ${canonicalTag}
   <div class="wrap">
     <header class="page-head">
       <h1>${safeTitle}</h1>
-      <p class="sub">${safeSite} · 由 GitHub Issue 评论自动整理</p>
-      <p class="intro">在这里统一收录我私藏的奇趣网站与效率工具。想添加新资源？在站点仓库的收藏家 Issue 下评论一条 <code>- [名称](链接) 一句话描述 | #标签</code> 即可，页面会自动更新。</p>
+      <p class="sub">${safeSite} </p>
+      <p class="intro">在这里统一收录我私藏的奇趣网站与效率工具</p>
     </header>
     <div class="toolbar">
       <input id="search" class="search" type="search" placeholder="搜索网站、描述或标签…" autocomplete="off" />
