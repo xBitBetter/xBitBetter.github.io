@@ -42,6 +42,7 @@ async function loadConfig() {
     pageTitle: process.env.PAGE_TITLE || fileConfig.pageTitle || "奇趣网站收藏家",
     siteTitle: process.env.SITE_TITLE || fileConfig.siteTitle || "iBitBetter",
     siteUrl: process.env.SITE_URL || fileConfig.siteUrl || "https://ibitbetter.space",
+    ownerLogin: process.env.OWNER || process.env.OWNER_LOGIN || fileConfig.ownerLogin || "",
     sourceIssueUrl: "",
   };
   cfg.sourceIssueUrl = `https://github.com/${cfg.repository}/issues/${cfg.issueNumber}`;
@@ -53,7 +54,7 @@ async function githubFetch(url, token) {
   const headers = {
     Accept: "application/vnd.github+json",
     "User-Agent": "qiqiu-collector-generator",
-    "X-GitHub-Api-Version": "2022-11-28",
+    "X-GitHub-Api-Version": "2026-08-15",
   };
   if (token) headers.Authorization = `Bearer ${token}`;
   const res = await fetch(url, { headers });
@@ -222,8 +223,10 @@ function buildHtml(cfg, items, generatedAt) {
   const safeSite = escapeHtml(cfg.siteTitle);
   const safeIssue = escapeHtml(cfg.sourceIssueUrl);
   const safeTime = escapeHtml(generatedAt);
+  // canonical 使用「线上访问路径」(取 outputPath 的文件名)，与仓库内输出目录无关
+  const slug = (cfg.outputPath || "curious-websites.html").split("/").pop() || "curious-websites.html";
   const canonical = cfg.siteUrl
-    ? `${cfg.siteUrl.replace(/\/$/, "")}/${cfg.outputPath}`
+    ? `${cfg.siteUrl.replace(/\/$/, "")}/${slug}`
     : "";
   const canonicalTag = canonical
     ? `<link rel="canonical" href="${escapeHtml(canonical)}" />`
@@ -238,9 +241,9 @@ function buildHtml(cfg, items, generatedAt) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>${safeTitle} | ${safeSite}</title>
-<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏" />
+<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
 <meta property="og:title" content="${safeTitle} | ${safeSite}" />
-<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏" />
+<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 ${canonicalTag}
@@ -384,8 +387,8 @@ ${canonicalTag}
   <div class="wrap">
     <header class="page-head">
       <h1>${safeTitle}</h1>
-      <p class="sub">${safeSite} </p>
-      <p class="intro">在这里统一收录我私藏的奇趣网站与效率工具</p>
+      <p class="sub">${safeSite} · 由 GitHub Issue 评论自动整理</p>
+      <p class="intro">在这里统一收录我私藏的奇趣网站与效率工具。本页仅收录站长本人在收藏家 Issue 下发布的评论（访客评论不会被收录）。新增资源：在站点仓库的收藏家 Issue 下，由站长评论一条 <code>- [名称](链接) 一句话描述 | #标签</code> 即可自动更新。</p>
     </header>
     <div class="toolbar">
       <input id="search" class="search" type="search" placeholder="搜索网站、描述或标签…" autocomplete="off" />
@@ -481,11 +484,20 @@ async function main() {
   console.log(`读取 issue #${cfg.issueNumber} (${cfg.repository}) …`);
   const issue = await fetchIssue(cfg);
   const comments = await fetchComments(cfg);
-  console.log(`issue 正文 + ${comments.length} 条评论`);
+
+  // 只收录「站长本人」的评论，其它任何人的评论都不进入页面。
+  // owner 默认取 Issue 作者（issue.user.login），也可用 OWNER_LOGIN 环境变量显式覆盖。
+  const ownerLogin = cfg.ownerLogin || (issue.user && issue.user.login) || "";
+  const myComments = ownerLogin
+    ? comments.filter((c) => c.user && c.user.login === ownerLogin)
+    : comments;
+  console.log(
+    `issue 正文 + ${comments.length} 条评论 → 仅保留 ${ownerLogin || "全部"} 的 ${myComments.length} 条`
+  );
 
   const items = dedupe([
     ...parseBlock(issue.body, ""),
-    ...comments.map((c) => parseBlock(c.body, "")).flat(),
+    ...myComments.map((c) => parseBlock(c.body, "")).flat(),
   ]);
 
   const html = buildHtml(cfg, items, new Date().toISOString());
