@@ -227,6 +227,20 @@ function dedupe(items) {
   return out;
 }
 
+// 主页头部图标 SVG path（与 Gmeek 站点一致）。专题页是独立生成的静态页，
+// 没有 Gmeek 运行时来填充图标，因此把路径硬编码进来，保证离线也能渲染同款图标。
+// 顺序与主页可见图标一致：搜索 / now / 关于 / 奇趣网站收藏家 / RSS / 主题切换
+// （privacy、terms 按站长要求隐藏，不在此列出）。
+const ICONS = {
+  search: "M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z",
+  rss: "M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7.002 7.002 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.503 5.503 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489ZM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z",
+  about: "M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z",
+  now: "M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm.252-12.932a.476.476 0 0 0-.682.195l-1.2 2.432-2.684.39a.477.477 0 0 0-.266.816l1.944 1.892-.46 2.674a.479.479 0 0 0 .694.504L8 10.709l2.4 1.261a.478.478 0 0 0 .694-.504l-.458-2.673L12.578 6.9a.479.479 0 0 0-.265-.815l-2.685-.39-1.2-2.432a.473.473 0 0 0-.176-.195Z",
+  sun: "M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z",
+  moon: "M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z",
+  curious: "M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25ZM14.5 6h-13v7.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm-6-3.5v2h6V2.75a.25.25 0 0 0-.25-.25ZM5 2.5v2h2v-2Zm-3.25 0a.25.25 0 0 0-.25.25V4.5h2v-2Z",
+};
+
 // ---------- 渲染（iBitBetter 暖色编辑风） ----------
 function renderCards(items) {
   return items
@@ -357,12 +371,19 @@ ${canonicalTag}
     font-family: Monaco, "PingFang SC", monospace; font-size: 28px; font-weight: 700;
     color: var(--text); letter-spacing: -.02em;
   }
-  .site-header .nav { margin-left: auto; display: flex; gap: 8px; }
-  .site-header .nav a {
-    color: var(--muted); padding: 8px 12px; border-radius: 999px; font-size: .9rem;
-    border: 1px solid transparent;
+  .site-header .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  /* —— 头部图标栏（与主页 Gmeek .title-right 一致） —— */
+  .title-right { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+  .title-right .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; padding: 0; margin: 0;
+    border: none; background: transparent; border-radius: 50%;
+    color: var(--muted); cursor: pointer; text-decoration: none;
+    transition: color .15s, background .15s;
   }
-  .site-header .nav a:hover { color: var(--text); background: var(--accent-soft); text-decoration: none; }
+  .title-right .btn:hover { color: var(--accent); background: var(--accent-soft); }
+  .title-right .btn.active-cur { color: var(--accent); }
+  .title-right .octicon { fill: currentColor; }
 
   .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
   header.page-head h1 {
@@ -415,7 +436,7 @@ ${canonicalTag}
   @media (max-width: 640px) {
     .site-header { padding: 16px 14px 10px; flex-wrap: wrap; }
     .site-header .brand { font-size: 22px; }
-    .site-header .nav a { padding: 6px 9px; font-size: .82rem; }
+    .title-right .btn { width: 30px; height: 30px; }
     .wrap { padding: 20px 14px 48px; }
     .toolbar { padding: 12px 0 8px; }
     .chips {
@@ -436,13 +457,30 @@ ${canonicalTag}
 </head>
 <body>
   <div class="site-header">
-    <img src="${escapeHtml(avatar)}" class="avatar" alt="iBitBetter" />
-    <span class="brand">iBitBetter</span>
-    <nav class="nav">
-      <a href="${escapeHtml(cfg.siteUrl || "/")}">首页</a>
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/tag.html">标签</a>
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/about.html">关于</a>
-    </nav>
+    <a class="brand-wrap" href="${escapeHtml(cfg.siteUrl || "/")}">
+      <img src="${escapeHtml(avatar)}" class="avatar" alt="iBitBetter" />
+      <span class="brand">iBitBetter</span>
+    </a>
+    <div class="title-right">
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/tag.html" class="btn btn-invisible circle" title="搜索">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.search}"></path></svg>
+      </a>
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/now.html" class="btn btn-invisible circle" title="我正在做/想些什么？">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.now}"></path></svg>
+      </a>
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/about.html" class="btn btn-invisible circle" title="关于 | iBitBetter">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.about}"></path></svg>
+      </a>
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.curious}"></path></svg>
+      </a>
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/rss.xml" target="_blank" class="btn btn-invisible circle" title="RSS">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.rss}"></path></svg>
+      </a>
+      <button class="btn btn-invisible circle" type="button" onclick="qiqiuModeSwitch()" title="切换主题">
+        <svg class="octicon" width="16" height="16"><path id="qiqiuThemeSwitch" fill-rule="evenodd"></path></svg>
+      </button>
+    </div>
   </div>
   <div class="wrap">
     <header class="page-head">
@@ -504,6 +542,22 @@ ${cards}
         });
       }
       apply();
+    })();
+  </script>
+  <script>
+    var QIQIU_ICONS = { sun: ICONS.sun, moon: ICONS.moon };
+    function qiqiuModeSwitch() {
+      var cur = document.documentElement.getAttribute("data-color-mode") || "light";
+      var next = cur === "light" ? "dark" : "light";
+      localStorage.setItem("meek_theme", next);
+      document.documentElement.setAttribute("data-color-mode", next);
+      var sw = document.getElementById("qiqiuThemeSwitch");
+      if (sw) sw.setAttribute("d", next === "light" ? QIQIU_ICONS.sun : QIQIU_ICONS.moon);
+    }
+    (function () {
+      var cur = document.documentElement.getAttribute("data-color-mode") || "light";
+      var sw = document.getElementById("qiqiuThemeSwitch");
+      if (sw) sw.setAttribute("d", cur === "light" ? QIQIU_ICONS.sun : QIQIU_ICONS.moon);
     })();
   </script>
 </body>
