@@ -153,13 +153,66 @@ function splitTags(rest) {
 function pushItem(items, title, url, desc, tags, category) {
   const safe = safeUrl(url);
   if (!title || !safe) return; // 跳过无效条目（防 XSS / 坏链接）
+  const normTags = normalizeTags(tags);
+  const normCat = normalizeTags([category]);
   items.push({
     title: title.slice(0, 120),
     url: safe,
     desc: desc.slice(0, 300),
-    tags,
-    category: category || "",
+    tags: normTags,
+    category: normCat[0] || "",
   });
+}
+
+// ---------- 标签归一化（精简标签体系） ----------
+// 数据里会写很多细标签（如 #拼图 #图片 #效率），页面只展示顶层标签。
+// 细标签 → 顶层标签 的映射；未列出的细标签若不在白名单则丢弃。
+// 顶层白名单同时预留了「网盘」「软件」两类，供后期扩展资源类型。
+const TAG_MAP = {
+  // 效率：办公 / 文档 / 搜索 / 工具箱 / 番茄钟 / 开发 / 本地 / 比价 / 省钱 / 购物 / 工具
+  效率: "效率", 办公: "效率", 文档: "效率", 搜索: "效率", 工具箱: "效率",
+  番茄钟: "效率", 开发: "效率", 本地: "效率", 比价: "效率", 省钱: "效率",
+  购物: "效率", 工具: "效率", 硬件: "效率", 测评: "效率",
+  // 游戏（含 io 类）
+  游戏: "游戏", io: "游戏",
+  // 创意：灵感 / 艺术 / 怀旧 / 传统 / 表情
+  创意: "创意", 灵感: "创意", 艺术: "创意", 怀旧: "创意", 传统: "创意", 表情: "创意",
+  // 学习：古籍 / 汉字 / 教育 / 科普 / 背单词 / 检索
+  学习: "学习", 古籍: "学习", 汉字: "学习", 教育: "学习", 科普: "学习",
+  背单词: "学习", 检索: "学习",
+  // 生活：健康 / 菜谱 / 天气 / 查询
+  生活: "生活", 健康: "生活", 菜谱: "生活", 天气: "生活", 查询: "生活",
+  // 影音：音乐 / 电台 / 摄影 / 航拍 / 白噪音 / 放松
+  音乐: "影音", 电台: "影音", 摄影: "影音", 航拍: "影音", 白噪音: "影音", 放松: "影音",
+  // 趣味：解压 / 专注 / 摸鱼 / 沙雕 / 心理
+  趣味: "趣味", 解压: "趣味", 专注: "趣味", 摸鱼: "趣味", 沙雕: "趣味", 心理: "趣味",
+  // AI（人工智能）
+  人工智能: "AI", AI: "AI",
+  // 资讯：新闻 / 核查 / 信息
+  新闻: "资讯", 核查: "资讯", 信息: "资讯",
+  // 设计：图片 / 素材 / 拼图
+  设计: "设计", 图片: "设计", 素材: "设计", 拼图: "设计",
+  // 探索：世界 / 历史（地理与国际视野）
+  世界: "探索", 历史: "探索",
+  // 预留扩展（后期资源类型）
+  网盘: "网盘", 软件: "软件",
+};
+const TOP_TAGS = new Set([
+  "效率", "游戏", "创意", "学习", "生活", "影音", "趣味",
+  "AI", "资讯", "设计", "探索", "网盘", "软件",
+]);
+function normalizeTags(rawTags) {
+  const out = [];
+  const seen = new Set();
+  for (const t of rawTags || []) {
+    if (!t) continue;
+    const mapped = TAG_MAP[t] || t;
+    if (!TOP_TAGS.has(mapped)) continue; // 不在顶层白名单内的细标签丢弃
+    if (seen.has(mapped)) continue;
+    seen.add(mapped);
+    out.push(mapped);
+  }
+  return out;
 }
 
 function dedupe(items) {
@@ -181,7 +234,8 @@ function renderCards(items) {
       const tagsHtml = it.tags
         .map((t) => `<span class="tag">#${escapeHtml(t)}</span>`)
         .join("");
-      const catHtml = it.category
+      const showCat = it.category && !it.tags.includes(it.category);
+      const catHtml = showCat
         ? `<span class="cat">${escapeHtml(it.category)}</span>`
         : "";
       return `      <article class="card" data-title="${escapeHtml(
