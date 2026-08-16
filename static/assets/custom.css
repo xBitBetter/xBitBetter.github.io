@@ -77,6 +77,7 @@ a.SideNav-item:hover{
 a.SideNav-item .listTitle{
   font-size:15px !important;font-weight:600 !important;line-height:1.45 !important;color:var(--text) !important;
   min-width:0 !important;overflow-wrap:anywhere !important;word-break:break-word !important;
+  white-space:normal !important;overflow:visible !important;text-overflow:clip !important;
 }
 a.SideNav-item:hover .listTitle{color:var(--accent) !important}
 .SideNav-icon.octicon{color:var(--accent) !important;opacity:.55}
@@ -214,6 +215,7 @@ h1.postTitle{
   a.SideNav-item .listTitle{
     font-size:14.5px !important;min-width:0 !important;
     overflow-wrap:anywhere !important;word-break:break-word !important;
+    white-space:normal !important;overflow:visible !important;text-overflow:clip !important;
   }
   .listLabels{flex-wrap:wrap !important}
   /* 文章阅读 */
