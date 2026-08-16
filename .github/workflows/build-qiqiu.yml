@@ -45,10 +45,10 @@ jobs:
       github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '24'
 
       # 仅当属于「收藏家 Issue」且（评论事件时）评论作者是站长本人，才继续。
       # env 上下文只能在 step 级使用；schedule / workflow_dispatch / push 没有 issue 对象，被前面短路跳过判断。
