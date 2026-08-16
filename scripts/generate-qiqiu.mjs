@@ -106,6 +106,18 @@ function safeUrl(raw) {
   return null;
 }
 
+function faviconUrl(raw) {
+  try {
+    const u = new URL(raw);
+    if (u.protocol === "http:" || u.protocol === "https:") {
+      return `https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`;
+    }
+  } catch {
+    /* ignore */
+  }
+  return "";
+}
+
 function parseBlock(body, category) {
   if (!body) return [];
   const lines = body.split(/\r?\n/);
@@ -252,12 +264,16 @@ function renderCards(items) {
       const catHtml = showCat
         ? `<span class="cat">${escapeHtml(it.category)}</span>`
         : "";
+      const icon = faviconUrl(it.url);
+      const iconHtml = icon
+        ? `      <img class="card-favicon" src="${escapeHtml(icon)}" alt="" width="22" height="22" loading="lazy" onerror="this.onerror=function(){this.style.display='none'}; this.src='https://icons.duckduckgo.com/ip3/'+new URL(this.parentNode.querySelector('.card-title').href).hostname+'.ico';" />`
+        : "";
       return `      <article class="card" data-title="${escapeHtml(
         it.title.toLowerCase()
       )}" data-desc="${escapeHtml(it.desc.toLowerCase())}" data-tags="${escapeHtml(
         it.tags.join(" ").toLowerCase()
       )}">
-        <a class="card-title" href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+        ${iconHtml}<a class="card-title" href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
         it.title
       )}</a>
         ${it.desc ? `<p class="card-desc">${escapeHtml(it.desc)}</p>` : ""}
@@ -418,11 +434,18 @@ ${canonicalTag}
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
   .card {
+    position: relative;
     background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 18px; box-shadow: var(--shadow); transition: transform .15s, border-color .15s;
     display: flex; flex-direction: column; gap: 8px;
   }
   .card:hover { border-color: var(--accent); }
+  .card-favicon {
+    position: absolute; top: 12px; right: 12px;
+    width: 22px; height: 22px; object-fit: contain;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+    padding: 2px; pointer-events: none;
+  }
   .card-title { font-weight: 600; font-size: 1.05rem; color: var(--text); word-break: break-word; }
   .card:hover .card-title { color: var(--accent); }
   .card-desc { margin: 0; color: var(--muted); font-size: .9rem; }
@@ -451,6 +474,7 @@ ${canonicalTag}
     .chip { flex: 0 0 auto; white-space: nowrap; }
     .grid { grid-template-columns: 1fr; }
     .card { padding: 16px; }
+    .card-favicon { top: 10px; right: 10px; width: 20px; height: 20px; }
     .card-title { font-size: 1.12rem; }
   }
 </style>
