@@ -56,7 +56,7 @@ body{
 .title-right .btn:hover{background:var(--accent-soft) !important;color:var(--accent) !important;transform:translateY(-1px)}
 
 /* ---------- 首页文章列表：SideNav → 暖色卡片 ---------- */
-nav.SideNav{border:0 !important;background:transparent !important;display:flex;flex-direction:column;gap:9px}
+nav.SideNav{border:0 !important;background:transparent !important;display:flex;flex-direction:column;gap:9px;min-width:0 !important;width:100% !important}
 a.SideNav-item{
   display:flex !important;align-items:center;justify-content:space-between;
   background:var(--surface) !important;
