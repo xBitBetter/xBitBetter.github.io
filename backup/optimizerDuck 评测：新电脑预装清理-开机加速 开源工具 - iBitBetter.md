@@ -8,7 +8,7 @@
 
 忍不了一点。想找个工具清一下吧，发现以前常用的 CCleaner 现在自己也快变成流氓软件了，弹窗烦得要死；Geek 是挺干净，但它只能卸软件，管不了系统底层的破事。去动注册表？算了，万一改崩了我可不想重装系统。
 
-瞎折腾半天，最后在 GitHub 上扒拉出来一个叫 optimizerDuck 的小工具。
+瞎折腾半天，最后在 GitHub 上扒拉出来一个叫 [optimizerDuck](https://github.com/itsfatduck/optimizerDuck) 的小工具。
 
 ## 偶遇 optimizerDuck
 
