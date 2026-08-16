@@ -23,7 +23,7 @@ on:
 #       因此 Issue 编号 / 评论作者判定放在下方的 guard 步骤里。
 env:
   ISSUE_NUMBER: '185'
-  OUTPUT_PATH: 'docs/curious-websites.html'
+  OUTPUT_PATH: 'static/curious-websites.html'
   PAGE_TITLE: '奇趣网站收藏家'
   SITE_TITLE: 'iBitBetter'
   SITE_URL: 'https://ibitbetter.space'
