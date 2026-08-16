@@ -241,9 +241,9 @@ function buildHtml(cfg, items, generatedAt) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>${safeTitle} | ${safeSite}</title>
-<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
+<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏" />
 <meta property="og:title" content="${safeTitle} | ${safeSite}" />
-<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
+<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 ${canonicalTag}
@@ -388,7 +388,7 @@ ${canonicalTag}
     <header class="page-head">
       <h1>${safeTitle}</h1>
       <p class="sub">${safeSite} · 由 GitHub Issue 评论自动整理</p>
-      <p class="intro">在这里统一收录我私藏的奇趣网站与效率工具。本页仅收录站长本人在收藏家 Issue 下发布的评论（访客评论不会被收录）。新增资源：在站点仓库的收藏家 Issue 下，由站长评论一条 <code>- [名称](链接) 一句话描述 | #标签</code> 即可自动更新。</p>
+      <p class="intro">在这里统一收录一些奇趣网站与效率工具。本页仅收录站长本人在收藏家 Issue 下发布的评论（访客评论不会被收录）。</p>
     </header>
     <div class="toolbar">
       <input id="search" class="search" type="search" placeholder="搜索网站、描述或标签…" autocomplete="off" />
