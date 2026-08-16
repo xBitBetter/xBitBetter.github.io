@@ -204,20 +204,28 @@ h1.postTitle{
     flex:1 1 100% !important;min-width:0 !important;
     overflow-wrap:anywhere !important;word-break:break-word !important;
   }
-  /* 首页卡片：标题在上、标签在下；内层「图标+标题」允许收缩、标题可断词 */
+  /* 首页卡片：标题在左可换行，标签块固定靠右 */
   a.SideNav-item{
-    flex-direction:column !important;align-items:flex-start !important;
-    gap:8px !important;padding:13px 14px !important;
+    flex-direction:row !important;align-items:center !important;
+    justify-content:space-between !important;gap:10px !important;
+    padding:13px 14px !important;
     min-width:0 !important;max-width:100% !important;
   }
-  a.SideNav-item > div:first-child{min-width:0 !important;flex:1 1 auto !important}
-  .SideNav-icon.octicon{flex:none !important}
+  a.SideNav-item > div:first-child{
+    min-width:0 !important;flex:1 1 auto !important;
+    align-items:flex-start !important;gap:10px !important;
+  }
+  .SideNav-icon.octicon{flex:none !important;margin-top:2px !important}
   a.SideNav-item .listTitle{
     font-size:14.5px !important;min-width:0 !important;
     overflow-wrap:anywhere !important;word-break:break-word !important;
     white-space:normal !important;overflow:visible !important;text-overflow:clip !important;
   }
-  .listLabels{flex-wrap:wrap !important}
+  .listLabels{
+    flex:none !important;flex-wrap:wrap !important;
+    justify-content:flex-end !important;gap:6px !important;
+    margin-left:auto !important;max-width:38% !important;
+  }
   /* 文章阅读 */
   .markdown-body{font-size:15.5px !important}
   .markdown-body h1,.markdown-body h2{font-size:19px !important;margin:24px 0 12px !important}
