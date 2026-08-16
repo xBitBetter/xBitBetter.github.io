@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 奇趣网站收藏家 —— 资源页生成器
 // 读取 GitHub Issue 正文与评论 → 提取「奇趣网站 / 软件资源」→ 生成独立静态页 curious-websites.html
-// 风格与 iBitBetter (ibitbetter.space) 站点一致：暖色编辑风（奶油底 + 赤陶橙主色），明暗主题自适应。
+// 风格与 iBitBetter (ibitbetter.space) 站点一致：极简阅读风（白底 + 蓝链，类 greyli.com / Twenty Twelve），明暗主题自适应。
 // 零依赖，运行在 Node 18+（使用内置 fetch）。
 //
 // 评论 / 正文资源格式（每行一个）：
@@ -54,7 +54,7 @@ async function githubFetch(url, token) {
   const headers = {
     Accept: "application/vnd.github+json",
     "User-Agent": "qiqiu-collector-generator",
-    "X-GitHub-Api-Version": "2026-08-15",
+    "X-GitHub-Api-Version": "2022-11-28",
   };
   if (token) headers.Authorization = `Bearer ${token}`;
   const res = await fetch(url, { headers });
@@ -241,9 +241,9 @@ function buildHtml(cfg, items, generatedAt) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>${safeTitle} | ${safeSite}</title>
-<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏" />
+<meta name="description" content="${safeTitle} —— iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
 <meta property="og:title" content="${safeTitle} | ${safeSite}" />
-<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏" />
+<meta property="og:description" content="iBitBetter 精选的奇趣网站与效率工具收藏，由 GitHub Issue 评论自动整理更新。" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 ${canonicalTag}
@@ -253,29 +253,31 @@ ${canonicalTag}
 </script>
 <style>
   :root {
-    --bg: #FBF6EE;
-    --surface: #FFFFFF;
-    --text: #2E2A24;
-    --muted: #8A7F70;
-    --accent: #E2613B;
-    --accent-soft: #FBEDE6;
-    --accent2: #C98A3B;
-    --line: #EFE6D8;
-    --radius: 14px;
-    --shadow: 0 1px 3px rgba(46,42,36,.06), 0 8px 24px rgba(46,42,36,.05);
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-      "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --text: #444444;
+    --muted: #757575;
+    --accent: #3475e4;
+    --accent-hover: #21759b;
+    --accent-soft: #eef4fc;
+    --accent2: #2f6fb0;
+    --line: #e6e6e6;
+    --radius: 6px;
+    --shadow: none;
+    --font: "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   }
   [data-color-mode="dark"] {
-    --bg: #1E1A16;
-    --surface: #26211B;
-    --text: #F3E9DD;
-    --muted: #B6A892;
-    --accent: #F0916A;
-    --accent-soft: #3A2C22;
-    --accent2: #E0A85C;
-    --line: #3A322A;
-    --shadow: 0 6px 20px rgba(0,0,0,.35);
+    --bg: #181818;
+    --surface: #1f1f1f;
+    --text: #dcdcdc;
+    --muted: #9a9a9a;
+    --accent: #6ea8fe;
+    --accent-hover: #9ec5ff;
+    --accent-soft: #1c2733;
+    --accent2: #7fb0e0;
+    --line: #333333;
+    --shadow: none;
   }
   * { box-sizing: border-box; }
   body {
@@ -289,7 +291,7 @@ ${canonicalTag}
   /* —— 顶部导航（与站点一致） —— */
   .site-header {
     display: flex; align-items: center; gap: 12px;
-    max-width: 980px; margin: 0 auto; padding: 22px 20px 14px;
+    max-width: 880px; margin: 0 auto; padding: 22px 20px 14px;
     border-bottom: 1px solid var(--line);
   }
   .site-header .avatar {
@@ -308,7 +310,7 @@ ${canonicalTag}
   }
   .site-header .nav a:hover { color: var(--text); background: var(--accent-soft); text-decoration: none; }
 
-  .wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 64px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
   header.page-head h1 {
     font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin: 0 0 6px; letter-spacing: -.02em;
   }
@@ -316,8 +318,11 @@ ${canonicalTag}
   header.page-head .intro {
     color: var(--text); opacity: .85; margin: 14px 0 0; font-size: .95rem;
     background: var(--accent-soft); border-left: 3px solid var(--accent);
-    padding: 12px 16px; border-radius: 10px;
+    padding: 16px 18px; border-radius: 10px; line-height: 1.75;
   }
+  header.page-head .intro p { margin: 0 0 12px; }
+  header.page-head .intro p:last-child { margin-bottom: 0; }
+  header.page-head .intro strong { color: var(--accent); font-weight: 600; }
   .toolbar { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 18px 0 10px; }
   .search {
     width: 100%; padding: 12px 16px; font-size: 1rem; color: var(--text);
@@ -342,8 +347,9 @@ ${canonicalTag}
     padding: 18px; box-shadow: var(--shadow); transition: transform .15s, border-color .15s;
     display: flex; flex-direction: column; gap: 8px;
   }
-  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-  .card-title { font-weight: 600; font-size: 1.05rem; color: var(--accent); word-break: break-word; }
+  .card:hover { border-color: var(--accent); }
+  .card-title { font-weight: 600; font-size: 1.05rem; color: var(--text); word-break: break-word; }
+  .card:hover .card-title { color: var(--accent); }
   .card-desc { margin: 0; color: var(--muted); font-size: .9rem; }
   .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
   .tag { font-size: .75rem; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 6px; }
