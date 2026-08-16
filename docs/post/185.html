@@ -21,21 +21,21 @@
     </script>
     
     
-<meta name="description" content="本文推荐了一款免费开源的 Windows 清理工具 **WinMole**。它支持命令行与图形双界面，能精准分类并安全清理系统及软件垃圾，自带白名单防误删。同时集成内存释放、软件卸载与磁盘分析功能，专治 C 盘爆满难题。">
-<meta property="og:title" content="C盘红了先别慌，这个开源工具把你不敢删的垃圾全标出来了">
-<meta property="og:description" content="本文推荐了一款免费开源的 Windows 清理工具 **WinMole**。它支持命令行与图形双界面，能精准分类并安全清理系统及软件垃圾，自带白名单防误删。同时集成内存释放、软件卸载与磁盘分析功能，专治 C 盘爆满难题。">
+<meta name="description" content="">
+<meta property="og:title" content="奇趣网站收藏家">
+<meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://ibitbetter.space/post/173.html">
+<meta property="og:url" content="https://ibitbetter.space/post/185.html">
 <meta property="og:image" content="https://ibitbetter.space/og-image.jpg">
-<title>C盘红了先别慌，这个开源工具把你不敢删的垃圾全标出来了</title>
-<link rel="canonical" href="https://ibitbetter.space/post/173.html">
+<title>奇趣网站收藏家</title>
+<link rel="canonical" href="https://ibitbetter.space/post/185.html">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "C\u76d8\u7ea2\u4e86\u5148\u522b\u614c\uff0c\u8fd9\u4e2a\u5f00\u6e90\u5de5\u5177\u628a\u4f60\u4e0d\u6562\u5220\u7684\u5783\u573e\u5168\u6807\u51fa\u6765\u4e86",
-  "datePublished": "2026-07-19",
-  "dateModified": "2026-07-19",
+  "headline": "\u5947\u8da3\u7f51\u7ad9\u6536\u85cf\u5bb6",
+  "datePublished": "2026-08-15",
+  "dateModified": "2026-08-15",
   "author": {
     "@id": "https://ibitbetter.space/about.html#author",
     "@type": "Person",
@@ -52,10 +52,10 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://ibitbetter.space/post/173.html"
+    "@id": "https://ibitbetter.space/post/185.html"
   },
   "image": "https://ibitbetter.space/og-image.jpg",
-  "url": "https://ibitbetter.space/post/173.html"
+  "url": "https://ibitbetter.space/post/185.html"
 }
 </script>
 
@@ -98,7 +98,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">C盘红了先别慌，这个开源工具把你不敢删的垃圾全标出来了</h1>
+<h1 class="postTitle">奇趣网站收藏家</h1>
 <div class="title-right">
     <a href="https://ibitbetter.space" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -116,20 +116,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>前几天我C盘又双叒红了，删了半天只腾出几个G，一看AppData还杵着十几个G不敢动。那感觉就像家里堆满了垃圾，但每袋都贴着「可能是重要文件」的标签，你压根不敢扔。</p>
-<p>后来顺藤摸瓜找到个叫 WinMole 的开源工具，Windows 上的，灵感来自 Mac 的 Mole。最骚的是它同时给了一个命令行 TUI 版和一个图形 GUI 版，你按键盘喜欢哪种用哪种，双击 run.bat 就能跑。<br>
-<a target="_blank" rel="noopener noreferrer nofollow" href="#"><img loading="lazy" src="https://ibitbetter.space/assets/images/winMole-index.webp" alt="winmole tui mode" width="800" height="300"  style="max-width: 100%; height: auto; max-height: 300px;; aspect-ratio: 800 / 300; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
-<p>我上来先点 Clean。它扫了一圈，把我平时根本不敢碰的东西列得明明白白：系统临时文件 4.70 MB、回收站 134.28 MB、缩略图缓存 6.01 MB、微信日志 12.44 MB、Chrome 缓存 408.50 MB……总共 25 项、566.52 MB。分类就是三大类：系统垃圾、App 缓存、浏览器缓存。每一项列得清楚，你才敢按 Enter 开清。更狠的是它支持 <code class="notranslate">--dry-run</code> 先预览，还自带白名单保护核心路径，手抖也不会误删。</p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="#"><img loading="lazy" src="https://ibitbetter.space/assets/images/winMole-clean.webp" alt="winmole tui mode clean" width="800" height="300"  style="max-width: 100%; height: auto; max-height: 300px;; aspect-ratio: 800 / 300; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
-<p>试了下 Memory，也就是内存释放。我电脑 8GB 内存，之前占用 72.2%，它 trim 了 136 个进程的工作集，8 个受保护的跳过，结果直接掉到 45.6%，多出 2.08 GB 可用。那一刻我风扇都安静了。</p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="#"><img loading="lazy" src="https://ibitbetter.space/assets/images/winMole-memory.webp" alt="winmole tui mode memory" width="800" height="300"  style="max-width: 100%; height: auto; max-height: 300px;; aspect-ratio: 800 / 300; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
-<p>Uninstall 也顶用。我系统里装了 138 个应用，它按大小排好序，Visual Studio 2010 那堆老古董 3.36 GB 顶在最上面，微信 812 MB、Git 336 MB 一目了然。你空格选中，回车就开卸，比 Windows 自带的卸载入口痛快太多。Analyze 更像磁盘 CT，哪个文件夹占了多少一清二楚，我 AppData 直接占了 79.2%，10.89 GB，终于知道 C 盘为啥红了。Status 就是个实时仪表板，CPU、内存、磁盘、进程、网络全在上面，甚至还有个 ASCII 小狗图标，有点极客浪漫。</p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="#"><img loading="lazy" src="https://ibitbetter.space/assets/images/winMole-uninstall.webp" alt="winmole tui mode uninstall" width="800" height="300"  style="max-width: 100%; height: auto; max-height: 300px;; aspect-ratio: 800 / 300; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
-<p>如果你完全不想敲命令，切到 GUI 版也行，界面是红色大标题配中文分类，点「一键清理」就完事，1.01 GB 垃圾直接标出来，适合长辈或者不爱看命令行的人。</p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="#"><img loading="lazy" src="https://ibitbetter.space/assets/images/winMole-gui.webp" alt="winmole gui 一键清理" width="800" height="800"  style="max-width: 100%; height: auto; max-height: 800px;; aspect-ratio: 800 / 800; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
-<p>它开源免费，GPL-3.0 协议，规则写在 cleanup_rules.yaml 里，你自己可以改。社区规则默认关闭，想深度清理得手动开，这点我觉得很克制——不默认乱删，比那些恨不得把你注册表清空的工具稳得多。</p>
-<p><a target="_blank" rel="noopener noreferrer nofollow" href="#"><img loading="lazy" src="https://ibitbetter.space/assets/images/winMole-status.webp" alt="winmole tui mode status" width="800" height="300"  style="max-width: 100%; height: auto; max-height: 300px;; aspect-ratio: 800 / 300; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
-<p>适合谁？C 盘常年飘红、又不敢乱删东西的 Windows 用户。去 GitHub 搜 <a href="https://github.com/iBitBetter/winmole/releases/tag/v1.1.0">iBitBetter/winmole</a>，如果你使用workbuddy，可以直接告诉workbuddy，让它直接上github搜索iBitBetter/winmole，帮你安装 winmole就可以了。</p></div>
+<div class="markdown-body" id="postBody"></div>
 
 
 <section class="related-posts">
@@ -142,23 +129,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     </li>
     
     <li>
+      <a href="https://ibitbetter.space/post/183.html">家庭日用品追踪小程序 · 开发过程技术文档</a>
+      <span class="related-date">2026-08-07</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/179.html">2026 免费在线工具推荐：14 个不用下载的神仙网站</a>
+      <span class="related-date">2026-07-25</span>
+    </li>
+    
+    <li>
       <a href="https://ibitbetter.space/post/176.html">一个硬核老爸，是怎么把女儿的“今天”变成“今晚”的故事的？</a>
       <span class="related-date">2026-07-22</span>
     </li>
     
     <li>
-      <a href="https://ibitbetter.space/post/169.html">别人电脑上没有 Office？把网页甩过去就行</a>
-      <span class="related-date">2026-07-16</span>
-    </li>
-    
-    <li>
-      <a href="https://ibitbetter.space/post/144.html">神奇海螺|ePub繁简在线转换</a>
-      <span class="related-date">2026-06-04</span>
-    </li>
-    
-    <li>
-      <a href="https://ibitbetter.space/post/142.html">Snipaste:截图贴图一把梭,用过就回不去的工具</a>
-      <span class="related-date">2026-06-03</span>
+      <a href="https://ibitbetter.space/post/173.html">C盘红了先别慌，这个开源工具把你不敢删的垃圾全标出来了</a>
+      <span class="related-date">2026-07-19</span>
     </li>
     
   </ul>
@@ -223,7 +210,11 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 
-
+cmButton=document.getElementById("cmButton");
+    span=document.createElement("span");
+    span.setAttribute("class","Counter");
+    span.innerHTML="3";
+    cmButton.appendChild(span);
 
 
 function openComments(){
