@@ -66,17 +66,18 @@
     color: var(--text); letter-spacing: -.02em;
   }
   .site-header .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  /* —— 回到首页按钮（icon.svg 图标） —— */
-  .home-btn {
-    margin-left: auto;
+  /* —— 顶部右侧图标栏（与站点 now/about 页一致） —— */
+  .site-header .title-right { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+  .site-header .title-right .btn {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 40px; height: 40px; padding: 0;
-    border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
-    text-decoration: none; overflow: hidden;
-    transition: border-color .15s, transform .15s;
+    width: 34px; height: 34px; padding: 0; margin: 0;
+    border: none; background: transparent; border-radius: 50%;
+    color: var(--muted); cursor: pointer; text-decoration: none;
+    transition: color .15s, background .15s;
   }
-  .home-btn:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
-  .home-btn .home-ico { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .site-header .title-right .btn:hover { color: var(--accent); background: var(--accent-soft); }
+  .site-header .title-right .btn.active-cur { color: var(--accent); }
+  .site-header .title-right .octicon { fill: currentColor; }
   /* 屏幕阅读器专用（保留 h1 供 SEO，但不显示） */
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -167,14 +168,23 @@
       <img src="https://ibitbetter.space/assets/curious.svg" class="avatar" alt="奇趣网站收藏家" />
       <span class="brand">奇趣网站收藏家</span>
     </a>
-    <a class="home-btn" href="https://ibitbetter.space" title="回到首页" aria-label="回到首页"><img class="home-ico" src="https://ibitbetter.space/assets/icon.svg" alt="回到首页" /></a>
+    <div class="title-right">
+      <a href="https://ibitbetter.space/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家" aria-label="奇趣网站收藏家">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25ZM14.5 6h-13v7.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm-6-3.5v2h6V2.75a.25.25 0 0 0-.25-.25ZM5 2.5v2h2v-2Zm-3.25 0a.25.25 0 0 0-.25.25V4.5h2v-2Z"></path></svg>
+      </a>
+      <a href="https://ibitbetter.space" class="btn btn-invisible circle" title="首页" aria-label="首页">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path></svg>
+      </a>
+      <button class="btn btn-invisible circle" type="button" onclick="qiqiuModeSwitch()" title="切换主题" aria-label="切换主题">
+        <svg class="octicon" width="16" height="16"><path id="qiqiuThemeSwitch" fill-rule="evenodd"></path></svg>
+      </button>
+    </div>
   </div>
   <div class="wrap">
     <header class="page-head">
       <h1 class="sr-only">奇趣网站收藏家</h1>
       <div class="intro">
         <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由我（站长）在收藏家 Issue 下评论维护，访客评论不计入。</p>
-        <p><strong>收录标准只有三条：</strong>第一，有意思——能解决具体问题的效率工具，或让人眼前一亮的小众站点；第二，能打开——链接长期有效、不弹满屏广告、不强制登录；第三，有独特价值——不是大厂做烂的东西，而是「居然还有人做这个」的巧思。不满足这三点的，再热闹也不收。</p>
       </div>
     </header>
     <div class="toolbar">
@@ -661,7 +671,7 @@
     </main>
     <p class="empty" id="empty">没有匹配的资源 🤔</p>
     <footer class="site-footer">
-      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-17T22:53:00.023Z
+      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-17T23:14:10.613Z
     </footer>
   </div>
   <script>
