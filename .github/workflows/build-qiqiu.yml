@@ -93,5 +93,6 @@ jobs:
             echo '没有变化，跳过提交'
           else
             git commit -m "chore: 更新奇趣网站收藏家（issue #$ISSUE_NUMBER）"
+            git pull --rebase origin main
             git push
           fi
