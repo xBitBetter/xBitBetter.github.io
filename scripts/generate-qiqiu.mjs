@@ -244,6 +244,7 @@ function dedupe(items) {
 // 顺序与主页可见图标一致：搜索 / now / 关于 / 奇趣网站收藏家 / RSS / 主题切换
 // （privacy、terms 按站长要求隐藏，不在此列出）。
 const ICONS = {
+  home: "M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z",
   search: "M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z",
   rss: "M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7.002 7.002 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.503 5.503 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489ZM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z",
   about: "M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z",
@@ -387,17 +388,18 @@ ${canonicalTag}
     color: var(--text); letter-spacing: -.02em;
   }
   .site-header .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  /* —— 回到首页按钮（icon.svg 图标） —— */
-  .home-btn {
-    margin-left: auto;
+  /* —— 顶部右侧图标栏（与站点 now/about 页一致） —— */
+  .site-header .title-right { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+  .site-header .title-right .btn {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 40px; height: 40px; padding: 0;
-    border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
-    text-decoration: none; overflow: hidden;
-    transition: border-color .15s, transform .15s;
+    width: 34px; height: 34px; padding: 0; margin: 0;
+    border: none; background: transparent; border-radius: 50%;
+    color: var(--muted); cursor: pointer; text-decoration: none;
+    transition: color .15s, background .15s;
   }
-  .home-btn:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
-  .home-btn .home-ico { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .site-header .title-right .btn:hover { color: var(--accent); background: var(--accent-soft); }
+  .site-header .title-right .btn.active-cur { color: var(--accent); }
+  .site-header .title-right .octicon { fill: currentColor; }
   /* 屏幕阅读器专用（保留 h1 供 SEO，但不显示） */
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -488,14 +490,23 @@ ${canonicalTag}
       <img src="${escapeHtml(avatar)}" class="avatar" alt="奇趣网站收藏家" />
       <span class="brand">奇趣网站收藏家</span>
     </a>
-    <a class="home-btn" href="${escapeHtml(cfg.siteUrl || "/")}" title="回到首页" aria-label="回到首页"><img class="home-ico" src="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/assets/icon.svg" alt="回到首页" /></a>
+    <div class="title-right">
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家" aria-label="奇趣网站收藏家">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.curious}"></path></svg>
+      </a>
+      <a href="${escapeHtml(cfg.siteUrl || "/")}" class="btn btn-invisible circle" title="首页" aria-label="首页">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.home}"></path></svg>
+      </a>
+      <button class="btn btn-invisible circle" type="button" onclick="qiqiuModeSwitch()" title="切换主题" aria-label="切换主题">
+        <svg class="octicon" width="16" height="16"><path id="qiqiuThemeSwitch" fill-rule="evenodd"></path></svg>
+      </button>
+    </div>
   </div>
   <div class="wrap">
     <header class="page-head">
       <h1 class="sr-only">${safeTitle}</h1>
       <div class="intro">
         <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由我（站长）在收藏家 Issue 下评论维护，访客评论不计入。</p>
-        <p><strong>收录标准只有三条：</strong>第一，有意思——能解决具体问题的效率工具，或让人眼前一亮的小众站点；第二，能打开——链接长期有效、不弹满屏广告、不强制登录；第三，有独特价值——不是大厂做烂的东西，而是「居然还有人做这个」的巧思。不满足这三点的，再热闹也不收。</p>
       </div>
     </header>
     <div class="toolbar">
