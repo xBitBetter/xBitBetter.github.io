@@ -316,7 +316,7 @@ function buildHtml(cfg, items, generatedAt) {
     ? `<link rel="canonical" href="${escapeHtml(canonical)}" />`
     : "";
   const avatar = cfg.siteUrl
-    ? `${cfg.siteUrl.replace(/\/$/, "")}/assets/ibitbetter.webp`
+    ? `${cfg.siteUrl.replace(/\/$/, "")}/assets/curious.svg`
     : "";
 
   return `<!DOCTYPE html>
@@ -379,27 +379,29 @@ ${canonicalTag}
     border-bottom: 1px solid var(--line);
   }
   .site-header .avatar {
-    width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
-    transition: transform .6s; flex: none;
+    width: 44px; height: 44px; border-radius: 0; object-fit: cover;
+    flex: none;
   }
-  .site-header .avatar:hover { transform: rotate(360deg); }
   .site-header .brand {
-    font-family: Monaco, "PingFang SC", monospace; font-size: 28px; font-weight: 700;
+    font-family: Monaco, "PingFang SC", monospace; font-size: 24px; font-weight: 700;
     color: var(--text); letter-spacing: -.02em;
   }
   .site-header .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  /* —— 头部图标栏（与主页 Gmeek .title-right 一致） —— */
-  .title-right { margin-left: auto; display: flex; align-items: center; gap: 2px; }
-  .title-right .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 34px; padding: 0; margin: 0;
-    border: none; background: transparent; border-radius: 50%;
-    color: var(--muted); cursor: pointer; text-decoration: none;
-    transition: color .15s, background .15s;
+  /* —— 回到首页按钮 —— */
+  .home-btn {
+    margin-left: auto;
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--accent); text-decoration: none;
+    border: 1px solid var(--accent); border-radius: 999px;
+    padding: 7px 16px; font-size: .85rem; line-height: 1;
+    transition: background .15s, color .15s;
   }
-  .title-right .btn:hover { color: var(--accent); background: var(--accent-soft); }
-  .title-right .btn.active-cur { color: var(--accent); }
-  .title-right .octicon { fill: currentColor; }
+  .home-btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
+  /* 屏幕阅读器专用（保留 h1 供 SEO，但不显示） */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 
   .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
   header.page-head h1 {
@@ -482,38 +484,17 @@ ${canonicalTag}
 <body>
   <div class="site-header">
     <a class="brand-wrap" href="${escapeHtml(cfg.siteUrl || "/")}">
-      <img src="${escapeHtml(avatar)}" class="avatar" alt="iBitBetter" />
-      <span class="brand">iBitBetter</span>
+      <img src="${escapeHtml(avatar)}" class="avatar" alt="奇趣网站收藏家" />
+      <span class="brand">奇趣网站收藏家</span>
     </a>
-    <div class="title-right">
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/tag.html" class="btn btn-invisible circle" title="搜索">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.search}"></path></svg>
-      </a>
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/now.html" class="btn btn-invisible circle" title="我正在做/想些什么？">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.now}"></path></svg>
-      </a>
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/about.html" class="btn btn-invisible circle" title="关于 | iBitBetter">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.about}"></path></svg>
-      </a>
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.curious}"></path></svg>
-      </a>
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/rss.xml" target="_blank" class="btn btn-invisible circle" title="RSS">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.rss}"></path></svg>
-      </a>
-      <button class="btn btn-invisible circle" type="button" onclick="qiqiuModeSwitch()" title="切换主题">
-        <svg class="octicon" width="16" height="16"><path id="qiqiuThemeSwitch" fill-rule="evenodd"></path></svg>
-      </button>
-    </div>
+    <a class="home-btn" href="${escapeHtml(cfg.siteUrl || "/")}">← 回到首页</a>
   </div>
   <div class="wrap">
     <header class="page-head">
-      <h1>${safeTitle}</h1>
-      <p class="sub">${safeSite} · 由 GitHub Issue 评论自动整理</p>
+      <h1 class="sr-only">${safeTitle}</h1>
       <div class="intro">
-        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。</p>
+        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由站长在收藏家 Issue 下评论维护。</p>
         <p><strong>收录标准只有三条：</strong>第一，有意思——能解决具体问题的效率工具，或让人眼前一亮的小众站点；第二，能打开——链接长期有效、不弹满屏广告、不强制登录；第三，有独特价值——不是大厂做烂的东西，而是「居然还有人做这个」的巧思。不满足这三点的，再热闹也不收。</p>
-        <p><strong>用法与体验：</strong>顶部搜索框可按名称、描述或标签筛选，标签条按分类一键跳转，点标题即到原站，存成书签随时翻。收录由我（站长）在收藏家 Issue 下评论维护，访客评论不计入。最迷人的是某天你卡在一个小问题，翻到半年前存下的站恰好解了它——这份清单常更新，不是一次性的。</p>
       </div>
     </header>
     <div class="toolbar">
