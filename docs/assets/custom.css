@@ -49,8 +49,7 @@ body{
   color:var(--text) !important;
 }
 .avatar{
-  width:44px !important;height:44px !important;border-radius:50% !important;
-  box-shadow:0 0 0 2px var(--accent) !important;     /* 蓝色细环 */
+  width:44px !important;height:44px !important;border-radius:0 !important;
 }
 .title-right .btn{
   color:var(--muted) !important;border-radius:4px !important;
