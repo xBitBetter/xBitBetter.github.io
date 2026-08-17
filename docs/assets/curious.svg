@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="奇趣网站收藏家">
+  <title>奇趣网站收藏家</title>
+  <!-- 与 iBitBetter 主站标同款蓝色圆角方块底座 -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#3475e4"/>
+  <!-- 白色浏览器窗口：呼应「网站」 -->
+  <rect x="15" y="16" width="34" height="32" rx="5" fill="#ffffff"/>
+  <!-- 窗口标题栏 -->
+  <rect x="15" y="23.5" width="34" height="2.5" fill="#3475e4"/>
+  <!-- 蓝色四角星 spark：呼应「奇趣 / 发现」 -->
+  <path d="M32 30 L34.2 34.8 L39 37 L34.2 39.2 L32 44 L29.8 39.2 L25 37 L29.8 34.8 Z" fill="#3475e4"/>
+</svg>
