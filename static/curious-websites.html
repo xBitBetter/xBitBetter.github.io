@@ -58,27 +58,29 @@
     border-bottom: 1px solid var(--line);
   }
   .site-header .avatar {
-    width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
-    transition: transform .6s; flex: none;
+    width: 44px; height: 44px; border-radius: 0; object-fit: cover;
+    flex: none;
   }
-  .site-header .avatar:hover { transform: rotate(360deg); }
   .site-header .brand {
-    font-family: Monaco, "PingFang SC", monospace; font-size: 28px; font-weight: 700;
+    font-family: Monaco, "PingFang SC", monospace; font-size: 24px; font-weight: 700;
     color: var(--text); letter-spacing: -.02em;
   }
   .site-header .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  /* —— 头部图标栏（与主页 Gmeek .title-right 一致） —— */
-  .title-right { margin-left: auto; display: flex; align-items: center; gap: 2px; }
-  .title-right .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 34px; padding: 0; margin: 0;
-    border: none; background: transparent; border-radius: 50%;
-    color: var(--muted); cursor: pointer; text-decoration: none;
-    transition: color .15s, background .15s;
+  /* —— 回到首页按钮 —— */
+  .home-btn {
+    margin-left: auto;
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--accent); text-decoration: none;
+    border: 1px solid var(--accent); border-radius: 999px;
+    padding: 7px 16px; font-size: .85rem; line-height: 1;
+    transition: background .15s, color .15s;
   }
-  .title-right .btn:hover { color: var(--accent); background: var(--accent-soft); }
-  .title-right .btn.active-cur { color: var(--accent); }
-  .title-right .octicon { fill: currentColor; }
+  .home-btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
+  /* 屏幕阅读器专用（保留 h1 供 SEO，但不显示） */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 
   .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
   header.page-head h1 {
@@ -161,38 +163,17 @@
 <body>
   <div class="site-header">
     <a class="brand-wrap" href="https://ibitbetter.space">
-      <img src="https://ibitbetter.space/assets/ibitbetter.webp" class="avatar" alt="iBitBetter" />
-      <span class="brand">iBitBetter</span>
+      <img src="https://ibitbetter.space/assets/curious.svg" class="avatar" alt="奇趣网站收藏家" />
+      <span class="brand">奇趣网站收藏家</span>
     </a>
-    <div class="title-right">
-      <a href="https://ibitbetter.space/tag.html" class="btn btn-invisible circle" title="搜索">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
-      </a>
-      <a href="https://ibitbetter.space/now.html" class="btn btn-invisible circle" title="我正在做/想些什么？">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm.252-12.932a.476.476 0 0 0-.682.195l-1.2 2.432-2.684.39a.477.477 0 0 0-.266.816l1.944 1.892-.46 2.674a.479.479 0 0 0 .694.504L8 10.709l2.4 1.261a.478.478 0 0 0 .694-.504l-.458-2.673L12.578 6.9a.479.479 0 0 0-.265-.815l-2.685-.39-1.2-2.432a.473.473 0 0 0-.176-.195Z"></path></svg>
-      </a>
-      <a href="https://ibitbetter.space/about.html" class="btn btn-invisible circle" title="关于 | iBitBetter">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg>
-      </a>
-      <a href="https://ibitbetter.space/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25ZM14.5 6h-13v7.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm-6-3.5v2h6V2.75a.25.25 0 0 0-.25-.25ZM5 2.5v2h2v-2Zm-3.25 0a.25.25 0 0 0-.25.25V4.5h2v-2Z"></path></svg>
-      </a>
-      <a href="https://ibitbetter.space/rss.xml" target="_blank" class="btn btn-invisible circle" title="RSS">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7.002 7.002 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.503 5.503 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489ZM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"></path></svg>
-      </a>
-      <button class="btn btn-invisible circle" type="button" onclick="qiqiuModeSwitch()" title="切换主题">
-        <svg class="octicon" width="16" height="16"><path id="qiqiuThemeSwitch" fill-rule="evenodd"></path></svg>
-      </button>
-    </div>
+    <a class="home-btn" href="https://ibitbetter.space">← 回到首页</a>
   </div>
   <div class="wrap">
     <header class="page-head">
-      <h1>奇趣网站收藏家</h1>
-      <p class="sub">iBitBetter · 由 GitHub Issue 评论自动整理</p>
+      <h1 class="sr-only">奇趣网站收藏家</h1>
       <div class="intro">
-        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。</p>
+        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由站长在收藏家 Issue 下评论维护。</p>
         <p><strong>收录标准只有三条：</strong>第一，有意思——能解决具体问题的效率工具，或让人眼前一亮的小众站点；第二，能打开——链接长期有效、不弹满屏广告、不强制登录；第三，有独特价值——不是大厂做烂的东西，而是「居然还有人做这个」的巧思。不满足这三点的，再热闹也不收。</p>
-        <p><strong>用法与体验：</strong>顶部搜索框可按名称、描述或标签筛选，标签条按分类一键跳转，点标题即到原站，存成书签随时翻。收录由我（站长）在收藏家 Issue 下评论维护，访客评论不计入。最迷人的是某天你卡在一个小问题，翻到半年前存下的站恰好解了它——这份清单常更新，不是一次性的。</p>
       </div>
     </header>
     <div class="toolbar">
@@ -679,7 +660,7 @@
     </main>
     <p class="empty" id="empty">没有匹配的资源 🤔</p>
     <footer class="site-footer">
-      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-17T08:53:44.686Z
+      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-17T12:28:38.664Z
     </footer>
   </div>
   <script>
