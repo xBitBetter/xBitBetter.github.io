@@ -387,16 +387,17 @@ ${canonicalTag}
     color: var(--text); letter-spacing: -.02em;
   }
   .site-header .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  /* —— 回到首页按钮 —— */
+  /* —— 回到首页按钮（icon.svg 图标） —— */
   .home-btn {
     margin-left: auto;
-    display: inline-flex; align-items: center; gap: 4px;
-    color: var(--accent); text-decoration: none;
-    border: 1px solid var(--accent); border-radius: 999px;
-    padding: 7px 16px; font-size: .85rem; line-height: 1;
-    transition: background .15s, color .15s;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; padding: 0;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+    text-decoration: none; overflow: hidden;
+    transition: border-color .15s, transform .15s;
   }
-  .home-btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
+  .home-btn:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+  .home-btn .home-ico { width: 100%; height: 100%; display: block; object-fit: cover; }
   /* 屏幕阅读器专用（保留 h1 供 SEO，但不显示） */
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -487,13 +488,13 @@ ${canonicalTag}
       <img src="${escapeHtml(avatar)}" class="avatar" alt="奇趣网站收藏家" />
       <span class="brand">奇趣网站收藏家</span>
     </a>
-    <a class="home-btn" href="${escapeHtml(cfg.siteUrl || "/")}">← 回到首页</a>
+    <a class="home-btn" href="${escapeHtml(cfg.siteUrl || "/")}" title="回到首页" aria-label="回到首页"><img class="home-ico" src="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/assets/icon.svg" alt="回到首页" /></a>
   </div>
   <div class="wrap">
     <header class="page-head">
       <h1 class="sr-only">${safeTitle}</h1>
       <div class="intro">
-        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由站长在收藏家 Issue 下评论维护。</p>
+        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由我（站长）在收藏家 Issue 下评论维护，访客评论不计入。</p>
         <p><strong>收录标准只有三条：</strong>第一，有意思——能解决具体问题的效率工具，或让人眼前一亮的小众站点；第二，能打开——链接长期有效、不弹满屏广告、不强制登录；第三，有独特价值——不是大厂做烂的东西，而是「居然还有人做这个」的巧思。不满足这三点的，再热闹也不收。</p>
       </div>
     </header>
