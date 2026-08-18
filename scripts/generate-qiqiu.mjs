@@ -506,7 +506,7 @@ ${canonicalTag}
     <header class="page-head">
       <h1 class="sr-only">${safeTitle}</h1>
       <div class="intro">
-        <p>「奇趣网站收藏家」是我网上闲逛时一个一个攒下的私藏角落，不是大而全的导航站，而是亲测过、愿意反复回头的那一小部分，集中放在一个随时能翻找、你也能取用的地方。收录由我（站长）在收藏家 Issue 下评论维护，访客评论不计入。</p>
+        <p>「奇趣网站收藏家」互联网上精彩内容浩如烟海，收集有意思的网站，体验别样的风景。</p>
       </div>
     </header>
     <div class="toolbar">
