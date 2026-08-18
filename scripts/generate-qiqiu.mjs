@@ -491,11 +491,11 @@ ${canonicalTag}
       <span class="brand">奇趣网站收藏家</span>
     </a>
     <div class="title-right">
-      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家" aria-label="奇趣网站收藏家">
-        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.curious}"></path></svg>
-      </a>
       <a href="${escapeHtml(cfg.siteUrl || "/")}" class="btn btn-invisible circle" title="首页" aria-label="首页">
         <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.home}"></path></svg>
+      </a>
+      <a href="${escapeHtml((cfg.siteUrl || "").replace(/\/$/, ""))}/curious-websites.html" class="btn btn-invisible circle active-cur" title="奇趣网站收藏家" aria-label="奇趣网站收藏家">
+        <svg class="octicon" width="16" height="16"><path fill-rule="evenodd" d="${ICONS.curious}"></path></svg>
       </a>
       <button class="btn btn-invisible circle" type="button" onclick="qiqiuModeSwitch()" title="切换主题" aria-label="切换主题">
         <svg class="octicon" width="16" height="16"><path id="qiqiuThemeSwitch" fill-rule="evenodd"></path></svg>
