@@ -462,10 +462,12 @@ ${canonicalTag}
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
   /* 移动端：标签条改为单行横向滚动，避免折行撑满整屏把卡片挤掉 */
   @media (max-width: 600px) {
-    .site-header { padding: 16px 45px 10px; flex-wrap: wrap; }
-    .site-header .brand { font-size: 22px; }
-    .title-right .btn { width: 30px; height: 30px; }
-    .wrap { padding: 20px 45px 48px; }
+    .site-header { padding: 12px 16px 8px; gap: 8px; flex-wrap: nowrap; }
+    .site-header .avatar { width: 36px; height: 36px; }
+    .site-header .brand { font-size: 20px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .title-right { gap: 0; flex: none; }
+    .title-right .btn { width: 32px; height: 32px; }
+    .wrap { padding: 18px 16px 40px; }
     .toolbar { padding: 12px 0 8px; }
     .chips {
       flex-wrap: nowrap;
