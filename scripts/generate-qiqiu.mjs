@@ -488,7 +488,7 @@ ${canonicalTag}
   <div class="site-header">
     <a class="brand-wrap" href="${escapeHtml(cfg.siteUrl || "/")}">
       <img src="${escapeHtml(avatar)}" class="avatar" alt="奇趣网站收藏家" />
-      <span class="brand">奇趣网站收藏家</span>
+      <span class="brand">Curious</span>
     </a>
     <div class="title-right">
       <a href="${escapeHtml(cfg.siteUrl || "/")}" class="btn btn-invisible circle" title="首页" aria-label="首页">
