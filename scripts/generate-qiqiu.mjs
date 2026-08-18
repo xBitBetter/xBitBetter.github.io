@@ -376,7 +376,7 @@ ${canonicalTag}
   /* —— 顶部导航（与站点一致） —— */
   .site-header {
     display: flex; align-items: center; gap: 12px;
-    max-width: 880px; margin: 0 auto; padding: 22px 20px 14px;
+    max-width: 900px; margin: 0 auto; padding: 22px 45px 14px;
     border-bottom: 1px solid var(--line);
   }
   .site-header .avatar {
@@ -406,7 +406,7 @@ ${canonicalTag}
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
 
-  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 45px 64px; }
   header.page-head h1 {
     font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin: 0 0 6px; letter-spacing: -.02em;
   }
@@ -461,11 +461,11 @@ ${canonicalTag}
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
   /* 移动端：标签条改为单行横向滚动，避免折行撑满整屏把卡片挤掉 */
-  @media (max-width: 640px) {
-    .site-header { padding: 16px 14px 10px; flex-wrap: wrap; }
+  @media (max-width: 600px) {
+    .site-header { padding: 16px 45px 10px; flex-wrap: wrap; }
     .site-header .brand { font-size: 22px; }
     .title-right .btn { width: 30px; height: 30px; }
-    .wrap { padding: 20px 14px 48px; }
+    .wrap { padding: 20px 45px 48px; }
     .toolbar { padding: 12px 0 8px; }
     .chips {
       flex-wrap: nowrap;
