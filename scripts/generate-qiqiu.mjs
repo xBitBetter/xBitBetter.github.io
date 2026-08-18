@@ -110,7 +110,7 @@ function faviconUrl(raw) {
   try {
     const u = new URL(raw);
     if (u.protocol === "http:" || u.protocol === "https:") {
-      return `https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`;
+      return `https://www.bing.com/favicon.ico?url=${u.hostname}`;
     }
   } catch {
     /* ignore */
@@ -267,7 +267,7 @@ function renderCards(items) {
         : "";
       const icon = faviconUrl(it.url);
       const iconHtml = icon
-        ? `      <img class="card-favicon" src="${escapeHtml(icon)}" alt="" width="22" height="22" loading="lazy" onerror="this.onerror=function(){this.style.display='none'}; this.src='https://icons.duckduckgo.com/ip3/'+new URL(this.parentNode.querySelector('.card-title').href).hostname+'.ico';" />`
+        ? `      <img class="card-favicon" src="${escapeHtml(icon)}" alt="" width="22" height="22" loading="lazy" onerror="this.onerror=function(){this.style.display='none'}; var h=new URL(this.closest('.card').querySelector('.card-title').href).hostname; this.src='https://'+h+'/favicon.ico';" />`
         : "";
       return `      <article class="card" data-title="${escapeHtml(
         it.title.toLowerCase()
