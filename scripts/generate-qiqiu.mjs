@@ -265,16 +265,12 @@ function renderCards(items) {
       const catHtml = showCat
         ? `<span class="cat">${escapeHtml(it.category)}</span>`
         : "";
-      const icon = faviconUrl(it.url);
-      const iconHtml = icon
-        ? `      <img class="card-favicon" src="${escapeHtml(icon)}" alt="" width="22" height="22" loading="lazy" onerror="this.onerror=function(){this.style.display='none'}; var h=new URL(this.closest('.card').querySelector('.card-title').href).hostname; this.src='https://'+h+'/favicon.ico';" />`
-        : "";
       return `      <article class="card" data-title="${escapeHtml(
         it.title.toLowerCase()
       )}" data-desc="${escapeHtml(it.desc.toLowerCase())}" data-tags="${escapeHtml(
         it.tags.join(" ").toLowerCase()
       )}">
-        ${iconHtml}<a class="card-title" href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+        <a class="card-title" href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
         it.title
       )}</a>
         ${it.desc ? `<p class="card-desc">${escapeHtml(it.desc)}</p>` : ""}
