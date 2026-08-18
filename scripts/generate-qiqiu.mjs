@@ -562,7 +562,7 @@ ${cards}
     })();
   </script>
   <script>
-    var QIQIU_ICONS = { sun: ICONS.sun, moon: ICONS.moon };
+    var QIQIU_ICONS = { sun: "${ICONS.sun}", moon: "${ICONS.moon}" };
     function qiqiuModeSwitch() {
       var cur = document.documentElement.getAttribute("data-color-mode") || "light";
       var next = cur === "light" ? "dark" : "light";
