@@ -456,26 +456,6 @@
       "通过 Canvas 量度对比检测系统是否安装常见字体，仅抽样，非完整列表。");
   }
 
-  // ---------- 11. 简易指纹 ----------
-  function buildFingerprint(){
-    const ua=new UAParser().getResult();
-    const cv=document.createElement("canvas"); const ctx=cv.getContext("2d");
-    ctx.font="16px Arial"; ctx.fillText("fingerprint",0,0);
-    const cvHash=cyrb53(cv.toDataURL());
-    const raw=[
-      navigator.userAgent, navigator.language, (navigator.languages||[]).join(","),
-      navigator.platform, navigator.hardwareConcurrency, navigator.deviceMemory,
-      screen.width+"x"+screen.height+"x"+screen.colorDepth, window.devicePixelRatio,
-      Intl.DateTimeFormat().resolvedOptions().timeZone, new Date().getTimezoneOffset(),
-      ua.browser.name, ua.os.name, ua.cpu.architecture
-    ].join("|")+ "|canvas:"+cvHash;
-    const hash=cyrb53(raw);
-    const rows=[["组合指纹哈希", hash],["画布哈希", cvHash]];
-    report["简易指纹"] = rows.map(r=>[r[0],r[1]]);
-    return cardHTML("简易指纹", "🪪", rows.map(r=>rowHTML(r[0],r[1])),
-      "示例性组合哈希，仅供演示，并非唯一身份标识（真实指纹需更复杂信号）。");
-  }
-
   // ---------- 渲染 ----------
   function render(){
     const grid=$("grid");
