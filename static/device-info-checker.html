@@ -55,7 +55,8 @@
   }
   *{box-sizing:border-box;}
   body{
-    margin:0; background:var(--bg); color:var(--text);
+    box-sizing:border-box; min-width:200px; max-width:900px; margin:20px auto; padding:45px;
+    background:var(--bg); color:var(--text);
     font-family:"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Heiti SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
     line-height:1.75; -webkit-font-smoothing:antialiased;
     overflow-wrap:break-word;
@@ -63,7 +64,7 @@
   header{
     background:var(--bg); color:var(--text);
     border-bottom:1px solid var(--line);   /* 细线分隔，替代厚重横幅 */
-    padding:30px 22px 24px;
+    padding:30px 0 24px;
   }
   .wrap{max-width:1080px;margin:0 auto;}
   header h1{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em;color:var(--text);}
@@ -82,7 +83,7 @@
   .btn-primary:hover{background:var(--accent-soft);}
   .btn-ghost{border-color:var(--line);color:var(--muted);}
   .btn-ghost:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);}
-  main{padding:26px 22px 64px;}
+  main{padding:26px 0 64px;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;}
   .card{
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
@@ -103,15 +104,26 @@
   .v.ok{color:var(--ok);} .v.warn{color:var(--warn);} .v.bad{color:var(--bad);}
   .pending{color:var(--muted);font-style:italic;}
   .note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6;padding-top:10px;border-top:1px dashed var(--line);}
-  footer{max-width:1080px;margin:0 auto;padding:0 22px 44px;color:var(--muted);font-size:13px;line-height:1.7;}
+  footer{max-width:1080px;margin:0 auto;padding:0 0 44px;color:var(--muted);font-size:13px;line-height:1.7;}
   footer code{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px;}
   @media print{
+    body{padding:0;margin:0;}
     header{border-bottom:1px solid #ccc;}
     .toolbar{display:none;} .card{break-inside:avoid;box-shadow:none;border-color:#ccc;}
     .card h2{color:#000;}
   }
+  /* 移动端：左右留白随主页 — 收内边距、标题略缩 */
+  @media (max-width:600px){
+    body{padding:8px;}
+    header{padding:20px 0 16px;}
+    main{padding:18px 0 40px;}
+    .faq{padding:8px 0 40px;}
+    footer{padding:0 0 32px;}
+    header h1{font-size:21px;}
+    .grid{grid-template-columns:1fr;}
+  }
   /* FAQ 板块：延续极简细线风 */
-  .faq{max-width:1080px;margin:0 auto;padding:8px 22px 60px;}
+  .faq{max-width:1080px;margin:0 auto;padding:8px 0 60px;}
   .faq h2{font-size:18px;font-weight:700;color:var(--text);margin:0 0 6px;padding-bottom:12px;border-bottom:1px solid var(--line);}
   .faq-item{border-bottom:1px solid var(--line);padding:15px 0;}
   .faq-item:last-child{border-bottom:0;}
@@ -125,6 +137,7 @@
     <h1>本机配置信息探测器</h1>
     <p>纯前端实现 · 基于浏览器标准 API 实时读取本机/浏览器配置 · 数据不上传、全部本地计算</p>
     <div class="toolbar">
+      <button class="btn-ghost" id="btn-home">🏠 返回首页</button>
       <button class="btn-primary" id="btn-refresh">↻ 重新检测</button>
       <button class="btn-ghost" id="btn-copy">📋 复制全部</button>
       <button class="btn-ghost" id="btn-json">⬇ 导出 JSON</button>
@@ -210,19 +223,6 @@
     const el = $(id); if(!el) return;
     el.textContent = (value===undefined||value===null||value==="") ? NA : value;
     if(cls) el.className = "v "+cls;
-  }
-  function cyrb53(str, seed=0){
-    let h1=0xdeadbeef^seed, h2=0x41c6ce57^seed;
-    for(let i=0,ch; i<str.length; i++){
-      ch=str.charCodeAt(i);
-      h1=Math.imul(h1^ch,2654435761);
-      h2=Math.imul(h2^ch,1597334677);
-    }
-    h1=Math.imul(h1^(h1>>>16),2246822507);
-    h1^=Math.imul(h2^(h2>>>13),3266489909);
-    h2=Math.imul(h2^(h2>>>16),2246822507);
-    h2^=Math.imul(h1^(h1>>>13),3266489909);
-    return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);
   }
   function fmtBytes(n){
     if(n===undefined||n===null||isNaN(n)) return NA;
@@ -461,7 +461,7 @@
     const grid=$("grid");
     grid.innerHTML =
       buildBrowser()+buildOS()+buildHardware()+buildScreen()+buildGPU()+
-      buildNetwork()+buildBattery()+buildStorage()+buildMedia()+buildFonts()+buildFingerprint();
+      buildNetwork()+buildBattery()+buildStorage()+buildMedia()+buildFonts();
     // 异步探测
     probeLocalIP().then(ips=>{
       const txt = ips.length?ips.join(", "):"未获取到(受限/无 STUN)";
@@ -500,6 +500,7 @@
     a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   }
 
+  $("btn-home").addEventListener("click", ()=>{ window.location.href = "https://ibitbetter.space"; });
   $("btn-refresh").addEventListener("click", render);
   $("btn-copy").addEventListener("click", ()=>{
     const txt=reportText(false);
