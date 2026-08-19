@@ -13,6 +13,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://ibitbetter.space/device-info-checker.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://ibitbetter.space/about.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -20,7 +26,7 @@
   </url>
   <url>
     <loc>https://ibitbetter.space/curious-websites.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -3,7 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>本机配置信息探测器</title>
+<title>本机配置在线检测工具 - 查看电脑硬件与浏览器信息 | iBitBetter</title>
+<meta name="description" content="免费在线检测本机配置：浏览器、操作系统、CPU 核心数与架构、内存、屏幕分辨率、GPU 显卡型号、网络、电池、存储与媒体设备等硬件参数。纯前端本地计算，数据不上传。">
+<meta name="keywords" content="本机配置,电脑配置查看,浏览器检测,硬件信息,在线检测电脑配置,GPU型号,屏幕尺寸,网络信息,本地IP">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="iBitBetter">
+<meta name="theme-color" content="#3475e4">
+<link rel="canonical" href="https://ibitbetter.space/device-info-checker.html">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="iBitBetter">
+<meta property="og:title" content="本机配置在线检测工具 - 查看电脑硬件与浏览器信息 | iBitBetter">
+<meta property="og:description" content="免费在线检测本机配置：浏览器、操作系统、CPU、内存、屏幕、GPU、网络、电池等硬件参数，纯前端本地计算，数据不上传。">
+<meta property="og:url" content="https://ibitbetter.space/device-info-checker.html">
+<meta property="og:image" content="https://ibitbetter.space/og-image.jpg">
+<meta property="og:locale" content="zh_CN">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="本机配置在线检测工具 - 查看电脑硬件与浏览器信息 | iBitBetter">
+<meta name="twitter:description" content="免费在线检测本机配置：浏览器、操作系统、CPU、内存、屏幕、GPU、网络、电池等硬件参数，纯前端本地计算。">
+<meta name="twitter:image" content="https://ibitbetter.space/og-image.jpg">
+<!-- JSON-LD: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"本机配置信息在线检测器",
+  "description":"基于浏览器的纯前端工具，实时读取并展示本机浏览器、操作系统、CPU、内存、屏幕、GPU、网络、电池、存储、媒体设备等硬件与系统配置信息，数据本地计算不上传。",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web Browser",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},
+  "url":"https://ibitbetter.space/device-info-checker.html",
+  "author":{"@type":"Organization","name":"iBitBetter","url":"https://ibitbetter.space"}
+}
+</script>
 <style>
   /* 风格对齐 ibitbetter.space / curious-websites —— 极简阅读风：白底、深灰正文、蓝强调、细线分隔、无重阴影 */
   :root{
@@ -22,7 +55,8 @@
   }
   *{box-sizing:border-box;}
   body{
-    margin:0; background:var(--bg); color:var(--text);
+    box-sizing:border-box; min-width:200px; max-width:900px; margin:20px auto; padding:45px;
+    background:var(--bg); color:var(--text);
     font-family:"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Heiti SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
     line-height:1.75; -webkit-font-smoothing:antialiased;
     overflow-wrap:break-word;
@@ -30,7 +64,7 @@
   header{
     background:var(--bg); color:var(--text);
     border-bottom:1px solid var(--line);   /* 细线分隔，替代厚重横幅 */
-    padding:30px 22px 24px;
+    padding:30px 0 24px;
   }
   .wrap{max-width:1080px;margin:0 auto;}
   header h1{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em;color:var(--text);}
@@ -49,7 +83,7 @@
   .btn-primary:hover{background:var(--accent-soft);}
   .btn-ghost{border-color:var(--line);color:var(--muted);}
   .btn-ghost:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);}
-  main{padding:26px 22px 64px;}
+  main{padding:26px 0 64px;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;}
   .card{
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
@@ -70,13 +104,31 @@
   .v.ok{color:var(--ok);} .v.warn{color:var(--warn);} .v.bad{color:var(--bad);}
   .pending{color:var(--muted);font-style:italic;}
   .note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6;padding-top:10px;border-top:1px dashed var(--line);}
-  footer{max-width:1080px;margin:0 auto;padding:0 22px 44px;color:var(--muted);font-size:13px;line-height:1.7;}
+  footer{max-width:1080px;margin:0 auto;padding:0 0 44px;color:var(--muted);font-size:13px;line-height:1.7;}
   footer code{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px;}
   @media print{
+    body{padding:0;margin:0;}
     header{border-bottom:1px solid #ccc;}
     .toolbar{display:none;} .card{break-inside:avoid;box-shadow:none;border-color:#ccc;}
     .card h2{color:#000;}
   }
+  /* 移动端：左右留白随主页 — 收内边距、标题略缩 */
+  @media (max-width:600px){
+    body{padding:8px;}
+    header{padding:20px 0 16px;}
+    main{padding:18px 0 40px;}
+    .faq{padding:8px 0 40px;}
+    footer{padding:0 0 32px;}
+    header h1{font-size:21px;}
+    .grid{grid-template-columns:1fr;}
+  }
+  /* FAQ 板块：延续极简细线风 */
+  .faq{max-width:1080px;margin:0 auto;padding:8px 0 60px;}
+  .faq h2{font-size:18px;font-weight:700;color:var(--text);margin:0 0 6px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);padding:15px 0;}
+  .faq-item:last-child{border-bottom:0;}
+  .faq-q{font-weight:600;color:var(--accent);font-size:14.5px;margin:0 0 7px;line-height:1.6;}
+  .faq-a{color:var(--muted);font-size:13.5px;line-height:1.75;margin:0;}
 </style>
 </head>
 <body>
@@ -85,6 +137,7 @@
     <h1>本机配置信息探测器</h1>
     <p>纯前端实现 · 基于浏览器标准 API 实时读取本机/浏览器配置 · 数据不上传、全部本地计算</p>
     <div class="toolbar">
+      <button class="btn-ghost" id="btn-home">🏠 返回首页</button>
       <button class="btn-primary" id="btn-refresh">↻ 重新检测</button>
       <button class="btn-ghost" id="btn-copy">📋 复制全部</button>
       <button class="btn-ghost" id="btn-json">⬇ 导出 JSON</button>
@@ -102,6 +155,43 @@
   说明：浏览器出于隐私保护，仅能读取部分本机信息（如 CPU 核心数、内存为近似值、GPU 经 WebGL 暴露的渲染器字符串）。
   检测逻辑复用了开源库 <code>ua-parser-js</code>（MIT），其余基于 WebGL / Screen / Navigator / Network Information / Storage / MediaDevices 等标准 API。
 </footer>
+
+<section class="faq" aria-label="常见问题">
+  <h2>常见问题</h2>
+  <div class="faq-item">
+    <p class="faq-q">这个工具会读取并上传我的数据吗？</p>
+    <p class="faq-a">不会。全部检测都在你本机的浏览器内完成，不发起任何网络请求，配置信息不会上传到任何服务器，可放心使用。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">它能检测到哪些本机信息？</p>
+    <p class="faq-a">覆盖浏览器与操作系统、CPU 逻辑核心数与架构、内存估算、屏幕分辨率与色彩深度、GPU 渲染器型号、网络类型与带宽、电池、存储配额、摄像头/麦克风等媒体设备，以及已安装字体的抽样检测。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">为什么内存只显示到 8GB 上限、数值不够准确？</p>
+    <p class="faq-a">出于隐私保护，浏览器对 <code>deviceMemory</code> 接口有上限限制（通常封顶 8GB），且返回的是粗略估算值，并非真实物理内存容量。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">为什么电池状态显示「不支持」？</p>
+    <p class="faq-a">Battery Status API 已在 Chrome 等现代浏览器中被移除，绝大多数环境下无法读取电池信息，显示「不支持」属于正常现象，并非工具故障。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">支持哪些浏览器？本地 IP 一定能获取到吗？</p>
+    <p class="faq-a">任何现代浏览器（Chrome、Edge、Firefox、Safari 等）均可正常使用。本地 IP 通过 WebRTC 候选地址获取，部分浏览器出于隐私会限制该项，可能为空或获取不到，属正常情况。</p>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"这个工具会读取并上传我的数据吗？","acceptedAnswer":{"@type":"Answer","text":"不会。全部检测都在你本机的浏览器内完成，不发起任何网络请求，配置信息不会上传到任何服务器，可放心使用。"}},
+    {"@type":"Question","name":"它能检测到哪些本机信息？","acceptedAnswer":{"@type":"Answer","text":"覆盖浏览器与操作系统、CPU 逻辑核心数与架构、内存估算、屏幕分辨率与色彩深度、GPU 渲染器型号、网络类型与带宽、电池、存储配额、摄像头/麦克风等媒体设备，以及已安装字体的抽样检测。"}},
+    {"@type":"Question","name":"为什么内存只显示到 8GB 上限、数值不够准确？","acceptedAnswer":{"@type":"Answer","text":"出于隐私保护，浏览器对 deviceMemory 接口有上限限制（通常封顶 8GB），且返回的是粗略估算值，并非真实物理内存容量。"}},
+    {"@type":"Question","name":"为什么电池状态显示「不支持」？","acceptedAnswer":{"@type":"Answer","text":"Battery Status API 已在 Chrome 等现代浏览器中被移除，绝大多数环境下无法读取电池信息，显示「不支持」属于正常现象，并非工具故障。"}},
+    {"@type":"Question","name":"支持哪些浏览器？本地 IP 一定能获取到吗？","acceptedAnswer":{"@type":"Answer","text":"任何现代浏览器（Chrome、Edge、Firefox、Safari 等）均可正常使用。本地 IP 通过 WebRTC 候选地址获取，部分浏览器出于隐私会限制该项，可能为空或获取不到，属正常情况。"}}
+  ]
+}
+</script>
 
 <!-- ===== ua-parser-js (开源, MIT) 内联开始 ===== -->
 <script>
@@ -133,19 +223,6 @@
     const el = $(id); if(!el) return;
     el.textContent = (value===undefined||value===null||value==="") ? NA : value;
     if(cls) el.className = "v "+cls;
-  }
-  function cyrb53(str, seed=0){
-    let h1=0xdeadbeef^seed, h2=0x41c6ce57^seed;
-    for(let i=0,ch; i<str.length; i++){
-      ch=str.charCodeAt(i);
-      h1=Math.imul(h1^ch,2654435761);
-      h2=Math.imul(h2^ch,1597334677);
-    }
-    h1=Math.imul(h1^(h1>>>16),2246822507);
-    h1^=Math.imul(h2^(h2>>>13),3266489909);
-    h2=Math.imul(h2^(h2>>>16),2246822507);
-    h2^=Math.imul(h1^(h1>>>13),3266489909);
-    return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);
   }
   function fmtBytes(n){
     if(n===undefined||n===null||isNaN(n)) return NA;
@@ -379,32 +456,12 @@
       "通过 Canvas 量度对比检测系统是否安装常见字体，仅抽样，非完整列表。");
   }
 
-  // ---------- 11. 简易指纹 ----------
-  function buildFingerprint(){
-    const ua=new UAParser().getResult();
-    const cv=document.createElement("canvas"); const ctx=cv.getContext("2d");
-    ctx.font="16px Arial"; ctx.fillText("fingerprint",0,0);
-    const cvHash=cyrb53(cv.toDataURL());
-    const raw=[
-      navigator.userAgent, navigator.language, (navigator.languages||[]).join(","),
-      navigator.platform, navigator.hardwareConcurrency, navigator.deviceMemory,
-      screen.width+"x"+screen.height+"x"+screen.colorDepth, window.devicePixelRatio,
-      Intl.DateTimeFormat().resolvedOptions().timeZone, new Date().getTimezoneOffset(),
-      ua.browser.name, ua.os.name, ua.cpu.architecture
-    ].join("|")+ "|canvas:"+cvHash;
-    const hash=cyrb53(raw);
-    const rows=[["组合指纹哈希", hash],["画布哈希", cvHash]];
-    report["简易指纹"] = rows.map(r=>[r[0],r[1]]);
-    return cardHTML("简易指纹", "🪪", rows.map(r=>rowHTML(r[0],r[1])),
-      "示例性组合哈希，仅供演示，并非唯一身份标识（真实指纹需更复杂信号）。");
-  }
-
   // ---------- 渲染 ----------
   function render(){
     const grid=$("grid");
     grid.innerHTML =
       buildBrowser()+buildOS()+buildHardware()+buildScreen()+buildGPU()+
-      buildNetwork()+buildBattery()+buildStorage()+buildMedia()+buildFonts()+buildFingerprint();
+      buildNetwork()+buildBattery()+buildStorage()+buildMedia()+buildFonts();
     // 异步探测
     probeLocalIP().then(ips=>{
       const txt = ips.length?ips.join(", "):"未获取到(受限/无 STUN)";
@@ -443,6 +500,7 @@
     a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   }
 
+  $("btn-home").addEventListener("click", ()=>{ window.location.href = "https://ibitbetter.space"; });
   $("btn-refresh").addEventListener("click", render);
   $("btn-copy").addEventListener("click", ()=>{
     const txt=reportText(false);
