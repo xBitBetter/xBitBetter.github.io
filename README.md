@@ -1,35 +1,6 @@
-# iBitBetter
-
-> iBitBetter,发现最实用的效率工具、技术教程与奇趣网站。
-
-🏠 [https://ibitbetter.space](https://ibitbetter.space)
-
----
-
-## 📊 博客统计
-
-| 指标 | 数据 |
-|------|------|
-| 📄 文章总数 | **10** 篇 |
-| 💬 评论总数 | **3** 条 |
-| 📝 总字数 | **42,208** 字 |
-
-### 🏷️ 标签分布
-
-`技术` ×5  `Windows` ×2  `豆瓣读书` ×1  `合集` ×1  `软件` ×1
-
----
-
-## 📰 最新文章
-
-1. [本机配置信息探测器](https://ibitbetter.space/post/186.html) `软件` — *2026-08-19*
-2. [家庭日用品追踪小程序 · 开发过程技术文档](https://ibitbetter.space/post/183.html) `技术` — *2026-08-07*
-3. [2026 免费在线工具推荐](https://ibitbetter.space/post/179.html) `合集` — *2026-07-25*
-4. [为什么使用存储过程非常慢,但是执行SQL很快？](https://ibitbetter.space/post/171.html) `技术` — *2026-07-17*
-5. [耗品记：当一个合格的家庭用品管理员](https://ibitbetter.space/post/165.html) `技术` — *2026-07-13*
-
----
-
-🕐 最后更新：2026-08-19 14:46:44 (UTC+8)
-
-Powered by [Gmeek](https://github.com/Meekdai/Gmeek) | README by [iBitBetter](https://github.com/iBitBetter)
+# 奇趣网站收藏家 · 效率工具推荐 · 技术教程 | iBitBetter :link: https://ibitbetter.space 
+### :page_facing_up: [10](https://ibitbetter.space/tag.html) 
+### :speech_balloon: 3 
+### :hibiscus: 42208 
+### :alarm_clock: 2026-08-19 15:00:14 
+### Powered by :heart: [Gmeek](https://github.com/Meekdai/Gmeek)
