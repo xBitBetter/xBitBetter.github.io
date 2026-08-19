@@ -236,19 +236,24 @@
   function buildBrowser(){
     const ua = new UAParser().getResult();
     const nav = navigator;
+    const browserTxt = (ua.browser.name||NA)+(ua.browser.version?(" "+ua.browser.version):"");
     const rows = [
-      ["浏览器", (ua.browser.name||NA)+(ua.browser.version?(" "+ua.browser.version):"")],
-      ["渲染引擎", (ua.engine.name||NA)+(ua.engine.version?(" "+ua.engine.version):"")],
-      ["浏览器厂商", nav.vendor||NA],
-      ["主要语言", nav.language||NA],
-      ["支持的语言", tags(nav.languages||[])],
-      ["Cookie 启用", nav.cookieEnabled?"是":"否", "ok"],
-      ["Do Not Track", nav.doNotTrack==="1"||nav.doNotTrack==="yes"?"开启":(nav.doNotTrack==="0"||nav.doNotTrack==="no"?"关闭":"未设置")],
-      ["在线状态", nav.onLine?"在线":"离线", nav.onLine?"ok":"bad"],
-      ["User-Agent", nav.userAgent||NA],
+      ["浏览器", browserTxt, "val-browser", null],
+      ["渲染引擎", (ua.engine.name||NA)+(ua.engine.version?(" "+ua.engine.version):""), null, null],
+      ["浏览器厂商", nav.vendor||NA, null, null],
+      ["主要语言", nav.language||NA, null, null],
+      ["支持的语言", tags(nav.languages||[]), null, null],
+      ["Cookie 启用", nav.cookieEnabled?"是":"否", null, "ok"],
+      ["Do Not Track", nav.doNotTrack==="1"||nav.doNotTrack==="yes"?"开启":(nav.doNotTrack==="0"||nav.doNotTrack==="no"?"关闭":"未设置"), null, null],
+      ["在线状态", nav.onLine?"在线":"离线", null, nav.onLine?"ok":"bad"],
+      ["User-Agent", nav.userAgent||NA, null, null],
     ];
-    report["浏览器"] = rows.map(r=>[r[0],r[1]]);
-    return cardHTML("浏览器", "🌐", rows.map(r=>rowHTML(r[0],r[1],r[2]?("vb-"+r[0]):null,r[2]||null)));
+    report["浏览器"] = rows.map(r=>{
+      // "支持的语言" 在 rows 里是 tags() HTML，导出需纯文本
+      if(r[0]==="支持的语言") return [r[0], (nav.languages||[]).join(", ")||NA];
+      return [r[0],r[1]];
+    });
+    return cardHTML("浏览器", "🌐", rows.map(r=>rowHTML(r[0],r[1],r[2],r[3])));
   }
 
   // ---------- 2. 操作系统 ----------
@@ -257,18 +262,23 @@
     const nav = navigator;
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || NA;
     const offMin = new Date().getTimezoneOffset();
-    const offStr = (offMin===0?"UTC":(offMin<0?"UTC+"+(-offMin/60):"UTC-"+(offMin/60)))+` (${offMin} 分钟)`;
+    const offSign = offMin<=0?"+":"-";
+    const offH = Math.floor(Math.abs(offMin)/60);
+    const offM = Math.abs(offMin)%60;
+    const offStr = (offMin===0?"UTC":`UTC${offSign}${offH}${offM?(":"+String(offM).padStart(2,"0")):""}`)+` (${offMin} 分钟)`;
     const plat = (nav.userAgentData && nav.userAgentData.platform) ? nav.userAgentData.platform : (nav.platform||NA);
+    const osName = (ua.os.name||NA)+(ua.os.version?(" "+ua.os.version):"");
     const rows = [
-      ["操作系统", (ua.os.name||NA)+(ua.os.version?(" "+ua.os.version):"")],
-      ["系统平台", plat],
-      ["CPU 架构", ua.cpu.architecture||NA],
-      ["时区", tz],
-      ["时区偏移", offStr],
-      ["系统语言", nav.language||NA],
+      ["操作系统", osName, "val-os", null],
+      ["系统平台", plat, "val-platform", null],
+      ["CPU 架构", ua.cpu.architecture||NA, "val-arch", null],
+      ["时区", tz, null, null],
+      ["时区偏移", offStr, null, null],
+      ["系统语言", nav.language||NA, null, null],
     ];
     report["操作系统"] = rows.map(r=>[r[0],r[1]]);
-    return cardHTML("操作系统", "🖥", rows.map(r=>rowHTML(r[0],r[1])));
+    return cardHTML("操作系统", "🖥", rows.map(r=>rowHTML(r[0],r[1],r[2],r[3])),
+      "UA 字符串在现代浏览器已「冻结」(Win11 仍报 Win10)，结果由 User-Agent Client Hints 异步回填更准值。");
   }
 
   // ---------- 3. 硬件 ----------
@@ -278,65 +288,96 @@
     const dm = nav.deviceMemory;
     const cores = nav.hardwareConcurrency;
     const touch = nav.maxTouchPoints||0;
-    const type = ua.device.type || (touch>0 ? "触屏设备" : "桌面设备");
+    const uad = nav.userAgentData;
+    const isMobile = uad && uad.mobile;
+    const type = ua.device.type || (isMobile ? "移动设备" : (touch>0 ? "触屏设备" : "桌面设备"));
     const rows = [
-      ["CPU 逻辑核心数", cores?cores+" 核":"未暴露"],
-      ["内存容量(估算)", dm?dm+" GB（浏览器近似值，上限通常 8GB）":"未暴露"],
-      ["设备类型", type],
-      ["设备品牌", ua.device.vendor||NA],
-      ["设备型号", ua.device.model||NA],
-      ["最大触控点数", touch],
+      ["CPU 逻辑核心数", cores?cores+" 核":"未暴露", "val-cores", null],
+      ["内存容量(估算)", dm?dm+" GB（浏览器近似值，上限通常 8GB）":"未暴露", null, null],
+      ["设备类型", type, null, null],
+      ["设备品牌", ua.device.vendor||NA, null, null],
+      ["设备型号", ua.device.model||NA, "val-model", null],
+      ["最大触控点数", touch, null, null],
     ];
     report["硬件"] = rows.map(r=>[r[0],r[1]]);
-    return cardHTML("硬件", "⚙", rows.map(r=>rowHTML(r[0],r[1])));
+    return cardHTML("硬件", "⚙", rows.map(r=>rowHTML(r[0],r[1],r[2],r[3])),
+      "CPU 为逻辑核心数；内存为浏览器近似值(Chromium 上限 8GB)，真实内存需系统级权限。");
   }
 
   // ---------- 4. 屏幕与显示 ----------
   function buildScreen(){
     const s = screen, w = window;
     const dpr = w.devicePixelRatio||1;
+    const orient = s.orientation||{};
+    const vv = w.visualViewport||{};
     const rows = [
       ["屏幕分辨率", s.width+" × "+s.height+" px"],
       ["可用分辨率", s.availWidth+" × "+s.availHeight+" px"],
+      ["可用区域偏移", (s.availLeft!=null&&s.availTop!=null)?(s.availLeft+", "+s.availTop):NA],
       ["色彩深度", s.colorDepth+" bit"],
       ["像素比 DPR", dpr+"×"],
       ["物理像素(估算)", Math.round(s.width*dpr)+" × "+Math.round(s.height*dpr)+" px"],
       ["当前视口", w.innerWidth+" × "+w.innerHeight+" px"],
-      ["屏幕方向", (s.orientation&&s.orientation.type)?s.orientation.type:(s.width>s.height?"landscape-primary":"portrait-primary")],
+      ["屏幕方向", orient.type||(s.width>s.height?"landscape-primary":"portrait-primary")],
+      ["方向角度", orient.angle!=null?orient.angle+"°":NA],
+      ["页面缩放", vv.scale!=null?(vv.scale+"×"):NA],
     ];
     report["屏幕与显示"] = rows.map(r=>[r[0],r[1]]);
-    return cardHTML("屏幕与显示", "📐", rows.map(r=>rowHTML(r[0],r[1])));
+    return cardHTML("屏幕与显示", "📐", rows.map(r=>rowHTML(r[0],r[1])),
+      "物理像素 = CSS 像素 × DPR；可用分辨率/偏移来自 screen，部分浏览器不暴露 availLeft/Top。");
   }
 
   // ---------- 5. GPU / 图形 (WebGL) ----------
   function buildGPU(){
-    let vendor="未暴露", renderer="未暴露", ver=NA, glsl=NA, maxTex=NA, maxVP=NA;
+    let vendor="未暴露", renderer="未暴露", ver=NA, glsl=NA, maxTex=NA, maxVP=NA, maxRB=NA;
+    let gpuName="", glKind="";
     try{
       const cv=document.createElement("canvas");
-      const gl=cv.getContext("webgl")||cv.getContext("experimental-webgl");
+      const gl2=cv.getContext("webgl2");
+      const gl=gl2||cv.getContext("webgl")||cv.getContext("experimental-webgl");
+      glKind = gl2 ? "WebGL2" : (gl ? "WebGL1" : "");
       if(gl){
         const dbg=gl.getExtension("WEBGL_debug_renderer_info");
         if(dbg){
           vendor=gl.getParameter(dbg.UNMASKED_VENDOR_WEBGL)||vendor;
           renderer=gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)||renderer;
+        }else{
+          // 降级：部分浏览器因隐私屏蔽 unmasked，改用裸 RENDERER/VENDOR
+          vendor=gl.getParameter(gl.VENDOR)||vendor;
+          renderer=gl.getParameter(gl.RENDERER)||renderer;
         }
         ver=gl.getParameter(gl.VERSION)||NA;
         glsl=gl.getParameter(gl.SHADING_LANGUAGE_VERSION)||NA;
         maxTex=gl.getParameter(gl.MAX_TEXTURE_SIZE)||NA;
-        maxVP=(gl.getParameter(gl.MAX_VIEWPORT_DIMS)||[]).join(" × ")||NA;
+        const vp=gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+        maxVP=(vp&&vp.length&&typeof vp.join==="function")?vp.join(" × "):NA;   // 防 Int32Array/非数组差异导致整卡失败
+        maxRB=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)||NA;
       } else { vendor="浏览器不支持 WebGL"; renderer="浏览器不支持 WebGL"; }
     }catch(e){ vendor="检测失败"; renderer=String(e&&e.message||e); }
+    // 从 ANGLE 渲染器字符串提取可读 GPU 名称
+    // 例: ANGLE (Intel, Intel(R) Iris(R) Xe Graphics, OpenGL 4.1)
+    //     ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Direct3D11 vs_5_0 ps_5_0)
+    if(renderer && renderer!=="未暴露" && /ANGLE/i.test(renderer)){
+      const m=/ANGLE\s*\((.+)\)/.exec(renderer);   // 贪婪到最后一个 )，避免 GPU 名里的 (R) 截断
+      if(m){
+        const parts=m[1].split(/\s*,\s*/);
+        if(parts.length>=2) gpuName=parts[1].trim();
+      }
+    }
     const rows = [
       ["GPU 厂商", vendor],
-      ["GPU 渲染器", renderer],
+      ["GPU 型号", gpuName||renderer],
+      ["原始渲染器", renderer],
       ["WebGL 版本", ver],
+      ["WebGL 类型", glKind||NA],
       ["GLSL 版本", glsl],
       ["最大纹理尺寸", maxTex?maxTex+" px":NA],
+      ["最大渲染缓冲", maxRB?maxRB+" px":NA],
       ["最大视口尺寸", maxVP],
     ];
     report["GPU / 图形"] = rows.map(r=>[r[0],r[1]]);
     return cardHTML("GPU / 图形", "🎨", rows.map(r=>rowHTML(r[0],r[1])),
-      "GPU 型号来自 WebGL 调试扩展暴露的渲染器字符串，是最接近「看显卡」的浏览器手段。");
+      "优先用 WebGL2 + 调试扩展取 unmasked 渲染器，并从 ANGLE 字符串解析出可读 GPU 名称；部分浏览器因隐私会混淆为 ANGLE/Generic。");
   }
 
   // ---------- 6. 网络 ----------
@@ -433,6 +474,56 @@
     }).catch(()=>{ setVal("val-media","读取失败"); report["媒体设备"]=[["摄像头 / 麦克风 / 扬声器","读取失败"]]; });
   }
 
+  // ---------- User-Agent Client Hints (高熵) 异步回填 ----------
+  // UA 字符串在 Chrome 113+/Win11 已「冻结」，UA-CH 是拿真实 OS 版本/架构/型号的唯一可靠手段
+  function probeUACH(){
+    const uad = navigator.userAgentData;
+    if(!uad || typeof uad.getHighEntropyValues !== "function") return;
+    uad.getHighEntropyValues([
+      "architecture","bitness","model","platform","platformVersion","fullVersionList","wow64"
+    ]).then(h=>{
+      const plat = h.platform || "";
+      const pv = h.platformVersion || "";
+      if(plat){
+        let osName = plat;
+        if(/windows/i.test(plat)){
+          // platformVersion major >=13 即 Windows 11
+          const major = parseInt((pv||"0").split(".")[0],10) || 0;
+          osName = major>=13 ? "Windows 11" : (major>0 ? "Windows 10" : "Windows");
+        } else if(/mac/i.test(plat)){ osName="macOS"; }
+        else if(/chrom/i.test(plat)){ osName="Chrome OS"; }
+        else if(/android/i.test(plat)){ osName="Android"; }
+        const osTxt = osName + (pv?(" "+pv):"");
+        setVal("val-os", osTxt);
+        report["操作系统"] = report["操作系统"].map(r=>r[0]==="操作系统" ? [r[0],osTxt] : r);
+        const platTxt = plat + (h.wow64?" (WoW64)":"");
+        setVal("val-platform", platTxt);
+        report["操作系统"] = report["操作系统"].map(r=>r[0]==="系统平台" ? [r[0],platTxt] : r);
+      }
+      if(h.architecture){
+        const arch = h.architecture + (h.bitness?("-"+h.bitness):"");
+        setVal("val-arch", arch);
+        report["操作系统"] = report["操作系统"].map(r=>r[0]==="CPU 架构" ? [r[0],arch] : r);
+      }
+      if(h.model){
+        setVal("val-model", h.model);
+        report["硬件"] = report["硬件"].map(r=>r[0]==="设备型号" ? [r[0],h.model] : r);
+      }
+      if(h.fullVersionList){
+        // 优先取具体品牌(Google Chrome/Microsoft Edge 等)，排除 Not*/GREASE/Chromium 前缀占位；
+        // 纯 Chromium 浏览器才会只剩 Chromium，此时回退取它
+        const skip = /^(Not|GREASE|Chromium)/i;
+        let main = h.fullVersionList.find(b=>!skip.test(b.brand));
+        if(!main) main = h.fullVersionList.find(b=>/Chromium/i.test(b.brand));
+        if(main){
+          const txt = main.brand + " " + main.version;
+          setVal("val-browser", txt);
+          report["浏览器"] = report["浏览器"].map(r=>r[0]==="浏览器" ? [r[0],txt] : r);
+        }
+      }
+    }).catch(()=>{});
+  }
+
   // ---------- 10. 字体 ----------
   function buildFonts(){
     const testFonts=["Microsoft YaHei","微软雅黑","SimSun","宋体","SimHei","黑体","KaiTi","楷体",
@@ -471,6 +562,7 @@
     probeBattery();
     probeStorage();
     probeMedia();
+    probeUACH();
   }
 
   // ---------- 导出 ----------
