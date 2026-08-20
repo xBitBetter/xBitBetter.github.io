@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://ibitbetter.space/assets/primer.min.css' rel='stylesheet'/>
+    <link rel='preconnect' href='https://cdnjs.cloudflare.com' crossorigin><link rel='preconnect' href='https://www.googletagmanager.com'><link rel='preconnect' href='https://utteranc.es'><link href='https://ibitbetter.space/assets/custom.css' rel='stylesheet'/><script async src='https://www.googletagmanager.com/gtag/js?id=G-5QE3S0EJHW'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5QE3S0EJHW');</script><script defer src='https://ibitbetter.space/assets/GmeekVercount.js'></script><meta name='twitter:card' content='summary_large_image'><meta name='twitter:title' content='奇趣网站评测 · 效率工具推荐 · 技术教程 | iBitBetter'><meta name='twitter:description' content='发现最实用的 Windows 效率工具、技术教程与互联网趣站。从软件推荐到电子书资源，帮你每天节省 2 小时。'><meta name='twitter:image' content='https://ibitbetter.space/assets/ibitbetter.webp'><meta name='keywords' content='效率工具,Windows软件,电子书,技术博客,软件推荐,奇趣网站'><style>.title-right a[href*='terms.html'],.title-right a[href*='privacy.html']{display:none!important}@media (max-width:600px){.title-right .circle{padding:5px 7px;margin:0}.title-right .btn{padding:6px 8px}}#header{align-items:center}</style><script>document.addEventListener('DOMContentLoaded',function(){var f=document.getElementById('footer');if(f){var d=document.createElement('div');d.style.cssText='margin-top:8px;font-size:small;text-align:center;';d.innerHTML='<a href="mailto:xbitbetter@gmail.com">Email</a> · <a href="https://ibitbetter.space/privacy.html">隐私政策</a> · <a href="https://ibitbetter.space/terms.html">服务条款</a>';f.appendChild(d);}});</script><script>document.addEventListener('DOMContentLoaded', function() { var titleRight = document.querySelector('.title-right'); if (!titleRight || document.getElementById('btnCurious')) return; var a = document.createElement('a'); a.id = 'btnCurious'; a.href = '/curious-websites.html'; a.className = 'btn btn-invisible circle'; a.title = 'Curious'; a.setAttribute('aria-label', 'Curious'); a.innerHTML = `<svg class='octicon' width='16' height='16'><path fill-rule='evenodd' d='M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25ZM14.5 6h-13v7.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm-6-3.5v2h6V2.75a.25.25 0 0 0-.25-.25ZM5 2.5v2h2v-2Zm-3.25 0a.25.25 0 0 0-.25.25V4.5h2v-2Z'></path></svg>`; var about = titleRight.querySelector('a[href*="/about"]'); if (about && about.nextSibling) { titleRight.insertBefore(a, about.nextSibling); } else { titleRight.appendChild(a); } });</script><script>document.addEventListener('DOMContentLoaded',function(){var t=document.querySelector('.title-right a[onclick*="modeSwitch"],.title-right button[onclick*="modeSwitch"]');if(t)t.parentNode.appendChild(t);});</script>
+    <link rel="icon" href="https://ibitbetter.space/assets/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "iBitBetter",
+      "url": "https://ibitbetter.space",
+      "description": "奇趣网站评测 · 效率工具推荐 · 技术教程",
+      "logo": "https://ibitbetter.space/assets/ibitbetter.webp"
+    }
+    </script>
+    
+    
+<meta name="description" content="我的小店工作台 · 项目文档 一款面向小摊贩的轻量化经营工具，基于 WorkBuddy 资料库 + 单文件 HTML 部署">
+<meta property="og:title" content="我的小店Workbuddy工作台 · 项目文档">
+<meta property="og:description" content="我的小店工作台 · 项目文档 一款面向小摊贩的轻量化经营工具，基于 WorkBuddy 资料库 + 单文件 HTML 部署">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ibitbetter.space/post/187.html">
+<meta property="og:image" content="https://ibitbetter.space/og-image.jpg">
+<title>我的小店Workbuddy工作台 · 项目文档</title>
+<link rel="canonical" href="https://ibitbetter.space/post/187.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "\u6211\u7684\u5c0f\u5e97Workbuddy\u5de5\u4f5c\u53f0 \u00b7 \u9879\u76ee\u6587\u6863",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "author": {
+    "@id": "https://ibitbetter.space/about.html#author",
+    "@type": "Person",
+    "name": "iBitBetter",
+    "url": "https://ibitbetter.space/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "iBitBetter",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ibitbetter.space/assets/ibitbetter.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ibitbetter.space/post/187.html"
+  },
+  "image": "https://ibitbetter.space/og-image.jpg",
+  "url": "https://ibitbetter.space/post/187.html"
+}
+</script>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.related-posts{margin-top:40px;padding:20px;background:var(--color-canvas-subtle,#f6f8fa);border-radius:8px;border:1px solid var(--color-border-default);}
+.related-title{font-size:20px;margin:0 0 12px;font-weight:bold;}
+.related-list{list-style:none;padding:0;margin:0;}
+.related-list li{margin:8px 0;line-height:1.6;}
+.related-list a{color:var(--color-accent-fg,#0969da);text-decoration:none;}
+.related-list a:hover{text-decoration:underline;}
+.related-date{display:inline-block;margin-left:8px;font-size:12px;color:var(--color-fg-muted,#656d76);}
+  
+.postTitle{margin: auto 0;font-size:30px;font-weight:bold;line-height:1.35;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:22px;line-height:1.4;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">我的小店Workbuddy工作台 · 项目文档</h1>
+<div class="title-right">
+    <a href="https://ibitbetter.space" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>我的小店工作台 · 项目文档</h1>
+<blockquote>
+<p>一款面向小摊贩的轻量化经营工具，基于 WorkBuddy 资料库 + 单文件 HTML 部署。</p>
+</blockquote>
+<hr>
+<h2>一、项目概述</h2>
+<h3>1.1 背景</h3>
+<p>菜摊、早餐摊、水果摊等个体小店的经营场景有一个共同特点：<strong>老板不记流水</strong>。他们每天的常规操作是「<strong>盘货</strong>」——开摊时看一眼货架有多少、收摊时看一眼剩多少，中间偶尔补补货。让他们一笔笔记销售既不现实也没必要。</p>
+<h3>1.2 核心思路：<strong>盘存法</strong></h3>
+<p>把传统「流水记账」改为「<strong>库存倒推</strong>」：</p>
+<pre class="notranslate"><code class="notranslate">期初库存 + 期间进货 − 期末盘点 − 损耗 = 本期销量
+</code></pre>
+<p>老板只需要：</p>
+<ol>
+<li><strong>首次</strong>：把开摊时的库存录进来（初始库存）</li>
+<li><strong>进货时</strong>：记一笔进货单（系统自动加库存）</li>
+<li><strong>收摊时</strong>：记一次剩余量 + 当天损耗</li>
+</ol>
+<p>系统自动算出：本期卖了多少、销售额、毛利。</p>
+<h3>1.3 目标用户</h3>
+<ul>
+<li><strong>主要</strong>：50+ 岁的菜摊/早餐摊/水果摊老板</li>
+<li><strong>次要</strong>：年轻小店主、家庭副业经营者</li>
+<li><strong>设备</strong>：以手机为主（屏宽 320~414px）</li>
+</ul>
+<h3>1.4 部署形态</h3>
+<ul>
+<li><strong>单文件 HTML</strong>：<code class="notranslate">我的小店工作台.html</code>（约 80KB）</li>
+<li><strong>数据后端</strong>：WorkBuddy 资料库（4 张云端数据表）</li>
+<li><strong>访问方式</strong>：公开链接 <code class="notranslate">https://workbuddy.link/p/dAdmF5knBlKA1wHPUn3dsB</code></li>
+<li><strong>同步</strong>：依赖 WorkBuddy 浏览器 SDK，离线降级到 localStorage 缓存</li>
+</ul>
+<hr>
+<h2>二、资料库设计</h2>
+<h3>2.1 表结构总览</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>表名</th>
+<th>用途</th>
+<th>字段数</th>
+<th>初始数据条数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我的小店·商品库存</td>
+<td>商品字典 + 当前库存 + 预警</td>
+<td>10</td>
+<td>5</td>
+</tr>
+<tr>
+<td>我的小店·熟客账本</td>
+<td>客户档案 + 赊欠账</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>我的小店·进货单</td>
+<td>进货流水 + 自动累加库存</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr>
+<td>我的小店·盘点记录</td>
+<td>收摊盘点快照（每日历史）</td>
+<td>12</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>2.2 字段设计</h3>
+<h4>我的小店·商品库存</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品名称</td>
+<td>text</td>
+<td>唯一标识</td>
+</tr>
+<tr>
+<td>单位</td>
+<td>select</td>
+<td>斤/份/个/把（固定选项）</td>
+</tr>
+<tr>
+<td>今日进价</td>
+<td>currency ¥</td>
+<td>进货时更新</td>
+</tr>
+<tr>
+<td>售价</td>
+<td>currency ¥</td>
+<td>长期不变</td>
+</tr>
+<tr>
+<td>库存数量</td>
+<td>number</td>
+<td>当前库存（只能盘点更新）</td>
+</tr>
+<tr>
+<td>预警线</td>
+<td>number</td>
+<td>低于此值显示红色警告</td>
+</tr>
+<tr>
+<td>损耗</td>
+<td>number</td>
+<td>本期损耗累计</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>text</td>
+<td>选填</td>
+</tr>
+<tr>
+<td>期初库存</td>
+<td>number</td>
+<td>上次盘点时的库存（推算用）</td>
+</tr>
+<tr>
+<td>上次盘点日期</td>
+<td>date</td>
+<td>上次盘点时间</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4>我的小店·熟客账本</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>姓名</td>
+<td>text</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>手机号</td>
+<td>phone_number</td>
+<td>默认脱敏显示（138****5678）</td>
+</tr>
+<tr>
+<td>赊欠金额</td>
+<td>currency ¥</td>
+<td>当前欠款（赊账+、还款−）</td>
+</tr>
+<tr>
+<td>加入日期</td>
+<td>date</td>
+<td></td>
+</tr>
+<tr>
+<td>备注</td>
+<td>text</td>
+<td></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4>我的小店·进货单</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品名称</td>
+<td>text</td>
+<td></td>
+</tr>
+<tr>
+<td>数量</td>
+<td>number</td>
+<td>decimalPlaces=0</td>
+</tr>
+<tr>
+<td>单位</td>
+<td>select</td>
+<td>斤/份/个/把</td>
+</tr>
+<tr>
+<td>进价</td>
+<td>currency ¥</td>
+<td>单位进价</td>
+</tr>
+<tr>
+<td>金额</td>
+<td>currency ¥</td>
+<td>数量 × 进价（自动算）</td>
+</tr>
+<tr>
+<td>供应商</td>
+<td>text</td>
+<td></td>
+</tr>
+<tr>
+<td>日期</td>
+<td>date</td>
+<td>默认今天</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>text</td>
+<td></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4>我的小店·盘点记录</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品名称</td>
+<td>text</td>
+<td></td>
+</tr>
+<tr>
+<td>单位</td>
+<td>text</td>
+<td></td>
+</tr>
+<tr>
+<td>期初</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>进货</td>
+<td>number</td>
+<td>期间进货</td>
+</tr>
+<tr>
+<td>期末</td>
+<td>number</td>
+<td>盘点剩余</td>
+</tr>
+<tr>
+<td>损耗</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>销量</td>
+<td>number</td>
+<td>= 期初+进货−期末−损耗</td>
+</tr>
+<tr>
+<td>售价/进价</td>
+<td>currency ¥</td>
+<td>快照</td>
+</tr>
+<tr>
+<td>销售额/毛利</td>
+<td>currency ¥</td>
+<td>快照</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>date</td>
+<td></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>2.3 表关系</h3>
+<pre class="notranslate"><code class="notranslate">进货单 ──自动累加──&gt; 商品库存.库存数量
+商品库存 ──盘点时──&gt; 盘点记录（快照）
+熟客账本 ──赊账/还款──&gt; 自更新赊欠金额
+</code></pre>
+<p>无外键，靠「商品名称」字符串关联。简单可靠，不依赖外键配置。</p>
+<hr>
+<h2>三、功能模块（6 大 Tab + 主页）</h2>
+<h3>3.1 主页（大图标导航）</h3>
+<p>v11 改造：原本是 Tab 平铺，改为大图标卡片式主页。</p>
+<p><strong>布局</strong>：</p>
+<ul>
+<li>顶部：「今日要处理」卡片（保留首页摘要）</li>
+<li>下方：6 个大图标入口，2 列网格，每个 138px 高</li>
+</ul>
+<p><strong>6 个图标入口</strong>：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>图标</th>
+<th>名称</th>
+<th>副文案</th>
+<th>配色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📊</td>
+<td>销售估算</td>
+<td>本期卖了多少</td>
+<td>绿</td>
+</tr>
+<tr>
+<td>📥</td>
+<td>进货管理</td>
+<td>进货记单库存自动加</td>
+<td>蓝</td>
+</tr>
+<tr>
+<td>📦</td>
+<td>商品库存</td>
+<td>登记商品 / 收摊盘点</td>
+<td>橙</td>
+</tr>
+<tr>
+<td>👥</td>
+<td>熟客账本</td>
+<td>赊账还款随手记</td>
+<td>粉</td>
+</tr>
+<tr>
+<td>📋</td>
+<td>盘点记录</td>
+<td>回看每天卖了多少</td>
+<td>紫</td>
+</tr>
+<tr>
+<td>💰</td>
+<td>今日营收</td>
+<td>看利润、看热销</td>
+<td>黄</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>返回机制</strong>：每个功能面板顶部都有「← 返回主页」通栏大按钮（54px 高），Tab 栏最前面也有「主页」入口。</p>
+<h3>3.2 商品库存（3 个子 Tab）</h3>
+<p>v7 改造：原本是 3 个表单 + 列表堆在一屏，改为分段控制器切换：</p>
+<ul>
+<li><strong>登记商品</strong>：首次录入 / 修改商品信息 / 设置初始库存</li>
+<li><strong>收摊盘点</strong>：每天收摊记一次（选商品 → 填剩余 → 填损耗）</li>
+<li><strong>库存清单</strong>：查看全部库存 + 搜索 + 编辑 + 删除</li>
+</ul>
+<h3>3.3 进货管理</h3>
+<p><strong>操作流程</strong>：</p>
+<ol>
+<li>输入商品名 + 数量 + 进价（金额自动算）</li>
+<li>选供应商 + 日期</li>
+<li>保存</li>
+</ol>
+<p><strong>自动行为</strong>：保存时检查商品字典，若该商品不存在则自动建一个新商品（单位继承进货单的单位，期初库存=0，价格从进货单带入）。</p>
+<h3>3.4 熟客账本（卡片式列表）</h3>
+<p>v13 改造：原本是单行 flex，挤爆移动端 → 改为<strong>独立卡片式布局</strong>：</p>
+<pre class="notranslate"><code class="notranslate">┌─────────────────────────────┐
+│  李叔  [无欠款]     ¥0.00   │  ← 上行
+│                       欠款   │
+│                             │
+│  [136****5432 查看]         │  ← 中行
+│  2026-06-20 · 爱买鱼和青菜  │
+│                             │
+│              [赊账][还款][删]│  ← 底行
+└─────────────────────────────┘
+</code></pre>
+<p><strong>隐私保护</strong>：手机号默认打码 <code class="notranslate">138****5678</code>，点击 → 已登录看完整号 + 一键复制，未登录访客无法看。</p>
+<h3>3.5 盘点记录（每日快照）</h3>
+<p>v6 新增：每次收摊盘点时，<strong>自动写入一条快照</strong>到「盘点记录」表，包含：</p>
+<ul>
+<li>当天所有商品的期初/进货/期末/损耗/销量</li>
+<li>对应的售价/进价/销售额/毛利</li>
+</ul>
+<p>按日期分组回看，支持按日期筛选，统计累计销售额/毛利/天数。</p>
+<h3>3.6 今日营收（报表）</h3>
+<p>汇总数据：销售额、利润、进货支出、销量、损耗、利润率 + 热销 TOP3 + 商品毛利明细。</p>
+<h3>3.7 销售估算（核心计算）</h3>
+<p>每样商品一行明细：</p>
+<pre class="notranslate"><code class="notranslate">西红柿  期初 10 + 进货 30 − 盘点 15 = 销量 25斤   销售额 ¥75   毛利 ¥30
+</code></pre>
+<p>销量 &lt; 0 会标红（说明漏记进货或盘点错误）。</p>
+<hr>
+<h2>四、关键设计决策</h2>
+<h3>4.1 为什么用盘存法不用流水？</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>模式</th>
+<th>流水记账</th>
+<th>盘存法（采用）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作次数</td>
+<td>每笔销售都要记</td>
+<td>收摊盘点 1 次</td>
+</tr>
+<tr>
+<td>数据准确性</td>
+<td>高（但容易漏）</td>
+<td>中（盘点误差）</td>
+</tr>
+<tr>
+<td>用户负担</td>
+<td>重</td>
+<td><strong>轻</strong></td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>超市/餐饮</td>
+<td><strong>小摊贩</strong> ✅</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>结论</strong>：对小摊贩而言，准确性够用 + 操作负担低 &gt; 完美数据。</p>
+<h3>4.2 为什么用单文件 HTML？</h3>
+<ul>
+<li>部署简单：1 个文件 + 4 张云端表，无后端</li>
+<li>离线可用：localStorage 缓存 + SDK 同步</li>
+<li>调试方便：所有代码可见，无构建步骤</li>
+<li>WorkBuddy 单文件约束：必须 inline CSS/JS，无外部依赖</li>
+</ul>
+<h3>4.3 为什么用云端资料库而不是纯 localStorage？</h3>
+<ul>
+<li>多设备同步（手机 + 平板 + 电脑）</li>
+<li>数据安全（云端备份）</li>
+<li>工作台链接可直接分享给他人使用（演示用）</li>
+</ul>
+<h3>4.4 为什么是 4 张表而不是 1 张？</h3>
+<ul>
+<li>概念清晰：库存 vs 进货 vs 熟客 vs 盘点记录</li>
+<li>权限隔离：未来可以只分享某张表给特定人</li>
+<li>性能好：单表数据量小，查询快</li>
+</ul>
+<hr>
+<h2>五、适老化改造（v10）</h2>
+<h3>5.1 改造目标</h3>
+<p>菜摊老板普遍 50+ 岁，手机屏幕看小字、点小按钮费劲。</p>
+<h3>5.2 改造清单</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>项</th>
+<th>改造前</th>
+<th>改造后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础字号</td>
+<td>15px</td>
+<td><strong>17px</strong></td>
+</tr>
+<tr>
+<td>数字大字</td>
+<td>18px</td>
+<td><strong>24px</strong></td>
+</tr>
+<tr>
+<td>主按钮高度</td>
+<td>44px</td>
+<td><strong>48px</strong></td>
+</tr>
+<tr>
+<td>Tab 高度</td>
+<td>44px</td>
+<td><strong>50px</strong></td>
+</tr>
+<tr>
+<td>小按钮高度</td>
+<td>34px</td>
+<td><strong>44px</strong>（达触控标准）</td>
+</tr>
+<tr>
+<td>输入框高度</td>
+<td>44px</td>
+<td><strong>50px</strong></td>
+</tr>
+<tr>
+<td>次要文字</td>
+<td>11.5~13px</td>
+<td><strong>≥14px</strong></td>
+</tr>
+<tr>
+<td>删除按钮</td>
+<td>普通样式</td>
+<td>灰色弱化（防误触）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>5.3 交互简化</h3>
+<ul>
+<li><strong>数字键盘</strong>：所有数量/价格/损耗输入框加 <code class="notranslate">inputmode="decimal"</code>，手机直接弹数字键盘</li>
+<li><strong>toast 加时</strong>：2.4s → 3.4s（老人看得完）</li>
+<li><strong>删除按钮</strong>：灰色弱化但保持 44px 触控面积</li>
+<li><strong>对比度</strong>：灰色文字加深、边框加深加粗</li>
+</ul>
+<h3>5.4 大图标主页（v11）</h3>
+<p>解决「Tab 文字太小看不清入口」问题。每个图标 138px 高、62px 圆形图标，6 色区分功能。</p>
+<hr>
+<h2>六、隐私保护</h2>
+<h3>6.1 手机号打码</h3>
+<p>熟客账本里所有手机号显示为 <code class="notranslate">138****5678</code>，完整号不写入 DOM。</p>
+<p><strong>解锁机制</strong>：点击 pill → 已登录可查看完整号 + 一键复制；未登录访客提示「未登录，无法查看完整号码」。</p>
+<h3>6.2 公开链接的安全提示</h3>
+<p>链接 <code class="notranslate">https://workbuddy.link/p/dAdmF5knBlKA1wHPUn3dsB</code> 是公开可访问的，任何人拿到都能打开。所以提醒用户：<strong>不要录入过多敏感信息</strong>。</p>
+<p>未来可选方案：</p>
+<ul>
+<li>加页面访问密码（WorkBuddy 原生支持）</li>
+<li>单独建「演示模式」（数据脱敏展示）</li>
+</ul>
+<hr>
+<h2>七、技术架构</h2>
+<h3>7.1 文件结构</h3>
+<pre class="notranslate"><code class="notranslate">我的小店工作台.html（约 80KB）
+├─ &lt;head&gt; CSS（~15KB）
+│  ├─ :root CSS 变量（颜色/圆角/阴影）
+│  ├─ 字体/排版
+│  ├─ 6 大 Tab 布局
+│  ├─ 卡片式组件
+│  └─ 媒体查询（移动端适配）
+├─ &lt;body&gt; HTML（~10KB）
+│  ├─ header（顶部 logo）
+│  ├─ #tabBar（Tab 导航）
+│  ├─ #panel-home（主页大图标）
+│  ├─ 6 个功能面板
+│  ├─ .dlg-mask（弹窗）
+│  └─ .toast（提示）
+└─ &lt;script&gt; JS（~55KB）
+   ├─ CACHE 常量（localStorage 键）
+   ├─ DATABASE ID 常量
+   ├─ SDK 封装层（sdkQueryStock/Member/Purchase/Checkin/Add/Update/Delete）
+   ├─ 渲染函数（renderStock/Member/Purchase/Checkin/Estimate/Today/Report/Records）
+   ├─ 事件处理（表单提交、弹窗、Tab 切换）
+   └─ 工具函数（money/shortDate/maskPhone/showPhone/esc/emptyHTML）
+</code></pre>
+<h3>7.2 关键 SDK 调用</h3>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 查询</span>
+<span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-en">query</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">databaseId</span>: <span class="pl-s">'xxx'</span><span class="pl-kos">,</span> <span class="pl-c1">pageSize</span>: <span class="pl-c1">500</span><span class="pl-kos">,</span> <span class="pl-c1">sorts</span>: <span class="pl-kos">[</span><span class="pl-kos">{</span><span class="pl-c1">property</span>:<span class="pl-s">'日期'</span><span class="pl-kos">,</span><span class="pl-c1">direction</span>:<span class="pl-s">'descending'</span><span class="pl-kos">}</span><span class="pl-kos">]</span> <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">// 添加</span>
+<span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-en">addRecord</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">databaseId</span>: <span class="pl-s">'xxx'</span><span class="pl-kos">,</span> <span class="pl-c1">properties</span>: <span class="pl-kos">{</span> <span class="pl-c1">字段名</span>: <span class="pl-kos">{</span><span class="pl-c1">类型</span>: <span class="pl-s1">值</span><span class="pl-kos">}</span> <span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">// 更新</span>
+<span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-en">updateRecord</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">databaseId</span>: <span class="pl-s">'xxx'</span><span class="pl-kos">,</span> <span class="pl-c1">recordId</span>: <span class="pl-s">'yyy'</span><span class="pl-kos">,</span> <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>...<span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">// 删除</span>
+<span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-en">deleteRecord</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">databaseId</span>: <span class="pl-s">'xxx'</span><span class="pl-kos">,</span> <span class="pl-c1">recordId</span>: <span class="pl-s">'yyy'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
+<p>属性结构示例：</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">{</span> <span class="pl-s">'商品名称'</span>: <span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s">'西红柿'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s">'单位'</span>:     <span class="pl-kos">{</span> <span class="pl-c1">select</span>: <span class="pl-s">'NHz4sCoJFOQj'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s">'今日进价'</span>: <span class="pl-kos">{</span> <span class="pl-c1">currency</span>: <span class="pl-c1">1.8</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s">'库存数量'</span>: <span class="pl-kos">{</span> <span class="pl-c1">number</span>: <span class="pl-c1">15</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s">'上次盘点日期'</span>: <span class="pl-kos">{</span> <span class="pl-c1">date</span>: <span class="pl-s">'2026-08-19'</span> <span class="pl-kos">}</span> <span class="pl-kos">}</span></pre></div>
+<h3>7.3 离线降级</h3>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-en">loadStock</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+  <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-s1">rows</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span> <span class="pl-s1">stockData</span> <span class="pl-c1">=</span> <span class="pl-s1">rows</span><span class="pl-kos">;</span> <span class="pl-en">cacheSet</span><span class="pl-kos">(</span><span class="pl-c1">CACHE</span><span class="pl-kos">.</span><span class="pl-c1">STOCK</span><span class="pl-kos">,</span> <span class="pl-s1">rows</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span> <span class="pl-s1">stockData</span> <span class="pl-c1">=</span> <span class="pl-en">cacheGet</span><span class="pl-kos">(</span><span class="pl-c1">CACHE</span><span class="pl-kos">.</span><span class="pl-c1">STOCK</span><span class="pl-kos">)</span> <span class="pl-c1">||</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
+<p>网络正常时同步云端，断网时降级到 localStorage。</p>
+<h3>7.4 lint 校验</h3>
+<p>发布前用 <code class="notranslate">lint_database_sdk_usage.py</code> 校验：</p>
+<ul>
+<li>HTML 中所有 <code class="notranslate">databaseId</code> 必须是合并 schema 中的真实 ID</li>
+<li>所有 <code class="notranslate">data-sp-database-id</code> 必须匹配</li>
+<li>所有字段名必须存在于对应表的 schema</li>
+</ul>
+<hr>
+<h2>八、版本演进（v1 → v16）</h2>
+<h3>v1-v3：基础三件套</h3>
+<p>搭建库存/进货/熟客三个基础功能，最初用「流水记账」模式。</p>
+<h3>v4：修复小问题</h3>
+<p>商品库存表单按钮文案改「保存进货」→「保存 / 登记商品」。</p>
+<h3>v5：业务模式大改（盘存法）</h3>
+<p>最关键的转折——从「逐笔流水」改为「盘存推算」。</p>
+<ul>
+<li>新增字段：期初库存、上次盘点日期</li>
+<li>删除功能：每日销售的逐笔流水</li>
+<li>销售估算 / 今日营收改为推算口径</li>
+</ul>
+<h3>v6：盘点历史记录</h3>
+<p>新增「盘点记录」表（12 字段快照）+ 第 6 个 Tab「盘点记录」。</p>
+<h3>v7：商品库存子 Tab</h3>
+<p>原本 3 个表单堆一屏 → 改分段控制器（登记商品/收摊盘点/库存清单）。</p>
+<h3>v8：熟客手机号隐私保护</h3>
+<p>默认打码 138****5678，点击解锁（未登录访客不可看）。</p>
+<h3>v9：代码审查修复 5 个 bug</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>#</th>
+<th>严重度</th>
+<th>问题</th>
+<th>修复</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>P0</td>
+<td><code class="notranslate">goodsList</code> datalist 元素缺失，setInterval 每 1.5s 抛 TypeError</td>
+<td>补回 <code class="notranslate">&lt;datalist id="goodsList"&gt;</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>P0</td>
+<td><code class="notranslate">editStock</code> 后 <code class="notranslate">done()</code> 没恢复 <code class="notranslate">stockQty.disabled</code></td>
+<td><code class="notranslate">done()</code> 加 <code class="notranslate">disabled=false</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>P0</td>
+<td>进货单自动建库存时期初库存=qty 导致销量推算翻倍</td>
+<td>改期初=0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>P1</td>
+<td>编辑模式无取消机制</td>
+<td>加「取消编辑，新建商品」按钮</td>
+</tr>
+<tr>
+<td>5</td>
+<td>P1</td>
+<td>离线降级和盘点保存错误处理不全</td>
+<td>补 catch</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>v10：适老化改造</h3>
+<p>字号全面加大、按钮触控 ≥44px、数字键盘、toast 加时、删除按钮弱化。</p>
+<h3>v11：大图标主页</h3>
+<p>新增 <code class="notranslate">#panel-home</code>，6 个大图标入口；6 个功能面板加返回主页大按钮。</p>
+<h3>v12-v13：熟客列表移动端布局修复</h3>
+<p>v12 改两行布局（仍拥挤）→ v13 彻底改为<strong>独立卡片式</strong>（每张熟客一张卡片，三层信息）。</p>
+<h3>v14：改名「我的小店」</h3>
+<p>从「菜市库存 / 菜摊工作台」→「我的小店·」统一前缀。</p>
+<h3>v15：本地文件改名</h3>
+<p><code class="notranslate">菜摊工作台.html</code> → <code class="notranslate">我的小店工作台.html</code>。</p>
+<h3>v16：资料库改名 + 数据迁移</h3>
+<p>agent API 集无 update-database 接口 → 重建 4 张新表 + 迁移 15 条数据 + 清空旧表。</p>
+<hr>
+<h2>九、部署与发布</h2>
+<h3>9.1 工作流</h3>
+<pre class="notranslate"><code class="notranslate">编辑 我的小店工作台.html
+  ↓
+合并 4 表 schema
+  ↓
+跑 lint（MINDX_DBSDK_LINT_OK）
+  ↓
+import_html → publish → list_artifacts
+  ↓
+curl 验证产物（ID 数量、关键 class 出现）
+</code></pre>
+<h3>9.2 关键命令</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 导出 4 张表 schema（用于 lint）</span>
+<span class="pl-k">for</span> <span class="pl-smi">db_id</span> <span class="pl-k">in</span> <span class="pl-s"><span class="pl-pds">"</span>1itM3JNw...<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>UQQHhsgWP...<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>jXlaDltP5A...<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>nK3gxBrLjT...<span class="pl-pds">"</span></span><span class="pl-k">;</span> <span class="pl-k">do</span>
+  <span class="pl-c1">printf</span> <span class="pl-s"><span class="pl-pds">'</span>%s<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$TOKEN</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> python3 get_database_schema.py \
+    --token-stdin --database-id <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$db_id</span><span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> <span class="pl-s"><span class="pl-pds">"</span>schema.json<span class="pl-pds">"</span></span>
+<span class="pl-k">done</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 合并并 lint</span>
+python3 -c <span class="pl-s"><span class="pl-pds">"</span>import json; ...<span class="pl-pds">"</span></span>
+python3 lint_database_sdk_usage.py --schema-file merged.json --html 我的小店工作台.html
+
+<span class="pl-c"><span class="pl-c">#</span> 导入并发布</span>
+<span class="pl-c1">printf</span> <span class="pl-s"><span class="pl-pds">'</span>%s<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$TOKEN</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> python3 import_html.py <span class="pl-s"><span class="pl-pds">"</span>我的小店工作台.html<span class="pl-pds">"</span></span> \
+  --file-name <span class="pl-s"><span class="pl-pds">"</span>我的小店工作台.html<span class="pl-pds">"</span></span> \
+  --node-block-id <span class="pl-s"><span class="pl-pds">"</span>dAdmF5knBlKA1wHPUn3dsB<span class="pl-pds">"</span></span> \
+  --databases <span class="pl-s"><span class="pl-pds">'</span>[{"id":"1itM3JNw..."},...]<span class="pl-pds">'</span></span> \
+  --token-stdin
+
+<span class="pl-c1">printf</span> <span class="pl-s"><span class="pl-pds">'</span>%s<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$TOKEN</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> python3 publish_page.py \
+  --token-stdin --node-id <span class="pl-s"><span class="pl-pds">"</span>dAdmF5knBlKA1wHPUn3dsB<span class="pl-pds">"</span></span></pre></div>
+<h3>9.3 公开链接</h3>
+<p><strong><a href="https://workbuddy.link/p/dAdmF5knBlKA1wHPUn3dsB" rel="nofollow">https://workbuddy.link/p/dAdmF5knBlKA1wHPUn3dsB</a></strong></p>
+<p>发布版本号 v16（artifacts version 21）。</p>
+<hr>
+<h2>十、关键经验沉淀</h2>
+<h3>10.1 业务认知比代码更重要</h3>
+<p>最关键的迭代是 v5——盘存法。整个项目从「不实用」变为「真正可用」，根本原因是<strong>理解了用户的真实工作流</strong>。技术只是工具，业务认知才是核心。</p>
+<h3>10.2 适老化不是装饰是刚需</h3>
+<p>对小摊贩这种核心用户群，移动端适老化不是「加分项」，而是「能不能用」的分水岭。字号/按钮/弹窗三个维度做扎实，老人才愿意用。</p>
+<h3>10.3 agent API 的能力边界</h3>
+<p>WorkBuddy 资料库 agent API 当前能力：</p>
+<ul>
+<li>✅ 创建/查询/添加/更新/删除<strong>记录</strong></li>
+<li>✅ 创建/添加/更新/删除<strong>字段</strong></li>
+<li>✅ 创建/读取<strong>database</strong> 的 schema</li>
+<li>❌ <strong>重命名 database</strong>（只能改 workspace tree 节点展示名）</li>
+<li>❌ <strong>删除 database</strong>（只能清空记录）</li>
+</ul>
+<p>资源改名/删除需要走 UI 或后续接口支持。</p>
+<h3>10.4 Gmeek/WorkBuddy 单文件部署的坑</h3>
+<ul>
+<li>每次 <code class="notranslate">import_html</code> 是<strong>整体覆盖</strong>，不会合并。要保留旧版的修复，必须在新版里手动重做</li>
+<li>备份/恢复机制（导出 JSON 备份 → 导入备份）是数据迁移的唯一可靠方式</li>
+<li>公开链接一旦生成就稳定，但内容更新必须 <code class="notranslate">publish_page</code></li>
+</ul>
+<hr>
+<h2>十一、后续优化方向</h2>
+<h3>11.1 功能增强</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 月度汇总报表（按月统计销售额/利润）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 商品销量趋势图（折线图）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 进货成本趋势（识别最划算的供应商）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 多店管理（数据按店铺隔离）</li>
+</ul>
+<h3>11.2 用户体验</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 「特大字号」开关（适老化 v2）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 语音输入（数量、价格、损耗）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 拍照识别进货单（OCR）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 工作台访问密码（隐私 v2）</li>
+</ul>
+<h3>11.3 数据分析</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 热销 TOP3 自动推送提醒</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 库存预警自动通知（订阅消息）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 周末/节假日销售对比</li>
+</ul>
+<h3>11.4 工程优化</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> PWA 离线优先（service worker）</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 字号根据系统设置自动适配</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 操作日志（审计追踪）</li>
+</ul>
+<hr>
+<h2>附录 A：资料库 ID 对照表（最新）</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>用途</th>
+<th>数据库 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我的小店·商品库存</td>
+<td><code class="notranslate">1itM3JNwNptPvOpy442Nkq</code></td>
+</tr>
+<tr>
+<td>我的小店·熟客账本</td>
+<td><code class="notranslate">UQQHhsgWP7amWzKniONVkR</code></td>
+</tr>
+<tr>
+<td>我的小店·进货单</td>
+<td><code class="notranslate">jXlaDltP5AOpqPqLVdtAL9</code></td>
+</tr>
+<tr>
+<td>我的小店·盘点记录</td>
+<td><code class="notranslate">nK3gxBrLjTgd2G9dBamXGP</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>工作台 node_block_id：<code class="notranslate">dAdmF5knBlKA1wHPUn3dsB</code></p>
+<h2>附录 B：技术栈</h2>
+<ul>
+<li><strong>前端</strong>：原生 HTML/CSS/JS（无框架）</li>
+<li><strong>样式</strong>：CSS 变量 + Grid/Flexbox</li>
+<li><strong>数据</strong>：WorkBuddy 资料库（4 张云端表）</li>
+<li><strong>SDK</strong>：WorkBuddy 浏览器 SDK</li>
+<li><strong>离线缓存</strong>：localStorage</li>
+<li><strong>部署</strong>：WorkBuddy Space 单文件 HTML</li>
+<li><strong>目标</strong>：移动端（375px 优先，桌面端兼容）</li>
+</ul>
+<hr>
+<p><em>文档生成于 2026-08-20，覆盖 v1~v16 完整迭代。</em></p></div>
+
+
+<section class="related-posts">
+  <h2 class="related-title">相关推荐</h2>
+  <ul class="related-list">
+    
+    <li>
+      <a href="https://ibitbetter.space/post/183.html">家庭日用品追踪小程序 ·技术文档</a>
+      <span class="related-date">2026-08-07</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/171.html">为什么使用存储过程非常慢,但是执行SQL很快？</a>
+      <span class="related-date">2026-07-17</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/165.html">耗品记：当一个合格的家庭用品管理员</a>
+      <span class="related-date">2026-07-13</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/149.html">WinMole开发日志</a>
+      <span class="related-date">2026-06-15</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/146.html">如何下载电子书？Z-Library 使用教程</a>
+      <span class="related-date">2026-06-04</span>
+    </li>
+    
+  </ul>
+</section>
+
+
+<div style="font-size:small;margin-top:8px;float:right;"> 微信搜一搜 © 奇趣网站</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://ibitbetter.space">奇趣网站收藏家 · 效率工具推荐 · 技术教程 | iBitBetter</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/11/2025"!=""){
+    var startSite=new Date("11/11/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","iBitBetter/iBitBetter.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script>window.addEventListener('DOMContentLoaded',function(){var i=document.querySelector('#postBody img');if(i)i.removeAttribute('loading');});</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('a[onclick*="modeSwitch"]').forEach(function(a){var b=document.createElement('button');b.className=a.className;b.setAttribute('onclick',a.getAttribute('onclick'));b.setAttribute('type','button');b.setAttribute('aria-label','切换主题');b.innerHTML=a.innerHTML;a.parentNode.replaceChild(b,a);});});</script>
+
+</html>
