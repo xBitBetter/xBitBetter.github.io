@@ -137,6 +137,8 @@
   .cat { font-size: .72rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 1px 8px; border-radius: 6px; }
   .empty { text-align: center; color: var(--muted); padding: 60px 0; display: none; }
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
+  .comments { margin-top: 36px; }
+  .comments .utterances { max-width: 100%; }
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
   /* 移动端：标签条改为单行横向滚动，避免折行撑满整屏把卡片挤掉 */
   @media (max-width: 600px) {
@@ -1108,8 +1110,17 @@
     </main>
     <p class="empty" id="empty">没有匹配的资源 🤔</p>
     <footer class="site-footer">
-      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-21T05:41:17.501Z
+      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-21T05:46:18.634Z
     </footer>
+    <section class="comments" aria-label="评论区">
+      <script src="https://utteranc.es/client.js"
+              repo="iBitBetter/iBitBetter.github.io"
+              issue-term="pathname"
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </section>
   </div>
   <script>
     (function () {
@@ -1152,6 +1163,14 @@
   </script>
   <script>
     var QIQIU_ICONS = { sun: "M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z", moon: "M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z" };
+    // 评论区（Utterances）主题同步：dark → dark-blue，light → github-light
+    function qiqiuUtterancesTheme(mode) {
+      var utheme = mode === "dark" ? "dark-blue" : "github-light";
+      var iframe = document.querySelector(".utterances-frame");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: "set-theme", theme: utheme }, "https://utteranc.es");
+      }
+    }
     function qiqiuModeSwitch() {
       var cur = document.documentElement.getAttribute("data-color-mode") || "light";
       var next = cur === "light" ? "dark" : "light";
@@ -1159,11 +1178,18 @@
       document.documentElement.setAttribute("data-color-mode", next);
       var sw = document.getElementById("qiqiuThemeSwitch");
       if (sw) sw.setAttribute("d", next === "light" ? QIQIU_ICONS.sun : QIQIU_ICONS.moon);
+      qiqiuUtterancesTheme(next);
     }
     (function () {
       var cur = document.documentElement.getAttribute("data-color-mode") || "light";
       var sw = document.getElementById("qiqiuThemeSwitch");
       if (sw) sw.setAttribute("d", cur === "light" ? QIQIU_ICONS.sun : QIQIU_ICONS.moon);
+      // 等 Utterances iframe 挂载后同步一次主题（避免初始闪烁）
+      (function syncOnce() {
+        var iframe = document.querySelector(".utterances-frame");
+        if (iframe) { qiqiuUtterancesTheme(cur); return; }
+        setTimeout(syncOnce, 400);
+      })();
     })();
   </script>
 </body>
