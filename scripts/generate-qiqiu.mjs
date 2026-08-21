@@ -87,6 +87,72 @@ async function fetchComments(cfg) {
   return all;
 }
 
+// ---------- Reactions（站长 ❤️ 判定） ----------
+// 拉某条评论的 heart reactions（分页）
+async function fetchHeartReactions(cfg, commentId) {
+  const all = [];
+  let page = 1;
+  const perPage = 100;
+  while (true) {
+    const url = `https://api.github.com/repos/${cfg.repository}/issues/comments/${commentId}/reactions?content=heart&per_page=${perPage}&page=${page}`;
+    const res = await githubFetch(url, cfg.token);
+    const batch = await res.json();
+    if (!Array.isArray(batch) || batch.length === 0) break;
+    all.push(...batch);
+    if (batch.length < perPage) break;
+    page++;
+  }
+  return all;
+}
+
+// reactions 里是否有指定登录用户的 ❤️
+function hasOwnerHeart(reactions, ownerLogin) {
+  return reactions.some(
+    (r) => r.content === "heart" && r.user && r.user.login === ownerLogin
+  );
+}
+
+// 限制并发：把数组按 worker 处理，结果按原顺序返回
+async function mapWithLimit(items, limit, worker) {
+  const result = new Array(items.length);
+  let idx = 0;
+  async function run() {
+    while (idx < items.length) {
+      const cur = idx++;
+      result[cur] = await worker(items[cur], cur);
+    }
+  }
+  const n = Math.max(1, Math.min(limit, items.length));
+  await Promise.all(Array.from({ length: n }, () => run()));
+  return result;
+}
+
+// 收录规则（生成器内部判定）：
+//   - 站长本人评论：直接收录
+//   - 非站长评论：仅当站长点过 ❤️ 才收录
+// issue 正文在 main() 里单独处理，这里只管 comments
+async function collectAcceptedComments(comments, cfg) {
+  const ownerLogin = cfg.ownerLogin;
+  if (!ownerLogin) return comments; // 无法判定归属时全部收录（兜底）
+  const mine = [];
+  const others = [];
+  for (const c of comments) {
+    if (c.user && c.user.login === ownerLogin) mine.push(c);
+    else others.push(c);
+  }
+  if (others.length === 0) return mine;
+  const flags = await mapWithLimit(others, Math.min(6, others.length), async (c) => {
+    try {
+      const reactions = await fetchHeartReactions(cfg, c.id);
+      return hasOwnerHeart(reactions, ownerLogin);
+    } catch {
+      return false;
+    }
+  });
+  const liked = others.filter((_, i) => flags[i]);
+  return [...mine, ...liked];
+}
+
 // ---------- 解析 ----------
 function escapeHtml(s) {
   return String(s)
@@ -618,19 +684,18 @@ async function main() {
   const issue = await fetchIssue(cfg);
   const comments = await fetchComments(cfg);
 
-  // 只收录「站长本人」的评论，其它任何人的评论都不进入页面。
-  // owner 默认取 Issue 作者（issue.user.login），也可用 OWNER_LOGIN 环境变量显式覆盖。
+  // 收录规则（生成器内部判定）：
+  //   - issue 正文：始终收录
+  //   - 评论：站长本人评论 或 站长点过 ❤️ 的评论
   const ownerLogin = cfg.ownerLogin || (issue.user && issue.user.login) || "";
-  const myComments = ownerLogin
-    ? comments.filter((c) => c.user && c.user.login === ownerLogin)
-    : comments;
+  const accepted = await collectAcceptedComments(comments, cfg);
   console.log(
-    `issue 正文 + ${comments.length} 条评论 → 仅保留 ${ownerLogin || "全部"} 的 ${myComments.length} 条`
+    `issue 正文 + ${comments.length} 条评论 → 收录 ${accepted.length} 条（站长本人 + 站长 ❤️）`
   );
 
   const items = dedupe([
     ...parseBlock(issue.body, ""),
-    ...myComments.map((c) => parseBlock(c.body, "")).flat(),
+    ...accepted.map((c) => parseBlock(c.body, "")).flat(),
   ]);
 
   const html = buildHtml(cfg, items, new Date().toISOString());

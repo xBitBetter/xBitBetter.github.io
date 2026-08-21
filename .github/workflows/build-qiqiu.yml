@@ -1,12 +1,12 @@
 name: Build 奇趣网站收藏家
 
 # 触发方式：
-#   1) 在「收藏家 Issue」下新增/编辑「站长本人」的评论 → 自动重新生成
+#   1) 在「收藏家 Issue」下新增/编辑任意评论（任何人）→ 自动重新生成（是否收录由生成器按 ❤️ 判定）
 #   2) 创建/编辑该 Issue 正文 → 自动重新生成
 #   3) 推送 main 分支 → 自动重新生成（便于改配置 / 恢复页面）
 #   4) 每天 UTC 0 点定时重新生成（兜底，防止漏触发）
 #   5) 在 Actions 页面手动 "Run workflow"
-# 重要：仅收录 OWNER（站长本人）本人发布的评论，其它任何人的评论都不会进入页面。
+# 重要：收录「站长本人评论」+「站长点过 ❤️ 的评论」（生成器内部判定），其它评论不进入页面。
 on:
   issue_comment:
     types: [created, edited]
@@ -50,19 +50,19 @@ jobs:
         with:
           node-version: '24'
 
-      # 仅当属于「收藏家 Issue」且（评论事件时）评论作者是站长本人，才继续。
+      # 仅当属于「收藏家 Issue」（编号匹配即可，评论作者不再限定），才继续；是否收录由生成器按 ❤️ 判定。
       # env 上下文只能在 step 级使用；schedule / workflow_dispatch / push 没有 issue 对象，被前面短路跳过判断。
-      - name: 校验是否收藏家 Issue（且评论须为站长本人）
+      - name: 校验是否收藏家 Issue（评论作者不再限定，由生成器按 ❤️ 筛选）
         id: guard
         if: >-
           github.event_name == 'schedule' ||
           github.event_name == 'workflow_dispatch' ||
           github.event_name == 'push' ||
-          (github.event_name == 'issue_comment' && github.event.issue.number == env.ISSUE_NUMBER && github.event.comment.user.login == env.OWNER) ||
+          (github.event_name == 'issue_comment' && github.event.issue.number == env.ISSUE_NUMBER) ||
           (github.event_name == 'issues' && github.event.issue.number == env.ISSUE_NUMBER)
         run: echo 'matched=true' >> "$GITHUB_OUTPUT"
 
-      - name: 生成页面（仅收录站长本人评论）
+      - name: 生成页面（收录规则由生成器内部按站长 ❤️ 判定）
         if: steps.guard.outputs.matched == 'true'
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
