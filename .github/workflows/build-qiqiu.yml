@@ -4,7 +4,7 @@ name: Build 奇趣网站收藏家
 #   1) 在「收藏家 Issue」下新增/编辑任意评论（任何人）→ 自动重新生成（是否收录由生成器按 ❤️ 判定）
 #   2) 创建/编辑该 Issue 正文 → 自动重新生成
 #   3) 推送 main 分支 → 自动重新生成（便于改配置 / 恢复页面）
-#   4) 每天 UTC 0 点定时重新生成（兜底，防止漏触发）
+#   4) 每 6 小时定时重新生成（兜底；因为 ❤️ reaction 不触发 webhook，点 ❤️ 后最迟 6 小时内上页）
 #   5) 在 Actions 页面手动 "Run workflow"
 # 重要：收录「站长本人评论」+「站长点过 ❤️ 的评论」（生成器内部判定），其它评论不进入页面。
 on:
@@ -15,7 +15,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 # 只处理「收藏家 Issue」；其它 issue 的评论/编辑直接跳过，避免无效运行。
@@ -75,11 +75,10 @@ jobs:
           OWNER: ${{ env.OWNER }}
         run: |
           set -euo pipefail
-          gh issue view "$ISSUE_NUMBER" --json body -q .body > /tmp/qiqiu_body.md
-          # 仅保留 OWNER 本人发布的评论，其它人的评论一律丢弃
-          gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" --jq '.[] | select(.user.login == "'"$OWNER"'") | .body' > /tmp/qiqiu_comments.md
-          cat /tmp/qiqiu_body.md /tmp/qiqiu_comments.md > combined.md
-          node scripts/generate-qiqiu.mjs --local combined.md
+          # 收录规则（站长本人评论 + 站长点过 ❤️ 的评论）由脚本内部判定：
+          # 脚本会拉取「全部评论」并逐条查询 reactions，因此这里不再预过滤评论作者，也不走 --local。
+          # 注意：GitHub 的 ❤️ reaction 不触发任何 webhook，需靠 schedule / workflow_dispatch 兜底重跑。
+          node scripts/generate-qiqiu.mjs
           # 修正 canonical 为线上访问路径（生成器按 outputPath 拼接会带上 docs/ 前缀）
           sed -i 's#/docs/curious-websites.html#/curious-websites.html#g' "$OUTPUT_PATH"
 
