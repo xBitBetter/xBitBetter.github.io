@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://ibitbetter.space/assets/primer.min.css' rel='stylesheet'/>
+    <link rel='preconnect' href='https://cdnjs.cloudflare.com' crossorigin><link rel='preconnect' href='https://www.googletagmanager.com'><link rel='preconnect' href='https://utteranc.es'><link href='https://ibitbetter.space/assets/custom.css' rel='stylesheet'/><script async src='https://www.googletagmanager.com/gtag/js?id=G-5QE3S0EJHW'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5QE3S0EJHW');</script><script defer src='https://ibitbetter.space/assets/GmeekVercount.js'></script><meta name='twitter:card' content='summary_large_image'><meta name='twitter:title' content='奇趣网站评测 · 效率工具推荐 · 技术教程 | iBitBetter'><meta name='twitter:description' content='发现最实用的 Windows 效率工具、技术教程与互联网趣站。从软件推荐到电子书资源，帮你每天节省 2 小时。'><meta name='twitter:image' content='https://ibitbetter.space/assets/ibitbetter.webp'><meta name='keywords' content='效率工具,Windows软件,电子书,技术博客,软件推荐,奇趣网站'><style>.title-right a[href*='terms.html'],.title-right a[href*='privacy.html']{display:none!important}@media (max-width:600px){.title-right .circle{padding:5px 7px;margin:0}.title-right .btn{padding:6px 8px}}#header{align-items:center}</style><script>document.addEventListener('DOMContentLoaded',function(){var f=document.getElementById('footer');if(f){var d=document.createElement('div');d.style.cssText='margin-top:8px;font-size:small;text-align:center;';d.innerHTML='<a href="mailto:xbitbetter@gmail.com">Email</a> · <a href="https://ibitbetter.space/privacy.html">隐私政策</a> · <a href="https://ibitbetter.space/terms.html">服务条款</a>';f.appendChild(d);}});</script><script>document.addEventListener('DOMContentLoaded', function() { var titleRight = document.querySelector('.title-right'); if (!titleRight || document.getElementById('btnCurious')) return; var a = document.createElement('a'); a.id = 'btnCurious'; a.href = '/curious-websites.html'; a.className = 'btn btn-invisible circle'; a.title = 'Curious'; a.setAttribute('aria-label', 'Curious'); a.innerHTML = `<svg class='octicon' width='16' height='16'><path fill-rule='evenodd' d='M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25ZM14.5 6h-13v7.25c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm-6-3.5v2h6V2.75a.25.25 0 0 0-.25-.25ZM5 2.5v2h2v-2Zm-3.25 0a.25.25 0 0 0-.25.25V4.5h2v-2Z'></path></svg>`; var about = titleRight.querySelector('a[href*="/about"]'); if (about && about.nextSibling) { titleRight.insertBefore(a, about.nextSibling); } else { titleRight.appendChild(a); } });</script><script>document.addEventListener('DOMContentLoaded',function(){var t=document.querySelector('.title-right a[onclick*="modeSwitch"],.title-right button[onclick*="modeSwitch"]');if(t)t.parentNode.appendChild(t);});</script>
+    <link rel="icon" href="https://ibitbetter.space/assets/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "iBitBetter",
+      "url": "https://ibitbetter.space",
+      "description": "奇趣网站评测 · 效率工具推荐 · 技术教程",
+      "logo": "https://ibitbetter.space/assets/ibitbetter.webp"
+    }
+    </script>
+    
+    
+<meta name="description" content="淘宝订单服务使用到的API taobao.trades.sold.get( 查询卖家已卖出的交易数据（根据创建时间） )﻿https://open.taobao.com/api.htm?docId=4">
+<meta property="og:title" content="电商业务系统常用API备忘">
+<meta property="og:description" content="淘宝订单服务使用到的API taobao.trades.sold.get( 查询卖家已卖出的交易数据（根据创建时间） )﻿https://open.taobao.com/api.htm?docId=4">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ibitbetter.space/post/189.html">
+<meta property="og:image" content="https://ibitbetter.space/og-image.jpg">
+<title>电商业务系统常用API备忘</title>
+<link rel="canonical" href="https://ibitbetter.space/post/189.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "\u7535\u5546\u4e1a\u52a1\u7cfb\u7edf\u5e38\u7528API\u5907\u5fd8",
+  "datePublished": "2026-08-21",
+  "dateModified": "2026-08-21",
+  "author": {
+    "@id": "https://ibitbetter.space/about.html#author",
+    "@type": "Person",
+    "name": "iBitBetter",
+    "url": "https://ibitbetter.space/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "iBitBetter",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ibitbetter.space/assets/ibitbetter.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ibitbetter.space/post/189.html"
+  },
+  "image": "https://ibitbetter.space/og-image.jpg",
+  "url": "https://ibitbetter.space/post/189.html"
+}
+</script>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.related-posts{margin-top:40px;padding:20px;background:var(--color-canvas-subtle,#f6f8fa);border-radius:8px;border:1px solid var(--color-border-default);}
+.related-title{font-size:20px;margin:0 0 12px;font-weight:bold;}
+.related-list{list-style:none;padding:0;margin:0;}
+.related-list li{margin:8px 0;line-height:1.6;}
+.related-list a{color:var(--color-accent-fg,#0969da);text-decoration:none;}
+.related-list a:hover{text-decoration:underline;}
+.related-date{display:inline-block;margin-left:8px;font-size:12px;color:var(--color-fg-muted,#656d76);}
+  
+.postTitle{margin: auto 0;font-size:30px;font-weight:bold;line-height:1.35;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:22px;line-height:1.4;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">电商业务系统常用API备忘</h1>
+<div class="title-right">
+    <a href="https://ibitbetter.space" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><strong>淘宝订单服务使用到的API</strong></p>
+<p>taobao.trades.sold.get( 查询卖家已卖出的交易数据（根据创建时间） )﻿<a href="https://open.taobao.com/api.htm?docId=46&amp;docType=2" rel="nofollow">https://open.taobao.com/api.htm?docId=46&amp;docType=2</a></p>
+<p>taobao.top.oaid.merge( OAID订单合并 )﻿<a href="https://open.taobao.com/api.htm?docId=55032&amp;docType=2" rel="nofollow">https://open.taobao.com/api.htm?docId=55032&amp;docType=2</a></p>
+<p>taobao.trade.fullinfo.get( 获取单笔交易的详细信息 )﻿<a href="https://open.taobao.com/api.htm?docId=54&amp;docType=2" rel="nofollow">https://open.taobao.com/api.htm?docId=54&amp;docType=2</a></p>
+<p>alibaba.ascp.logistics.offline.send( 自己联系物流发货 )﻿<a href="https://open.taobao.com/api.htm?spm=a219a.7386797.0.0.68b6669ayrGuvJ&amp;source=search&amp;docId=54934&amp;docType=2" rel="nofollow">https://open.taobao.com/api.htm?spm=a219a.7386797.0.0.68b6669ayrGuvJ&amp;source=search&amp;docId=54934&amp;docType=2</a></p>
+<p><strong>菜鸟云打印</strong></p>
+<p>菜鸟云打印模板编辑器﻿</p>
+<p>taobao.wlb.waybill.i.get( 获取物流服务商电子面单号v1.0 )﻿<a href="https://open.taobao.com/api.htm?docId=23869&amp;docType=2" rel="nofollow">https://open.taobao.com/api.htm?docId=23869&amp;docType=2</a></p>
+<p><strong>淘宝电子面单</strong> ﻿</p>
+<p>淘宝开放平台： <a href="https://open.taobao.com/%EF%BB%BF" rel="nofollow">https://open.taobao.com/﻿</a></p>
+<p>阿里聚石塔： <a href="https://console.cloud.tmall.com/home#/%EF%BB%BF" rel="nofollow">https://console.cloud.tmall.com/home#/﻿</a></p>
+<p>菜鸟打印组件下载 <a href="https://page.cainiao.com/waybill/cloud_printing/home.html" rel="nofollow">https://page.cainiao.com/waybill/cloud_printing/home.html</a></p>
+<p><strong>拼多多订单服务使用到的API</strong></p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.order.list.get" rel="nofollow">pdd.order.list.get</a> 订单列表查询接口（根据成交时间）﻿</p>
+<p>refund_status  售后状态 1：无售后或售后关闭，2：售后处理中，3：退款中，4： 退款成功 5：全部</p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.order.information.get" rel="nofollow">pdd.order.information.get</a> 订单详情﻿</p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.order.merge.ship.order.group" rel="nofollow">pdd.order.merge.ship.order.group</a>合并发货订单分组﻿</p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.order.merge.ship.order.group" rel="nofollow">pdd.order.review.info</a>订单审核信息查询接口﻿</p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.logistics.online.send" rel="nofollow">pdd.logistics.online.send</a>订单发货通知接口﻿</p>
+<p><strong>拼多多云打印</strong></p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.waybill.get%EF%BB%BF" rel="nofollow">https://open.pinduoduo.com/application/document/api?id=pdd.waybill.get﻿</a></p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.cloud.print%EF%BB%BF" rel="nofollow">https://open.pinduoduo.com/application/document/api?id=pdd.cloud.print﻿</a></p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.waybill.search%EF%BB%BF" rel="nofollow">https://open.pinduoduo.com/application/document/api?id=pdd.waybill.search﻿</a></p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.cloudprint.stdtemplates.get%EF%BB%BF" rel="nofollow">https://open.pinduoduo.com/application/document/api?id=pdd.cloudprint.stdtemplates.get﻿</a></p>
+<p><a href="https://open.pinduoduo.com/application/document/api?id=pdd.waybill.query.by.waybillcode%EF%BB%BF" rel="nofollow">https://open.pinduoduo.com/application/document/api?id=pdd.waybill.query.by.waybillcode﻿</a></p>
+<p><strong>拼多多打印组件下载</strong>﻿</p>
+<p>拼多多开放平台：<a href="https://open.pinduoduo.com/application/home" rel="nofollow">https://open.pinduoduo.com/application/home</a></p>
+<p><strong>京东常用工具地址</strong></p>
+<p>京东商家开放平台：<a href="https://open-console.jd.com/v2/#/home%EF%BB%BF" rel="nofollow">https://open-console.jd.com/v2/#/home﻿</a></p>
+<p>自研商家授权工具：<a href="https://open.jd.com/v2/#/doc/guide?listId=auth%EF%BB%BF" rel="nofollow">https://open.jd.com/v2/#/doc/guide?listId=auth﻿</a></p>
+<p>SSL证书管理：<a href="https://certificate-console.jdcloud.com/jsecssl/list%EF%BB%BF" rel="nofollow">https://certificate-console.jdcloud.com/jsecssl/list﻿</a></p>
+<p>ssl iis 安装教程： <a href="https://docs.jdcloud.com/cn/ssl-certificate/ssl-iis" rel="nofollow">https://docs.jdcloud.com/cn/ssl-certificate/ssl-iis</a></p>
+<p>云鼎虎符控制台：<a href="https://hufu-yd-console.jdcloud.com/#/hufu/list%EF%BB%BF" rel="nofollow">https://hufu-yd-console.jdcloud.com/#/hufu/list﻿</a></p>
+<p>京东云打印模板： <a href="https://template-design.jd.com/custom?status=1%EF%BB%BF" rel="nofollow">https://template-design.jd.com/custom?status=1﻿</a></p>
+<p>云鼎控制台：<a href="https://yd-common-console.jdcloud.com/overview%EF%BB%BF" rel="nofollow">https://yd-common-console.jdcloud.com/overview﻿</a></p>
+<p>无界电子面单系统接入说明： <a href="https://jos.jd.com/commondoc?listId=335%EF%BB%BF" rel="nofollow">https://jos.jd.com/commondoc?listId=335﻿</a></p>
+<p>电子面单接单接口入参说明： <a href="https://jos.jd.com/commondoc?listId=657" rel="nofollow">https://jos.jd.com/commondoc?listId=657</a></p>
+<p><strong>京东订单服务使用到的API</strong></p>
+<p>jingdong.pop.order.search（根据条件检索订单信息）<a href="https://jos.jd.com/apilist?apiGroupId=55&amp;apiId=15660&amp;apiName=jingdong.pop.order.search%EF%BB%BF" rel="nofollow">https://jos.jd.com/apilist?apiGroupId=55&amp;apiId=15660&amp;apiName=jingdong.pop.order.search﻿</a></p>
+<p>jingdong.pop.order.get（检索单个SOP订单信息）<a href="https://jos.jd.com/apilist?apiGroupId=55&amp;apiId=15661&amp;apiName=jingdong.pop.order.get%EF%BB%BF" rel="nofollow">https://jos.jd.com/apilist?apiGroupId=55&amp;apiId=15661&amp;apiName=jingdong.pop.order.get﻿</a></p>
+<p>jingdong.pop.afs.refundapply.querylist（商家通过查询条件查询退款审核单列表）<a href="https://jos.jd.com/apilist?apiGroupId=71&amp;apiId=12705&amp;apiName=jingdong.pop.afs.refundapply.querylist%EF%BB%BF" rel="nofollow">https://jos.jd.com/apilist?apiGroupId=71&amp;apiId=12705&amp;apiName=jingdong.pop.afs.refundapply.querylist﻿</a></p>
+<p>jingdong.pop.order.shipment（sop出库发货接口） <a href="https://jos.jd.com/apilistnewdetail?apiGroupId=55&amp;apiId=13880&amp;apiName=null%EF%BB%BF" rel="nofollow">https://jos.jd.com/apilistnewdetail?apiGroupId=55&amp;apiId=13880&amp;apiName=null﻿</a></p>
+<p><strong>快手订单服务使用到的API</strong></p>
+<p>获取订单列表 <a href="https://open.kwaixiaodian.com/zone/new/docs/api?name=open.order.cursor.list&amp;version=1%EF%BB%BF" rel="nofollow">https://open.kwaixiaodian.com/zone/new/docs/api?name=open.order.cursor.list&amp;version=1﻿</a></p>
+<p>获取订单详情 <a href="https://open.kwaixiaodian.com/zone/new/docs/api?name=open.order.detail&amp;version=1%EF%BB%BF" rel="nofollow">https://open.kwaixiaodian.com/zone/new/docs/api?name=open.order.detail&amp;version=1﻿</a></p>
+<p>订单发货 <a href="https://open.kwaixiaodian.com/zone/new/docs/api?categoryId=43&amp;apiName=open.seller.order.goods.deliver&amp;version=1%EF%BB%BF" rel="nofollow">https://open.kwaixiaodian.com/zone/new/docs/api?categoryId=43&amp;apiName=open.seller.order.goods.deliver&amp;version=1﻿</a></p>
+<p>获取售后单列表 <a href="https://open.kwaixiaodian.com/zone/new/docs/api?categoryId=42&amp;apiName=open.seller.order.refund.pcursor.list&amp;version=1%EF%BB%BF" rel="nofollow">https://open.kwaixiaodian.com/zone/new/docs/api?categoryId=42&amp;apiName=open.seller.order.refund.pcursor.list&amp;version=1﻿</a></p>
+<p>快手开放平台：<a href="https://open.kwaixiaodian.com/login%EF%BB%BF" rel="nofollow">https://open.kwaixiaodian.com/login﻿</a></p>
+<p>电子面单技术对接文档：<a href="https://open.kwaixiaodian.com/zone/new/solution/detail?pageSign=be565dfc5ca82ebb4683bc208f7929051642596657058" rel="nofollow">https://open.kwaixiaodian.com/zone/new/solution/detail?pageSign=be565dfc5ca82ebb4683bc208f7929051642596657058</a></p>
+<p><strong>抖音订单服务使用到的API</strong></p>
+<p>/order/logisticsAdd 订单发货接口 <a href="https://op.jinritemai.com/docs/api-docs/16/718%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/16/718﻿</a></p>
+<p>/order/logisticsAddSinglePack 支持多个订单发同一个物流包裹 <a href="https://op.jinritemai.com/docs/api-docs/16/563%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/16/563﻿</a></p>
+<p>/token/refresh <a href="https://op.jinritemai.com/docs/api-docs/162/1601%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/162/1601﻿</a></p>
+<p>/order/searchList 订单列表查询 <a href="https://op.jinritemai.com/docs/api-docs/15/1342%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/15/1342﻿</a></p>
+<p>/order/orderDetail 订单详情查询 <a href="https://op.jinritemai.com/docs/api-docs/15/1343%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/15/1343﻿</a></p>
+<p>订单退款接口，是调用 /order/searchList 使用上面的参数 after_sale_status_desc 获取指定日期的退款订单</p>
+<p><strong>抖音电子面单API</strong></p>
+<p>/logistics/newCreateOrder <a href="https://op.jinritemai.com/docs/api-docs/1262/1339%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/1262/1339﻿</a></p>
+<p>/logistics/waybillApply <a href="https://op.jinritemai.com/docs/api-docs/1262/490%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/1262/490﻿</a></p>
+<p>/logistics/listShopNetsite <a href="https://op.jinritemai.com/docs/api-docs/1262/1843%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/api-docs/1262/1843﻿</a></p>
+<p>电子面单常见对接场景 <a href="https://op.jinritemai.com/docs/guide-docs/1320/3307%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/guide-docs/1320/3307﻿</a></p>
+<p><strong>如何实现多店铺共享面单取号</strong></p>
+<p>/logistics/newCreateOrder﻿ token字段传开通电子面单店铺的token，user_id字段传订单所在店铺的shopid或者传-1。（例：A店铺开通了电子面单，现在要用B店铺的订单获取单号，则token传A店铺的，user_id传B店铺的shopid或者-1）</p>
+<p>抖音电商电子面单打印对接 <a href="https://op.jinritemai.com/docs/guide-docs/120/596%EF%BB%BF" rel="nofollow">https://op.jinritemai.com/docs/guide-docs/120/596﻿</a></p>
+<p>官方打印组件下载： <a href="https://logistics.douyinec.com/davinci/index%EF%BB%BF" rel="nofollow">https://logistics.douyinec.com/davinci/index﻿</a></p>
+<p>抖音开放平台： <a href="https://op.jinritemai.com/home" rel="nofollow">https://op.jinritemai.com/home</a></p></div>
+
+
+<section class="related-posts">
+  <h2 class="related-title">相关推荐</h2>
+  <ul class="related-list">
+    
+    <li>
+      <a href="https://ibitbetter.space/post/187.html">我的小店Workbuddy工作台 · 项目文档</a>
+      <span class="related-date">2026-08-20</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/183.html">家庭日用品追踪小程序 ·技术文档</a>
+      <span class="related-date">2026-08-07</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/171.html">为什么使用存储过程非常慢,但是执行SQL很快？</a>
+      <span class="related-date">2026-07-17</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/165.html">耗品记：当一个合格的家庭用品管理员</a>
+      <span class="related-date">2026-07-13</span>
+    </li>
+    
+    <li>
+      <a href="https://ibitbetter.space/post/149.html">WinMole开发日志</a>
+      <span class="related-date">2026-06-15</span>
+    </li>
+    
+  </ul>
+</section>
+
+
+<div style="font-size:small;margin-top:8px;float:right;"> 微信搜一搜 © 奇趣网站</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://ibitbetter.space">奇趣网站收藏家 · 效率工具推荐 · 技术教程 | iBitBetter</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/11/2025"!=""){
+    var startSite=new Date("11/11/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","iBitBetter/iBitBetter.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script>window.addEventListener('DOMContentLoaded',function(){var i=document.querySelector('#postBody img');if(i)i.removeAttribute('loading');});</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('a[onclick*="modeSwitch"]').forEach(function(a){var b=document.createElement('button');b.className=a.className;b.setAttribute('onclick',a.getAttribute('onclick'));b.setAttribute('type','button');b.setAttribute('aria-label','切换主题');b.innerHTML=a.innerHTML;a.parentNode.replaceChild(b,a);});});</script>
+
+</html>
