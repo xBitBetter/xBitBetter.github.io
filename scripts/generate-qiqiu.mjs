@@ -44,6 +44,7 @@ async function loadConfig() {
     siteUrl: process.env.SITE_URL || fileConfig.siteUrl || "https://ibitbetter.space",
     ownerLogin: process.env.OWNER || process.env.OWNER_LOGIN || fileConfig.ownerLogin || "",
     sourceIssueUrl: "",
+    pageSize: Number(process.env.PAGE_SIZE || fileConfig.pageSize || 24),
   };
   cfg.sourceIssueUrl = `https://github.com/${cfg.repository}/issues/${cfg.issueNumber}`;
   return cfg;
@@ -364,6 +365,7 @@ function buildHtml(cfg, items, generatedAt) {
     a.localeCompare(b, "zh")
   );
   const count = items.length;
+  const PAGE_SIZE = Math.max(1, Number(cfg.pageSize) || 24);
   const cards = renderCards(items);
   const tagBar = renderTagBar(allTags);
   const safeTitle = escapeHtml(cfg.pageTitle);
@@ -523,7 +525,13 @@ ${canonicalTag}
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
   .comments { margin-top: 36px; }
   .comments .utterances { max-width: 100%; }
-  .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; }
+  .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; text-align: center; }
+  .pager { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin: 26px 0 8px; }
+  .pg-btn { border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 7px 15px; border-radius: 999px; font-size: .85rem; cursor: pointer; transition: all .15s; font-family: var(--font); }
+  .pg-btn:hover:not(:disabled) { color: var(--text); border-color: var(--accent); }
+  .pg-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .pg-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .pg-ellipsis { color: var(--muted); padding: 0 2px; }
   /* 移动端：标签条改为单行横向滚动，避免折行撑满整屏把卡片挤掉 */
   @media (max-width: 600px) {
     .site-header { padding: 12px 16px 8px; gap: 8px; flex-wrap: nowrap; }
@@ -543,6 +551,8 @@ ${canonicalTag}
     }
     .chips::-webkit-scrollbar { display: none; }
     .chip { flex: 0 0 auto; white-space: nowrap; }
+    .pager { gap: 6px; margin: 20px 0 6px; }
+    .pg-btn { padding: 6px 12px; font-size: .8rem; }
     .grid { grid-template-columns: 1fr; }
     .card { padding: 16px; }
     .card-favicon { top: 10px; right: 10px; width: 20px; height: 20px; }
@@ -579,11 +589,13 @@ ${canonicalTag}
       <input id="search" class="search" type="search" placeholder="搜索网站、描述或标签…" autocomplete="off" />
       ${tagBar}
     </div>
-    <p class="count">共 ${count} 个资源</p>
+    <p class="count" id="count">共 ${count} 个资源</p>
+    <nav class="pager" aria-label="分页"></nav>
     <main class="grid" id="grid">
 ${cards}
     </main>
     <p class="empty" id="empty">没有匹配的资源 🤔</p>
+    <nav class="pager" aria-label="分页"></nav>
     <footer class="site-footer">
       本页由 <a href="${safeIssue}" target="_blank" rel="noopener noreferrer">GitHub Issue #${cfg.issueNumber}</a> 的评论自动生成 · 更新于 ${safeTime}
     </footer>
@@ -604,26 +616,72 @@ ${cards}
       var empty = document.getElementById("empty");
       var search = document.getElementById("search");
       var chips = document.getElementById("chips");
-      var activeTag = "";
+      var countEl = document.getElementById("count");
       var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
+      var PAGE_SIZE = ${PAGE_SIZE};
+      var activeTag = "";
+      var currentPage = 1;
+      var totalPages = 1;
 
-      function apply() {
+      function getFiltered() {
         var q = (search.value || "").trim().toLowerCase();
-        var shown = 0;
-        cards.forEach(function (c) {
+        return cards.filter(function (c) {
           var tag = c.getAttribute("data-tags") || "";
           var title = c.getAttribute("data-title") || "";
           var desc = c.getAttribute("data-desc") || "";
           var okTag = !activeTag || (" " + tag + " ").indexOf(" " + activeTag + " ") > -1;
           var okText = !q || title.indexOf(q) > -1 || desc.indexOf(q) > -1 || tag.indexOf(q) > -1;
-          var ok = okTag && okText;
-          c.style.display = ok ? "" : "none";
-          if (ok) shown++;
+          return okTag && okText;
         });
-        empty.style.display = shown === 0 ? "block" : "none";
       }
 
-      search.addEventListener("input", apply);
+      function renderPager() {
+        var html = "";
+        if (totalPages > 1) {
+          var cur = currentPage;
+          var pages = [1];
+          var start = Math.max(2, cur - 2);
+          var end = Math.min(totalPages - 1, cur + 2);
+          if (start > 2) pages.push("...");
+          for (var p = start; p <= end; p++) pages.push(p);
+          if (end < totalPages - 1) pages.push("...");
+          if (totalPages > 1) pages.push(totalPages);
+          html += '<button class="pg-btn" type="button" data-page="prev" ' + (cur === 1 ? "disabled" : "") + ">‹ 上一页</button>";
+          pages.forEach(function (p) {
+            if (p === "...") { html += '<span class="pg-ellipsis">…</span>'; return; }
+            var cls = p === cur ? "pg-btn active" : "pg-btn";
+            html += '<button class="' + cls + '" type="button" data-page="' + p + '">' + p + "</button>";
+          });
+          html += '<button class="pg-btn" type="button" data-page="next" ' + (cur === totalPages ? "disabled" : "") + ">下一页 ›</button>";
+        }
+        document.querySelectorAll(".pager").forEach(function (pager) { pager.innerHTML = html; });
+      }
+
+      function apply(resetPage) {
+        if (resetPage) currentPage = 1;
+        var filtered = getFiltered();
+        totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        var startIdx = (currentPage - 1) * PAGE_SIZE;
+        var endIdx = startIdx + PAGE_SIZE;
+        cards.forEach(function (c) { c.style.display = "none"; });
+        filtered.slice(startIdx, endIdx).forEach(function (c) { c.style.display = ""; });
+        empty.style.display = filtered.length === 0 ? "block" : "none";
+        if (countEl) {
+          countEl.textContent = "共 " + filtered.length + " 个资源 · 第 " + currentPage + "/" + totalPages + " 页";
+        }
+        renderPager();
+      }
+
+      function goToPage(p) {
+        if (p < 1 || p > totalPages) return;
+        currentPage = p;
+        apply(false);
+        var top = grid.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: top, behavior: "smooth" });
+      }
+
+      search.addEventListener("input", function () { apply(true); });
       if (chips) {
         chips.addEventListener("click", function (e) {
           var btn = e.target.closest(".chip");
@@ -631,10 +689,20 @@ ${cards}
           activeTag = btn.getAttribute("data-tag") || "";
           chips.querySelectorAll(".chip").forEach(function (b) { b.classList.remove("active"); });
           btn.classList.add("active");
-          apply();
+          apply(true);
         });
       }
-      apply();
+      document.querySelectorAll(".pager").forEach(function (pager) {
+        pager.addEventListener("click", function (e) {
+          var btn = e.target.closest(".pg-btn");
+          if (!btn || btn.disabled) return;
+          var p = btn.getAttribute("data-page");
+          if (p === "prev") goToPage(currentPage - 1);
+          else if (p === "next") goToPage(currentPage + 1);
+          else goToPage(parseInt(p, 10));
+        });
+      });
+      apply(false);
     })();
   </script>
   <script>
