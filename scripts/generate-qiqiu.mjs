@@ -348,19 +348,8 @@ function renderCards(items) {
     .join("\n");
 }
 
-// 页面统计面板：总数 / 分类 / 标签 / 分类分布 / 最近更新
+// 页面统计面板：总数 / 分类 / 标签 / 最近更新
 function renderStats(s) {
-  const maxN = s.catDist.length ? s.catDist[0].n : 1;
-  const bars = s.catDist
-    .map((c) => {
-      const pct = Math.max(4, Math.round((c.n / maxN) * 100));
-      return `<div class="stat-row">
-        <span class="stat-cat">${escapeHtml(c.name)}</span>
-        <span class="stat-bar"><i style="width:${pct}%"></i></span>
-        <span class="stat-num">${c.n}</span>
-      </div>`;
-    })
-    .join("");
   const updated = formatDateTime(s.updatedAt);
   return `<section class="stats" id="stats" aria-label="页面统计">
     <div class="stat-cards">
@@ -368,10 +357,6 @@ function renderStats(s) {
       <div class="stat-card"><span class="stat-val">${s.cats}</span><span class="stat-label">覆盖分类</span></div>
       <div class="stat-card"><span class="stat-val">${s.tags}</span><span class="stat-label">细分标签</span></div>
       <div class="stat-card"><span class="stat-val">${updated}</span><span class="stat-label">最近更新</span></div>
-    </div>
-    <div class="stat-dist">
-      <div class="stat-dist-title">分类分布</div>
-      ${bars}
     </div>
   </section>`;
 }
@@ -408,23 +393,13 @@ function buildHtml(cfg, items, generatedAt) {
   // 顶层分类直接复用每条资源的顶层 tags（即页面 chips 展示的那组），
   // 不再依赖「category 注释字段」（实测该字段在数据中基本为空）。
   const tagSet = new Set(items.flatMap((i) => i.tags));
-  const tagCount = tagSet.size;
+  const categories = [...tagSet].sort((a, b) => a.localeCompare(b, "zh"));
   // 原始细分标签（归一化前）数量，反映收藏的标签丰富度
   const rawTagCount = new Set(items.flatMap((i) => i.rawTags || [])).size;
-  const categories = [...tagSet].sort((a, b) => a.localeCompare(b, "zh"));
-  // 各分类资源数（用于统计面板“分类分布”占比）
-  const catCountMap = {};
-  for (const it of items) {
-    for (const t of it.tags) catCountMap[t] = (catCountMap[t] || 0) + 1;
-  }
-  const catDist = categories
-    .map((c) => ({ name: c, n: catCountMap[c] || 0 }))
-    .sort((a, b) => b.n - a.n);
   const statHtml = renderStats({
     total: count,
     cats: categories.length,
     tags: rawTagCount,
-    catDist,
     updatedAt: generatedAt,
   });
   const PAGE_SIZE = Math.max(1, Number(cfg.pageSize) || 24);
@@ -545,13 +520,6 @@ ${canonicalTag}
   .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1.2; letter-spacing: -.02em; }
   .stat-label { font-size: .78rem; color: var(--muted); }
-  .stat-dist { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
-  .stat-dist-title { font-size: .82rem; color: var(--muted); margin-bottom: 12px; }
-  .stat-row { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
-  .stat-cat { flex: 0 0 56px; font-size: .82rem; color: var(--text); text-align: right; }
-  .stat-bar { flex: 1; height: 8px; background: var(--accent-soft); border-radius: 999px; overflow: hidden; }
-  .stat-bar i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s; }
-  .stat-num { flex: 0 0 32px; font-size: .82rem; color: var(--muted); text-align: left; }
   @media (max-width: 600px) {
     .stat-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .stat-val { font-size: 1.3rem; }
@@ -608,6 +576,9 @@ ${canonicalTag}
   .cat { font-size: .72rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 1px 8px; border-radius: 6px; }
   .empty { text-align: center; color: var(--muted); padding: 60px 0; display: none; }
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
+  footer.site-footer .visit { margin-top: 8px; color: var(--muted); font-size: .8rem; }
+  footer.site-footer .visit .num { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; margin: 0 2px; }
+  footer.site-footer .visit .sep { color: var(--line); margin: 0 8px; }
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; text-align: center; }
   .pager { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin: 26px 0 8px; }
   .pg-btn { border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 7px 15px; border-radius: 999px; font-size: .85rem; cursor: pointer; transition: all .15s; font-family: var(--font); }
@@ -682,6 +653,10 @@ ${cards}
     <nav class="pager" aria-label="分页"></nav>
     <footer class="site-footer">
       本页由 <a href="${safeIssue}" target="_blank" rel="noopener noreferrer">GitHub Issue #${cfg.issueNumber}</a> 的评论自动生成 · 更新于 ${safeTime}
+      <div class="visit">
+        本站已被访问 <span class="num" id="busuanzi_value_site_pv">…</span> 次<span class="sep">·</span><span class="num" id="busuanzi_value_site_uv">…</span> 位访客
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      </div>
     </footer>
   </div>
   <script>
