@@ -239,6 +239,7 @@ function pushItem(items, title, url, desc, tags, category) {
     url: safe,
     desc: desc.slice(0, 300),
     tags: normTags,
+    rawTags: [...new Set(tags.map((t) => t.trim()).filter(Boolean))],
     category: normCat[0] || "",
   });
 }
@@ -347,6 +348,44 @@ function renderCards(items) {
     .join("\n");
 }
 
+// 页面统计面板：总数 / 分类 / 标签 / 分类分布 / 最近更新
+function renderStats(s) {
+  const maxN = s.catDist.length ? s.catDist[0].n : 1;
+  const bars = s.catDist
+    .map((c) => {
+      const pct = Math.max(4, Math.round((c.n / maxN) * 100));
+      return `<div class="stat-row">
+        <span class="stat-cat">${escapeHtml(c.name)}</span>
+        <span class="stat-bar"><i style="width:${pct}%"></i></span>
+        <span class="stat-num">${c.n}</span>
+      </div>`;
+    })
+    .join("");
+  const updated = formatDateTime(s.updatedAt);
+  return `<section class="stats" id="stats" aria-label="页面统计">
+    <div class="stat-cards">
+      <div class="stat-card"><span class="stat-val" id="statTotal">${s.total}</span><span class="stat-label">资源总数</span></div>
+      <div class="stat-card"><span class="stat-val">${s.cats}</span><span class="stat-label">覆盖分类</span></div>
+      <div class="stat-card"><span class="stat-val">${s.tags}</span><span class="stat-label">细分标签</span></div>
+      <div class="stat-card"><span class="stat-val">${updated}</span><span class="stat-label">最近更新</span></div>
+    </div>
+    <div class="stat-dist">
+      <div class="stat-dist-title">分类分布</div>
+      ${bars}
+    </div>
+  </section>`;
+}
+function formatDateTime(iso) {
+  try {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return escapeHtml(iso || "");
+    const p = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  } catch (e) {
+    return escapeHtml(iso || "");
+  }
+}
+
 function renderTagBar(tags) {
   if (tags.length === 0) return "";
   const chips = tags
@@ -365,6 +404,29 @@ function buildHtml(cfg, items, generatedAt) {
     a.localeCompare(b, "zh")
   );
   const count = items.length;
+  // —— 页面统计 ——
+  // 顶层分类直接复用每条资源的顶层 tags（即页面 chips 展示的那组），
+  // 不再依赖「category 注释字段」（实测该字段在数据中基本为空）。
+  const tagSet = new Set(items.flatMap((i) => i.tags));
+  const tagCount = tagSet.size;
+  // 原始细分标签（归一化前）数量，反映收藏的标签丰富度
+  const rawTagCount = new Set(items.flatMap((i) => i.rawTags || [])).size;
+  const categories = [...tagSet].sort((a, b) => a.localeCompare(b, "zh"));
+  // 各分类资源数（用于统计面板“分类分布”占比）
+  const catCountMap = {};
+  for (const it of items) {
+    for (const t of it.tags) catCountMap[t] = (catCountMap[t] || 0) + 1;
+  }
+  const catDist = categories
+    .map((c) => ({ name: c, n: catCountMap[c] || 0 }))
+    .sort((a, b) => b.n - a.n);
+  const statHtml = renderStats({
+    total: count,
+    cats: categories.length,
+    tags: rawTagCount,
+    catDist,
+    updatedAt: generatedAt,
+  });
   const PAGE_SIZE = Math.max(1, Number(cfg.pageSize) || 24);
   const cards = renderCards(items);
   const tagBar = renderTagBar(allTags);
@@ -471,6 +533,29 @@ ${canonicalTag}
   }
 
   .wrap { max-width: 900px; margin: 0 auto; padding: 28px 45px 64px; }
+
+  /* —— 页面统计面板 —— */
+  .stats { margin: 24px 0 8px; }
+  .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 14px; text-align: center; display: flex; flex-direction: column;
+    gap: 4px; transition: border-color .15s, transform .15s;
+  }
+  .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1.2; letter-spacing: -.02em; }
+  .stat-label { font-size: .78rem; color: var(--muted); }
+  .stat-dist { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .stat-dist-title { font-size: .82rem; color: var(--muted); margin-bottom: 12px; }
+  .stat-row { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
+  .stat-cat { flex: 0 0 56px; font-size: .82rem; color: var(--text); text-align: right; }
+  .stat-bar { flex: 1; height: 8px; background: var(--accent-soft); border-radius: 999px; overflow: hidden; }
+  .stat-bar i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s; }
+  .stat-num { flex: 0 0 32px; font-size: .82rem; color: var(--muted); text-align: left; }
+  @media (max-width: 600px) {
+    .stat-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-val { font-size: 1.3rem; }
+  }
   header.page-head h1 {
     font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin: 0 0 6px; letter-spacing: -.02em;
   }
@@ -583,6 +668,7 @@ ${canonicalTag}
         <p>「奇趣网站收藏家」互联网上精彩内容浩如烟海，收集有意思的网站，体验别样的风景。</p>
       </div>
     </header>
+    ${statHtml}
     <div class="toolbar">
       <input id="search" class="search" type="search" placeholder="搜索网站、描述或标签…" autocomplete="off" />
       ${tagBar}
@@ -607,6 +693,8 @@ ${cards}
       var countEl = document.getElementById("count");
       var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
       var PAGE_SIZE = ${PAGE_SIZE};
+      var TOTAL = cards.length;
+      var statTotal = document.getElementById("statTotal");
       var activeTag = "";
       var currentPage = 1;
       var totalPages = 1;
@@ -657,6 +745,12 @@ ${cards}
         empty.style.display = filtered.length === 0 ? "block" : "none";
         if (countEl) {
           countEl.textContent = "共 " + filtered.length + " 个资源 · 第 " + currentPage + "/" + totalPages + " 页";
+        }
+        if (statTotal) {
+          // 静态统计面板“资源总数”随筛选实时变化：无筛选显示真实总数，有筛选显示命中数
+          var filtering = !!(activeTag || (search.value || "").trim());
+          statTotal.textContent = filtering ? filtered.length : TOTAL;
+          statTotal.title = filtering ? "当前筛选命中 " + filtered.length + " 个" : "全部 " + TOTAL + " 个资源";
         }
         renderPager();
       }
