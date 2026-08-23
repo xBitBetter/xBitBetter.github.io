@@ -1,0 +1,44 @@
+name: Retain 50 runs per workflow
+
+on:
+  schedule:
+    - cron: '17 3 * * 0'   # 每周日 03:17 (UTC) 自动清理
+  workflow_dispatch:        # 也可在 Actions 页手动触发
+
+permissions:
+  actions: write
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    env:
+      KEEP: "50"
+    steps:
+      - name: Delete runs beyond KEEP per workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+          KEEP_N="${KEEP:-50}"
+
+          # 分页拉取全部 workflow runs
+          page=1
+          runs_json="[]"
+          while :; do
+            chunk=$(gh api "repos/$REPO/actions/runs?per_page=100&page=$page" \
+                      --jq '.workflow_runs | map({id, workflow_id, created_at})')
+            [ "$(echo "$chunk" | jq 'length')" = "0" ] && break
+            runs_json=$(echo "$runs_json" "$chunk" | jq -s 'add')
+            page=$((page + 1))
+          done
+
+          # 每个 workflow 按 created_at 倒序留最新 KEEP_N 条，其余删除
+          echo "$runs_json" | jq -r --argjson keep "$KEEP_N" '
+            group_by(.workflow_id) | .[]
+            | sort_by(.created_at) | reverse | .[$keep:]
+            | .[].id' | while read -r id; do
+              gh api "repos/$REPO/actions/runs/$id" -X DELETE >/dev/null 2>&1 \
+                && echo "deleted $id" || echo "skip $id"
+            done
+          echo "prune done"
