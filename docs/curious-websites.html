@@ -97,13 +97,6 @@
   .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1.2; letter-spacing: -.02em; }
   .stat-label { font-size: .78rem; color: var(--muted); }
-  .stat-dist { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
-  .stat-dist-title { font-size: .82rem; color: var(--muted); margin-bottom: 12px; }
-  .stat-row { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
-  .stat-cat { flex: 0 0 56px; font-size: .82rem; color: var(--text); text-align: right; }
-  .stat-bar { flex: 1; height: 8px; background: var(--accent-soft); border-radius: 999px; overflow: hidden; }
-  .stat-bar i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s; }
-  .stat-num { flex: 0 0 32px; font-size: .82rem; color: var(--muted); text-align: left; }
   @media (max-width: 600px) {
     .stat-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .stat-val { font-size: 1.3rem; }
@@ -160,6 +153,9 @@
   .cat { font-size: .72rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 1px 8px; border-radius: 6px; }
   .empty { text-align: center; color: var(--muted); padding: 60px 0; display: none; }
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
+  footer.site-footer .visit { margin-top: 8px; color: var(--muted); font-size: .8rem; }
+  footer.site-footer .visit .num { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; margin: 0 2px; }
+  footer.site-footer .visit .sep { color: var(--line); margin: 0 8px; }
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; text-align: center; }
   .pager { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin: 26px 0 8px; }
   .pg-btn { border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 7px 15px; border-radius: 999px; font-size: .85rem; cursor: pointer; transition: all .15s; font-family: var(--font); }
@@ -226,58 +222,6 @@
       <div class="stat-card"><span class="stat-val">12</span><span class="stat-label">覆盖分类</span></div>
       <div class="stat-card"><span class="stat-val">89</span><span class="stat-label">细分标签</span></div>
       <div class="stat-card"><span class="stat-val">2026-08-23</span><span class="stat-label">最近更新</span></div>
-    </div>
-    <div class="stat-dist">
-      <div class="stat-dist-title">分类分布</div>
-      <div class="stat-row">
-        <span class="stat-cat">效率</span>
-        <span class="stat-bar"><i style="width:100%"></i></span>
-        <span class="stat-num">57</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">趣味</span>
-        <span class="stat-bar"><i style="width:95%"></i></span>
-        <span class="stat-num">54</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">游戏</span>
-        <span class="stat-bar"><i style="width:72%"></i></span>
-        <span class="stat-num">41</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">设计</span>
-        <span class="stat-bar"><i style="width:61%"></i></span>
-        <span class="stat-num">35</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">AI</span>
-        <span class="stat-bar"><i style="width:49%"></i></span>
-        <span class="stat-num">28</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">创意</span>
-        <span class="stat-bar"><i style="width:39%"></i></span>
-        <span class="stat-num">22</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">学习</span>
-        <span class="stat-bar"><i style="width:28%"></i></span>
-        <span class="stat-num">16</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">探索</span>
-        <span class="stat-bar"><i style="width:16%"></i></span>
-        <span class="stat-num">9</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">软件</span>
-        <span class="stat-bar"><i style="width:12%"></i></span>
-        <span class="stat-num">7</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">影音</span>
-        <span class="stat-bar"><i style="width:9%"></i></span>
-        <span class="stat-num">5</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">生活</span>
-        <span class="stat-bar"><i style="width:7%"></i></span>
-        <span class="stat-num">4</span>
-      </div><div class="stat-row">
-        <span class="stat-cat">资讯</span>
-        <span class="stat-bar"><i style="width:5%"></i></span>
-        <span class="stat-num">3</span>
-      </div>
     </div>
   </section>
     <div class="toolbar">
@@ -1626,7 +1570,11 @@
     <p class="empty" id="empty">没有匹配的资源 🤔</p>
     <nav class="pager" aria-label="分页"></nav>
     <footer class="site-footer">
-      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-23T05:43:09.663Z
+      本页由 <a href="https://github.com/iBitBetter/iBitBetter.github.io/issues/185" target="_blank" rel="noopener noreferrer">GitHub Issue #185</a> 的评论自动生成 · 更新于 2026-08-23T05:58:27.916Z
+      <div class="visit">
+        本站已被访问 <span class="num" id="busuanzi_value_site_pv">…</span> 次<span class="sep">·</span><span class="num" id="busuanzi_value_site_uv">…</span> 位访客
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      </div>
     </footer>
   </div>
   <script>
