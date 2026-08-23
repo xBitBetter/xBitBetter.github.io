@@ -28,6 +28,7 @@ env:
   SITE_TITLE: 'iBitBetter'
   SITE_URL: 'https://ibitbetter.space'
   OWNER: 'iBitBetter'
+  PAGE_SIZE: '10'
 
 permissions:
   contents: write
@@ -73,6 +74,7 @@ jobs:
           SITE_TITLE: ${{ env.SITE_TITLE }}
           SITE_URL: ${{ env.SITE_URL }}
           OWNER: ${{ env.OWNER }}
+          PAGE_SIZE: ${{ env.PAGE_SIZE }}
         run: |
           set -euo pipefail
           # 收录规则（站长本人评论 + 站长点过 ❤️ 的评论）由脚本内部判定：
