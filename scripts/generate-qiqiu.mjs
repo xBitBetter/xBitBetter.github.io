@@ -523,8 +523,6 @@ ${canonicalTag}
   .cat { font-size: .72rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 1px 8px; border-radius: 6px; }
   .empty { text-align: center; color: var(--muted); padding: 60px 0; display: none; }
   footer.site-footer { margin-top: 48px; color: var(--muted); font-size: .82rem; text-align: center; border-top: 1px solid var(--line); padding-top: 20px; }
-  .comments { margin-top: 36px; }
-  .comments .utterances { max-width: 100%; }
   .count { color: var(--muted); font-size: .85rem; margin: 0 0 4px; text-align: center; }
   .pager { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin: 26px 0 8px; }
   .pg-btn { border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 7px 15px; border-radius: 999px; font-size: .85rem; cursor: pointer; transition: all .15s; font-family: var(--font); }
@@ -599,16 +597,6 @@ ${cards}
     <footer class="site-footer">
       本页由 <a href="${safeIssue}" target="_blank" rel="noopener noreferrer">GitHub Issue #${cfg.issueNumber}</a> 的评论自动生成 · 更新于 ${safeTime}
     </footer>
-    <section class="comments" aria-label="评论区">
-      <script src="https://utteranc.es/client.js"
-              repo="${escapeHtml(cfg.repository)}"
-              issue-term="issue-number"
-              issue-number="185"
-              theme="github-light"
-              crossorigin="anonymous"
-              async>
-      </script>
-    </section>
   </div>
   <script>
     (function () {
@@ -707,14 +695,6 @@ ${cards}
   </script>
   <script>
     var QIQIU_ICONS = { sun: "${ICONS.sun}", moon: "${ICONS.moon}" };
-    // 评论区（Utterances）主题同步：dark → dark-blue，light → github-light
-    function qiqiuUtterancesTheme(mode) {
-      var utheme = mode === "dark" ? "dark-blue" : "github-light";
-      var iframe = document.querySelector(".utterances-frame");
-      if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage({ type: "set-theme", theme: utheme }, "https://utteranc.es");
-      }
-    }
     function qiqiuModeSwitch() {
       var cur = document.documentElement.getAttribute("data-color-mode") || "light";
       var next = cur === "light" ? "dark" : "light";
@@ -722,18 +702,11 @@ ${cards}
       document.documentElement.setAttribute("data-color-mode", next);
       var sw = document.getElementById("qiqiuThemeSwitch");
       if (sw) sw.setAttribute("d", next === "light" ? QIQIU_ICONS.sun : QIQIU_ICONS.moon);
-      qiqiuUtterancesTheme(next);
     }
     (function () {
       var cur = document.documentElement.getAttribute("data-color-mode") || "light";
       var sw = document.getElementById("qiqiuThemeSwitch");
       if (sw) sw.setAttribute("d", cur === "light" ? QIQIU_ICONS.sun : QIQIU_ICONS.moon);
-      // 等 Utterances iframe 挂载后同步一次主题（避免初始闪烁）
-      (function syncOnce() {
-        var iframe = document.querySelector(".utterances-frame");
-        if (iframe) { qiqiuUtterancesTheme(cur); return; }
-        setTimeout(syncOnce, 400);
-      })();
     })();
   </script>
 </body>
