@@ -365,7 +365,9 @@ function formatDateTime(iso) {
     const d = new Date(iso);
     if (isNaN(d.getTime())) return escapeHtml(iso || "");
     const p = (n) => String(n).padStart(2, "0");
-    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+    // 统计面板「最近更新」只显示 月-日，紧凑不破版；
+    // 年份由页脚版权年份反推，完整日期意义不丢。
+    return `${p(d.getMonth() + 1)}-${p(d.getDate())}`;
   } catch (e) {
     return escapeHtml(iso || "");
   }
@@ -518,7 +520,7 @@ ${canonicalTag}
     gap: 4px; transition: border-color .15s, transform .15s;
   }
   .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1.2; letter-spacing: -.02em; }
+  .stat-val { font-size: clamp(1.25rem, 4.5vw, 1.5rem); font-weight: 700; color: var(--accent); line-height: 1.2; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .stat-label { font-size: .78rem; color: var(--muted); }
   @media (max-width: 600px) {
     .stat-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
